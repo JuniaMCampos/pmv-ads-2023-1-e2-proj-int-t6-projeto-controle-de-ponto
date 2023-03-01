@@ -1,8 +1,8 @@
-# Sistema de Ponto
+# Sistema de Controle de Ponto
 
 `Análise e desenvolvimento de Sistema`
 
-`Projeto Desenvolvimento de uma Aplicação Interativa`
+`Projeto Desenvolvimento de uma Aplicação Interativa - Eixo 2`
 
 `1° semestre 2023`
 
@@ -10,14 +10,16 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Ana Carolina Mozzelli
+* Anna Clara Rocha Mota
+* Gustavo Silva Diniz
+* Jeosafa Boy Eller
+* Júnia Marina Campos
+* Kennedy de Oliveira Machado Pires
 
 ## Orientador
 
-* Nome completo do professor 1
+* Bernardo Jeunon de Alencar
 
 ## Instruções de utilização
 
