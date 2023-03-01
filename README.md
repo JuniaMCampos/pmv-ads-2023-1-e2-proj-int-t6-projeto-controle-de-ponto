@@ -1,10 +1,10 @@
-# TÍTULO DO PROJETO
+# Sistema de Ponto
 
-`CURSO`
+`Análise e desenvolvimento de Sistema`
 
-`DISCIPLINA`
+`Projeto Desenvolvimento de uma Aplicação Interativa`
 
-`SEMESTRE`
+`1° semestre 2023`
 
 Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
 
