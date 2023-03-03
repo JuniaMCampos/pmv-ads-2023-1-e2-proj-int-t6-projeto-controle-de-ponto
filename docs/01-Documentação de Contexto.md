@@ -19,17 +19,14 @@ O objetivo geral deste projeto é a criação de um sistema web de controle de p
 Como objetivos específicos, podemos ressaltar:
 
 •	Capturar informações precisas e verificáveis sobre o horário de trabalho dos colaboradores;
+
 •	Automatizar a coleta, armazenamento e processamento dos dados dos colaboradores;
+
 •	Fornecer funcionalidade que atendam uma necessidade especifica de gerenciamento de uma empresa.
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
-
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Devido aos problemas causados pelo sistema de controle de ponto manual ou mecânico, como fraudes e erros nos momentos de marcar o ponto, filas de colaboradores na entrada e saída do local de trabalho, dificuldades na gestão de dados para elaboração da folha de pagamento e a limitação na flexibilidade na configuração de horários e turnos, surgiu a necessidade de um sistema web que diminuiria os problemas citados. 
 
 ## Público-Alvo
 
