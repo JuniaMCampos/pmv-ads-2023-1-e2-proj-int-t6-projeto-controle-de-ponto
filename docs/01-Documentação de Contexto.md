@@ -1,6 +1,9 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Sabe-se que hoje o uso da tecnologia é fundamental para facilitar o dia a dia de pessoas e organizações. Com isso, percebe-se o aumento de sistema de todos os tipos para auxiliar as rotinas de uma empresa. Uma das várias rotinas que pode ser facilitada com a introdução da tecnologia é o momento do colaborador bater o ponto na empresa através de uma máquina de cartão de ponto.
+As máquinas de cartão de ponto mecânicas são dispositivos que registram a hora de entrada e saída dos funcionários em cartões perfurados. Esses cartões são colocados na máquina e, ao serem perfurados nos locais corretos, registram as informações sobre o horário de trabalho do funcionário. 
+Apesar de ter sido muito utilizada, começaram a perceber problemas que essas máquinas causavam, isto é, começaram a ocorrer fraudes e erros, como a falsificação de cartões ou marcação indevida de horários, além de erros no registro do horário de trabalho, caso a máquina estivesse com defeitos. Também podem dificultar a gestão de dados, uma vez que geram uma grande quantidade de cartões de ponto que precisam ser coletados, armazenados e processados manualmente, gerando atraso nas elaborações da folha de pagamento. E por último, mas não menos importante, as máquinas de ponto limitam a flexibilização de horários e turnos, o que pode ser um problema para empresas que trabalham com horários flexíveis ou têm uma grande variedade de turnos
+Essas máquinas foram, e em alguns lugares ainda são, muito comuns, mas, devido aos problemas relatados, seu uso foi substituído em muitas empresas por sistemas eletrônicos de controle de ponto, pois são mais precisos e fáceis de usar.
 
 ## Problema
 Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
