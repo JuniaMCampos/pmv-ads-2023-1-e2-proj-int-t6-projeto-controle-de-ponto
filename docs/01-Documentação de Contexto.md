@@ -14,12 +14,13 @@ Conforme o exposto, o problema a ser resolvido com este projeto é a restrição
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+O objetivo geral deste projeto é a criação de um sistema web de controle de ponto que ajudará reduzir a ocorrência de erros e fraudes, simplificar a gestão de dados e oferecer mais flexibilidade para atender às necessidades especificas de uma empresa.
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Como objetivos específicos, podemos ressaltar:
+
+•	Capturar informações precisas e verificáveis sobre o horário de trabalho dos colaboradores;
+•	Automatizar a coleta, armazenamento e processamento dos dados dos colaboradores;
+•	Fornecer funcionalidade que atendam uma necessidade especifica de gerenciamento de uma empresa.
 
 ## Justificativa
 
