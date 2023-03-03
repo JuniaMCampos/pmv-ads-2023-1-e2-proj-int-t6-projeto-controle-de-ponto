@@ -1,4 +1,4 @@
-# Sistema de Controle de Ponto
+# Apontei - Sistema de Controle de Ponto
 
 `Análise e desenvolvimento de Sistema`
 
@@ -6,7 +6,7 @@
 
 `1° semestre 2023`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto que está sendo desenvolvido é um sistema web de controle de ponto.
 
 ## Integrantes
 
