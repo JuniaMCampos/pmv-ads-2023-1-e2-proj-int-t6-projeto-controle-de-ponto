@@ -10,7 +10,7 @@ O projeto que está sendo desenvolvido é um sistema web de controle de ponto.
 
 ## Integrantes
 
-* Ana Carolina Mozzelli
+* Ana Carolina Mozelli
 * Anna Clara Rocha Mota
 * Gustavo Silva Diniz
 * Jeosafa Boy Eller
