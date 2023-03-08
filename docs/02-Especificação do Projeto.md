@@ -8,6 +8,42 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
+
+ 
+
+Laura Alves 
+
+Idade: 28 
+
+Ocupação: Assistente Administrativo 
+
+Aplicativos: 
+
+Instagram 
+
+Twitter 
+
+ 
+
+ 
+
+ 
+
+Mateus Gomes 
+
+Idade: 44 
+
+Ocupação: Gerente de RH 
+
+Aplicativos: 
+
+Instagram 
+
+Linkedin 
+
+ 
+
+ 
 Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
 
 Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
