@@ -5,7 +5,7 @@ A definição exata do problema e os pontos mais relevantes a serem tratados nes
 ## Personas
 
 | Laura Alves    |                                    |                |
-|--------------------|------------------------------------|
+|--------------------|------------------------------------| ------------------------------------|
 |![](img/LauraAlves.jpeg)|**Idade:** 28 anos - **Ocupação:**
 Ocupação: Assistente Administrativo |Aplicativos: Instagram, Twitter.|
 
