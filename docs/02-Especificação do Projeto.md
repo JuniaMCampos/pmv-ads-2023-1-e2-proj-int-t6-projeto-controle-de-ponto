@@ -10,6 +10,12 @@ A definição exata do problema e os pontos mais relevantes a serem tratados nes
 Ocupação: Assistente Administrativo |Aplicativos: Instagram, Twitter.|
 
 
+| Mateus Gomes    |                                    |                       |
+|--------------------|------------------------------------| ------------------------------------|
+|![](img/MateusGomes.jpeg)|**Idade:** 41 anos -
+Ocupação: Gerente de RH |Aplicativos: Instagram, Linkedin.|
+
+
 
 Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
 
