@@ -5,8 +5,8 @@ A definição exata do problema e os pontos mais relevantes a serem tratados nes
 ## Personas
 
 | Laura Alves    |                                    |                |
-|--------------------|------------------------------------|----------------------------------------|
-|![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/julianasouza.png)|**Idade:** 28 anos - **Ocupação:**
+|--------------------|------------------------------------|
+|![](img/LauraAlves.jpeg)|**Idade:** 28 anos - **Ocupação:**
 Ocupação: Assistente Administrativo |Aplicativos: Instagram, Twitter.|
 
 
