@@ -6,7 +6,7 @@ A definição exata do problema e os pontos mais relevantes a serem tratados nes
 
 | Laura Alves    |                                    |                       |
 |--------------------|------------------------------------| ------------------------------------|
-|![]([Captura de tela 2023-03-13 202742](https://user-images.githubusercontent.com/115122757/224854369-c0fb2df8-e118-49f7-9cb5-0d8c8e763c33.png))
+|![](https://user-images.githubusercontent.com/115122757/224854369-c0fb2df8-e118-49f7-9cb5-0d8c8e763c33.png))
 |**Idade:** 28 anos -
 Ocupação: Assistente Administrativo |Aplicativos: Instagram, Twitter.|
 
