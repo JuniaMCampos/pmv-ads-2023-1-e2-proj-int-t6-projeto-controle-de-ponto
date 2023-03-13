@@ -13,8 +13,8 @@ Ocupação: Assistente Administrativo |Aplicativos: Instagram, Twitter.|
 
 | Mateus Gomes    |                                    |                       |
 |--------------------|------------------------------------| ------------------------------------|
-|![](![Captura de tela 2023-03-13 202742](https://user-images.githubusercontent.com/115122757/224854536-ba3cb1b4-f079-4895-8b37-eb8a1e55738d.png)
-)|**Idade:** 41 anos -
+|![](![2](https://user-images.githubusercontent.com/115122757/224854793-a1b3023b-1dca-4c3c-ab73-bd4efb6c8805.png))
+|**Idade:** 41 anos -
 Ocupação: Gerente de RH |Aplicativos: Instagram, Linkedin.|
 
 
