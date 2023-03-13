@@ -117,4 +117,5 @@ Para anexar documentos de justificativa ao sistema, o funcionário tem que solic
 Extensão
 Para justificar uma pausa/falta, o usuário pode ou não pedir a solicitação de revisão de ponto, depende do prazo em que ele se encontra.
 Representação Visual.
+![](![Captura de tela 2023-03-13 201252](https://user-images.githubusercontent.com/115122757/224853603-225ee5e6-77df-4d4b-aa1f-8950613c5e68.png)
 
