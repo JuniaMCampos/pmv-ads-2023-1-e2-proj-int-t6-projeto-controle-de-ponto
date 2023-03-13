@@ -6,15 +6,15 @@ A definição exata do problema e os pontos mais relevantes a serem tratados nes
 
 | Laura Alves    |                                    |                       |
 |--------------------|------------------------------------| ------------------------------------|
-|![](![WhatsApp Image 2023-03-08 at 20 08 15](https://user-images.githubusercontent.com/115122757/224853415-e188dfda-4df5-443e-9cd4-b489674b48bd.jpeg)
-)
+|![](![Captura de tela 2023-03-13 202742](https://user-images.githubusercontent.com/115122757/224854369-c0fb2df8-e118-49f7-9cb5-0d8c8e763c33.png))
 |**Idade:** 28 anos -
 Ocupação: Assistente Administrativo |Aplicativos: Instagram, Twitter.|
 
 
 | Mateus Gomes    |                                    |                       |
 |--------------------|------------------------------------| ------------------------------------|
-|![](img/MateusGomes.jpeg)|**Idade:** 41 anos -
+|![](![Captura de tela 2023-03-13 202742](https://user-images.githubusercontent.com/115122757/224854536-ba3cb1b4-f079-4895-8b37-eb8a1e55738d.png)
+)|**Idade:** 41 anos -
 Ocupação: Gerente de RH |Aplicativos: Instagram, Linkedin.|
 
 
