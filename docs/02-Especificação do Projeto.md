@@ -84,9 +84,10 @@ As questões que limitam a execução desse projeto e que se configuram como obr
 
 ## Diagrama de Casos de Uso
 
-Atores
-Funcionário: Pessoa responsável por registrar toda a sua rotina relacionada a jornada de trabalho.
-Chefia: Pessoa responsável pelo gerenciamento dos funcionários e gerenciamento da jornada de trabalho desses funcionários
+|ATOR| DESCRIÇÃO                                  |
+|--|---------------------------------------------- |
+|Funcionário| Pessoa responsável por registrar toda a sua rotina relacionada a jornada de trabalho.|
+|Chefia| Pessoa responsável pelo gerenciamento dos funcionários e gerenciamento da jornada de trabalho desses funcionários.|
 
 Casos de Uso e sua descrição
  Validar Usuário: o sistema autentica o ator corretamente para que ele consiga realizar suas necessidades dentro do sistema. RF-01.
