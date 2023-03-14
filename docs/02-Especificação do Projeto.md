@@ -91,24 +91,16 @@ As questões que limitam a execução desse projeto e que se configuram como obr
 
 |CASOS DE USO| DESCRIÇÃO | RF |
 |--|--------------------------------------------------------------------|---------------------|
-|Validar Usuário| o sistema autentica o ator corretamente para que ele consiga realizar suas necessidades dentro do sistema.| RF-01.|
-|Gerenciar Funcionários|o ator Chefia consegue incluir e excluir funcionários, além de colocar todos os dados necessários para que o sistema funcione corretamente para o ator funcionário, como, por exemplo, o cadastro das horas em que o funcionário irá trabalhar na empresa. |RF-07.|
- 
- Gerenciar ponto dos Funcionários: o ator Chefia consegue aprovar e desaprovar tudo que está relacionado ao ponto do ator funcionário, como por exemplo, aceitar ou recusar uma solicitação de mudança de horário de trabalho, aprovar o fechamento do ponto, etc. RF-06.
-
- Emitir Relatório de fechamento do ponto: o ator chefia, após realizar todas as alterações e inclusões relacionadas ao ponto do ator funcionário, conseguirá emitir um relatório para enviar a contabilidade para o fechamento da folha de pagamento. RF-08.
-
- Visualizar marcação dos dias trabalhados: o ator Funcionário conseguira filtrar um período especifico e visualizar sua jornada de trabalho. RF-05.
-
- Justificar mudança de horário: caso o ator Funcionário faça algum preenchimento incorreto, ela consiga justificar essa mudança no sistema. RF-03.
-
- Informar Jornada de trabalho: O ator Funcionário consegue informar no sistema o horário que ele inicia e finaliza sua jorna de trabalho e o seu horário de almoço. RF-02.
-
- Justificar Pausas/Faltas: o ator Funcionário consegue informar um motivo de pausa /falta da jornada de trabalho, como por exemplo, exame médico, consulta médica, amamentação, doença, compensação banco de horas, luto, etc. RF-03.
-
-  Anexar imagens para justificar pausas/faltas: o ator Funcionário conseguirá anexar documentos que comprovem uma pausa ou uma falta, como por exemplo, um atestado médico, um atestado de óbito, etc. RF-04.
-
- Solicitar revisão de ponto: o ator Funcionário conseguira, num período determinado pelo ator Chefia, pedir revisão do ponto caso ele perceba algum erro após a Chefia ter realizado o fechamento do ponto. RF-03.
+|Validar Usuário| O sistema autentica o ator corretamente para que ele consiga realizar suas necessidades dentro do sistema.| RF-001. |
+|Gerenciar Funcionários| O ator Chefia consegue incluir e excluir funcionários, além de colocar todos os dados necessários para que o sistema funcione corretamente para o ator funcionário, como, por exemplo, o cadastro das horas em que o funcionário irá trabalhar na empresa. | RF-007.|
+|Gerenciar ponto dos Funcionários| O ator Chefia consegue aprovar e desaprovar tudo que está relacionado ao ponto do ator funcionário, como por exemplo, aceitar ou recusar uma solicitação de mudança de horário de trabalho, aprovar o fechamento do ponto, etc. | RF-006.|
+|Emitir Relatório de fechamento do ponto| O ator chefia, após realizar todas as alterações e inclusões relacionadas ao ponto do ator funcionário, conseguirá emitir um relatório para enviar a contabilidade para o fechamento da folha de pagamento. | RF-008.|
+|Visualizar marcação dos dias trabalhados| O ator Funcionário conseguira filtrar um período especifico e visualizar sua jornada de trabalho. | RF-005.|
+|Justificar mudança de horário| Caso o ator Funcionário faça algum preenchimento incorreto, ela consiga justificar essa mudança no sistema. | RF-003. |
+|Informar Jornada de trabalho| O ator Funcionário consegue informar no sistema o horário que ele inicia e finaliza sua jorna de trabalho e o seu horário de almoço. | RF-002.|
+|Justificar Pausas/Faltas| o ator Funcionário consegue informar um motivo de pausa /falta da jornada de trabalho, como por exemplo, exame médico, consulta médica, amamentação, doença, compensação banco de horas, luto, etc. | RF-003.|
+|Anexar imagens para justificar pausas/faltas| O ator Funcionário conseguirá anexar documentos que comprovem uma pausa ou uma falta, como por exemplo, um atestado médico, um atestado de óbito, etc. | RF-004.|
+|Solicitar revisão de ponto| O ator Funcionário conseguira, num período determinado pelo ator Chefia, pedir revisão do ponto caso ele perceba algum erro após a Chefia ter realizado o fechamento do ponto. | RF-003.|
 
 Relacionamentos
 Inclusão
