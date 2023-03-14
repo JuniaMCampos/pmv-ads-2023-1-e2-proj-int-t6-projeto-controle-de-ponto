@@ -89,8 +89,8 @@ As questões que limitam a execução desse projeto e que se configuram como obr
 |Funcionário| Pessoa responsável por registrar toda a sua rotina relacionada a jornada de trabalho.|
 |Chefia| Pessoa responsável pelo gerenciamento dos funcionários e gerenciamento da jornada de trabalho desses funcionários.|
 
-|CASOS DE USO| DESCRIÇÃO | RF |
-|--|--------------------------------------------------------------------|---------------------|
+|CASOS DE USO| DESCRIÇÃO |   RF    |
+|--|--------------------------------------------------------------------|------------------------------|
 |Validar Usuário| O sistema autentica o ator corretamente para que ele consiga realizar suas necessidades dentro do sistema.| RF-001. |
 |Gerenciar Funcionários| O ator Chefia consegue incluir e excluir funcionários, além de colocar todos os dados necessários para que o sistema funcione corretamente para o ator funcionário, como, por exemplo, o cadastro das horas em que o funcionário irá trabalhar na empresa. | RF-007.|
 |Gerenciar ponto dos Funcionários| O ator Chefia consegue aprovar e desaprovar tudo que está relacionado ao ponto do ator funcionário, como por exemplo, aceitar ou recusar uma solicitação de mudança de horário de trabalho, aprovar o fechamento do ponto, etc. | RF-006.|
@@ -102,16 +102,14 @@ As questões que limitam a execução desse projeto e que se configuram como obr
 |Anexar imagens para justificar pausas/faltas| O ator Funcionário conseguirá anexar documentos que comprovem uma pausa ou uma falta, como por exemplo, um atestado médico, um atestado de óbito, etc. | RF-004.|
 |Solicitar revisão de ponto| O ator Funcionário conseguira, num período determinado pelo ator Chefia, pedir revisão do ponto caso ele perceba algum erro após a Chefia ter realizado o fechamento do ponto. | RF-003.|
 
-Relacionamentos
-Inclusão
-É necessário fazer login no sistema para que os atores consigam realizar suas funcionalidades.
-Para a chefia gerenciar o ponto dos funcionários, tem que ter o registro das jornadas de trabalho dos funcionários.
-Para anexar documentos de justificativa ao sistema, o funcionário tem que solicitar a justificativa de falta/pausas.
+|RELACIONAMENTO| DESCRIÇÃO                                 |
+|--|-------------------------------------------------------|
+|INCLUSÃO| É necessário fazer login no sistema para que os atores consigam realizar suas funcionalidades.|
+||Para a chefia gerenciar o ponto dos funcionários, tem que ter o registro das jornadas de trabalho dos funcionários.|
+||Para anexar documentos de justificativa ao sistema, o funcionário tem que solicitar a justificativa de falta/pausas.|
+|EXTENSÃO| Para justificar uma pausa/falta, o usuário pode ou não pedir a solicitação de revisão de ponto, depende do prazo em que ele se encontra.|
 
-Extensão
-Para justificar uma pausa/falta, o usuário pode ou não pedir a solicitação de revisão de ponto, depende do prazo em que ele se encontra.
-
-Representação Visual.
+### Representação Visual.
 
 ![](![Captura de tela 2023-03-13 201252](https://user-images.githubusercontent.com/115122757/224853603-225ee5e6-77df-4d4b-aa1f-8950613c5e68.png)
 
