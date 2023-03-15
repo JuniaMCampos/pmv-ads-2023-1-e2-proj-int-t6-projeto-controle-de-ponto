@@ -111,5 +111,5 @@ As questões que limitam a execução desse projeto e que se configuram como obr
 
 ### Representação Visual.
 
-![](![Captura de tela 2023-03-13 201252](https://user-images.githubusercontent.com/115122757/224853603-225ee5e6-77df-4d4b-aa1f-8950613c5e68.png)
+(![Captura de tela 2023-03-13 201252](https://user-images.githubusercontent.com/115122757/224853603-225ee5e6-77df-4d4b-aa1f-8950613c5e68.png)
 
