@@ -51,7 +51,7 @@ A tabela a seguir apresenta os requisitos do projeto, identificando a prioridade
 |------|-----------------------------------------|----|
 |RF-001| O sistema deve ser acessado por login e senha. | ALTA | 
 |RF-002| O sistema deve permitir que o usuário bata o ponto na entrada, horário de pausas e saída  | ALTA |
-|RF-OO3| O sistema de permitir que o usuário justifique/solicite alguma mudança na marcação do ponto| ALTA| 
+|RF-003| O sistema de permitir que o usuário justifique/solicite alguma mudança na marcação do ponto| ALTA| 
 |RF-004| O sistema deve permitir que o usuário anexe imagens de documentos para justificar a sua falta.| ALTA|
 |RF-005| O sistema deve permitir que o usuário veja todas as suas marcações dos dias trabalhados, pendentes e aprovados.| MÉDIA|
 |RF-006| O sistema deve permitir que o gestor aprove ou desaprove as marcações dos funcionários| MÉDIA|
