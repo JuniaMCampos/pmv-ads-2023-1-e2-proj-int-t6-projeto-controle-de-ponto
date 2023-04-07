@@ -9,8 +9,8 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 
 Ambiente|Plataforma|Link de Acesso
 |:--------|:----------:|:--------------:|
-|Repositório|GitHub|  | https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto
-|Documentos do projeto|GitHubDocs| https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto|
+|Repositório|GitHub|  |https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto |
+|Documentos do projeto|GitHubDocs|https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto |
 |Projeto de Interface e  Wireframes|  |https://app.diagrams.net/?src=about#G1fsSh11wASWPg0C__q8LiAlB52mtvDiq5  https://lucid.app/lucidchart/23eb4c0b-672f-4840-a014-e3b789e1fad8/edit?invitationId=inv_bd8fc691-8b08-432f-b7ad-b6407f849773&page=0_0#   |
 |Gerenciamento do Projeto|Trello| https://trello.com/b/cQ0pnoDd/controle-de-ponto-puc |
 
@@ -69,8 +69,7 @@ templates para agilizar a criação de novos cartões.
 -  To Do: esta lista representa o que precisa ser feito naquela etapa do projeto, representa a Sprint Backlog.
 -  Doing: esta lista representa o que está sendo feito naquele momento, representa "in progress"
 -  Done: está lista representa as etapas do projeto que já estão prontas para serem entregues
-
-
+![](https://user-images.githubusercontent.com/115122757/230666426-aace289d-1c92-4aa0-8fb1-de03cf727187.png))
 ### Ferramentas
 
 As ferramentas empregadas no projeto são:
