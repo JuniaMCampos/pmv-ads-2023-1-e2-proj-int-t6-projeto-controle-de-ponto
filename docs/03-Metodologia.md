@@ -9,10 +9,10 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 
 Ambiente|Plataforma|Link de Acesso
 |:--------|:----------:|:--------------:|
-|Repositório|GitHub|  |https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto |
-|Documentos do projeto|GitHubDocs|https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto |
+|Repositório|GitHub|[GitHub](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto) |
+|Documentos do projeto|GitHubDocs|[GitHubDocs](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto) |
 |Projeto de Interface e  Wireframes|  |https://app.diagrams.net/?src=about#G1fsSh11wASWPg0C__q8LiAlB52mtvDiq5  https://lucid.app/lucidchart/23eb4c0b-672f-4840-a014-e3b789e1fad8/edit?invitationId=inv_bd8fc691-8b08-432f-b7ad-b6407f849773&page=0_0#   |
-|Gerenciamento do Projeto|Trello| https://trello.com/b/cQ0pnoDd/controle-de-ponto-puc |
+|Gerenciamento do Projeto|Trello| [Trello](https://trello.com/b/cQ0pnoDd/controle-de-ponto-puc) |
 
 
 ## Controle de Versão
