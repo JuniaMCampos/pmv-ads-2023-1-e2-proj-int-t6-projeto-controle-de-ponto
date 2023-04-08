@@ -33,17 +33,23 @@ Conforme fluxo de telas do projeto amostrado no item anterior, as telas do siste
 - **Rodapé** - apresenta detalhes adicionais sobre o projeto e um mapa do site.
 
 ![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/Padrao.png)
-Figura 6 – Estrutura padrão do site 
+ 
 
-## Tela - LandingPage / Login 
-A tela inicial ou LandingPage apresentada na *Figura 7* permite visualizar notícias e informações relevantes sobre o projeto na extensão da página e ao clicar no icon de usuário abre um modal conforme explicado no tópico *Modal - Login* que segue.   
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/LandingPage.png)
-Figura 7 – LandingPage
+## Tela - Home Page
+A tela inicial permite visualizar um texto padrão apresentando o sistema para o usuário:
 
-## Modal - Login 
-O modal que se abre ao clicar no icon de usuário no canto superior direito do cabeçalho permite ao usuário fazer login na aplicação, preenchendo suas credenciais conforme orientado. Além disso, o usuário pode ser direcionado para se cadastrar na opção “Não tem uma conta?” e para redefinir a senha da conta na opção "Esqueceu sua senha?". O modal em questão pode ser visualizado conforme *Figura 8*.
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/Login.png)
-Figura 8 – Modal Login
+![Home Page](img/AcesseSuaConta.PNG)
+
+Figura Home Page
+
+## Tela - Login e Recuperação de Senha
+O modal que se abre ao clicar no botão acessar da página Home Page, permite o usuário preencher suas credenciais conforme orientado. Além disso, o usuário pode ser direcionado para redefinir a senha da conta na opção "Esqueceu sua senha?". O modal em questão pode ser visualizado conforme figuras abaixo:
+
+![Acesse sua Conta](img/AcesseSuaConta.PNG)
+
+Figura Login
+
+![Recupere sua senha](img/RecupereSenha.PNG)
 
 ## Fluxo de Telas - Cadastro de Usuário 
 O fluxo de *Cadastro de Usuário* ilustrado na *Figura 9* permite ao usuário se cadastrar na aplicação caso este ainda não possua uma conta, seguindo um formulário solicitando informações obrigatórias de acordo com o tipo de perfil a ser criado.
