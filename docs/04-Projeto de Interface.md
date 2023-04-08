@@ -51,40 +51,63 @@ Figura Login
 
 ![Recupere sua senha](img/RecupereSenha.PNG)
 
-## Fluxo de Telas - Cadastro de Usuário 
-O fluxo de *Cadastro de Usuário* ilustrado na *Figura 9* permite ao usuário se cadastrar na aplicação caso este ainda não possua uma conta, seguindo um formulário solicitando informações obrigatórias de acordo com o tipo de perfil a ser criado.
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/Cadastro.png)
-Figura 9 – Fluxo de Cadastro de Usuário. 
+Figura Recupere sua Senha
 
-## Fluxo de Telas - Esqueci a Senha  
-Caso o usuário já possua uma conta mas não saiba sua senha, é permitido que ele altere sua senha por meio do fluxo apresentado na *Figura 10*. 
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/Esqueci%20a%20Senha.png)
-Figura 10 – Fluxo de Telas de Redefinição de Senha 
+## Tela - Cadastro de Usuário 
+A tela a seguir permite que o Gestor cadastre um novo funcionáio ao banco de dados do sistema:
 
-## Tela - Homepage 
-Depois de fazer o login na aplicação, o usuário é redirecionado para uma homepage que possui a mesma estrutura da LandingPage, mas agora logado, ele possui a opção de clicar no ícone de menu ao lado da logo no cabeçalho para expandir uma barra lateral com os links para todas as páginas possíveis de serem utilizadas por ele. Além disso, ao clicar no ícone de perfil ele poderá ver informações como seu nome, tipo de usuário e fazer logout. A *Homepage* é ilustrada detalhadamente na *Figura 11*.
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/Homepage.png)
-Figura 11 – Tela Homepage
+![Cadastro Novo Usuário](img/CadastroNovoUsuario.PNG)
 
-## Tela – Cadastrar Nova Solicitação
-A tela de *Cadastrar Nova Solicitação*, conforme *Figura 12*, permite ao usuário solicitar o descarte de um novo material preenchendo os campos do formulário conforme solicitado e clicando em *Salvar*.
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/SolicitacaoDescarte.png)
-Figura 12 – Tela Cadastar nova Solicitação de Descarte
+Figura Cadastro de Usuário
 
-## Tela – Histórico de Descartes Realizados  
-A *Histórico de Descartes Realizados* permite ao usuário do tipo *Descartador* visualizar todos as solicitações de descarte já realizadas, com detalhes importantes sobre elas. Essa tela segue ilustrada na *Figura 13*.
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/Historico.png)
-Figura 13 – Tela Histórico de Descartes Realizados
+## Tela - Cadastro Turno
+A tela a seguir permite que o Gestor cadastre um novo truno para associar a jornada de trabalho de cada colaborador.
 
-## Tela – Sobre   
-A tela *Sobre* é ilustrada na *Figura 14* e apresenta um pouco da história do projeto, como foi idealizado, como é mantido e mostra ainda a equipe responsável pelo trabalho.   
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/Sobre.png)
-Figura 14 – Tela Sobre 
+![Cadastro Turno](img/CadastroTurno.PNG)
 
-## Tela – Contato  
-A tela *Contato* permite que usuário entre em contato com a equipe idealizadora, enviando uma mensagem pela caixa de texto. Essa tela pode ser vista conforme a *Figura 15*.
-![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/main/docs/img/Contato.png)
-Figura 15 – Tela Contato 
+Figura Cadastro Turno
+
+## Tela - Cadastro de Cargo
+A tela a seguir permite que o Gestor cadastre um novo cargo para associar ao colaborador.
+
+![Cargo](img/Cargo.PNG)
+
+Figura Cadastro Cargo
+
+## Tela – Cadastro Departamento 
+A tela a seguir permite que o Gestor cadastre um novo departamento para associar ao colaborador.
+
+![Cadastro Departamento](img/Departamento.png)
+
+Figura Cadastro Departamento
+
+## Tela – Colaboradores
+A tela a seguir permite o Gestor visualizar e gerenciar os colaboradores que estão vinculados ao sistema:
+
+![Colaboradores](img/Colaboradores.PNG)
+
+Figura Colaboradores
+
+## Tela – Configurações Gerais
+A tela a seguir permite que o Gestor Configure outras informações referentes aos funcionários:
+
+![Configurações Gerais](img/ConfiguracoesGerais.PNG)
+
+Figura Configurações Gerais
+
+## Tela – Controle de Ponto  
+A tela a seguir permite que o gestor gerencie o Ponto de cada funcionário relacionado a ele:
+
+![Controle de Ponto](img/ControlePonto.PNG)
+
+Figura Controle Ponto
+
+## Tela – Cadastro Departamento 
+A tela a seguir permite que o Gestor cadastre um novo departamento para associar ao colaborador.
+
+![Cadastro Departamento](img/Departamento.png)
+
+Figura Cadastro Departamento
  
 
 
