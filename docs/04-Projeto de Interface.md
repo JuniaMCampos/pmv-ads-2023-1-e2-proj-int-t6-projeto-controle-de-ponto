@@ -17,10 +17,9 @@ Conforme pode ser visto, a *Figura 5* mostra o diagrama de fluxo de interação 
 |Página Gerenciamento Ponto do Funcionário| Nas páginas referente ao gerenciamento do ponto do funcionário, o gestor consegue aprovar ou desaprovar todas as modificações solicitadas pelos colaboradores, além de visualizar o ponto de cada funcionário.  | RF-006 |
 |Página Gerar Relatorios | Na página de gerar relatório, o Gestor consiguirá emitir um relatório consolidado com o ponto de cada colaborador para poder enviar a contabilidade no período estabelecido.  | RF-008|
 |Página Funcionário | Na página do funcionário, ele consiguirá ver o saldo do banco de horas e registrar a jornada de trabalho do dia. Também visualizará um menu com as opções: "Meu ponto", "Justificar" e "Solicitações". | RF-002 |
-|Página Gerenciar Ponto|  | RF-00 || RF-00 || RF-00|
-|Página Gerenciar Justificativas |  | RF-00 || RF-00 || RF-00|
-|Página Página Solicitar Ajustes e Abonos |  | RF-00 || RF-00 || RF-00|
-|Página Informar Faltas |  | RF-00 || RF-00 || RF-00|
+|Página Gerenciar Ponto| Nas páginas relacionadas ao gerenciamento do ponto, o funcionário poderá pedir ajustes, visualizar suas marcações pendentes e aprovadas | RF-003 e RF-005 |
+|Página Gerenciar Justificativas | Nas páginas relacionadas ao gerenciamento de justificativas, o funcionário poderá justificar uma ausencia de marcação da jornada de trabalho e, caso seja necessário, anexar documentos. | RF-003 e RF-004|
+
 
   ![Diagrama Fluxo](img/DiagramaFluxo.PNG)
 
