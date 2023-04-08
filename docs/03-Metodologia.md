@@ -42,20 +42,20 @@ etiquetas:
 
 A equipe utiliza metodologias ágeis, tendo escolhido o Scrum como base para definição do processo de desenvolvimento.
 A equipe está organizada da seguinte maneira:
-- Scrum Master: Júnia Marina Campos
-- Product Owner: Jeosafa Boy Eller
-- Equipe de Desenvolvimento
-Ana Carolina Mozelli
-Anna Clara Rocha Mota
-Gustavo Silva Diniz
-- Equipe de Design
- Gustavo Silva Diniz
+
+* Scrum Master: Júnia Marina Campos
+* Product Owner: Jeosafa Boy Eller
+* Equipe de Desenvolvimento
+  - Ana Carolina Mozelli
+  - Anna Clara Rocha Mota
+  - Gustavo Silva Diniz
+* Equipe de Design
+  - Gustavo Silva Diniz
 
 
 ### Processo
 Para organização e distribuição das tarefas do projeto, a equipe está utilizando o Trello estruturado com as seguintes listas:
-- Recursos: esta lista mantém template de tarefas recorrentes com as configurações padronizadas que todos devem seguir. O objetivo é permitir a cópia destes
-templates para agilizar a criação de novos cartões.
+
 -  Etapas Projeto: recebe a lista de tarefas a serem feitas e entregues.
 -  To Do: esta lista representa o que precisa ser feito naquela etapa do projeto, representa a Sprint Backlog.
 -  In Progress: esta lista representa o que está sendo feito naquele momento.
