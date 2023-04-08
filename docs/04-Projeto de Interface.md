@@ -10,13 +10,13 @@ A montagem da interface do sistema foi cuidadosamente desenvolvida para proporci
 Conforme pode ser visto, a *Figura 5* mostra o diagrama de fluxo de interação do usuário pelas telas do sistema. Cada uma das telas deste fluxo é detalhada na seção de Wireframes que será desenvolvido. 
 
 |FLUXO DO USUÁRIO| DESCRIÇÃO | RF |
-|--|-------------------------------------------------------|----------------------|
-|Home/Login | | RF- |
-|Página Gestor | |  |
-|Página Gerenciamento Pessoais Funcionários|   | RF-00 || RF-00|| RF-00| | RF-00 |
-|Página Gerenciamento Ponto do Funcionário|  | RF-00 || RF-00 || RF-00 |
-|Página Gerar Relatorios |  | RF-00 || RF-00 || RF-00|
-|Página Funcionário |  | RF-00 || RF-00 || RF-00|
+|--|-------------------------------------------------------|-------------------------------|
+|Home Page/Login/Recupere sua Senha | O usuário tem na página inicial um breve texto mostrando para que serve o sistema e em seguida ele faz seu login na página de Acesso a Sua Conta. Caso ele tenha esquecido sua senha, é redirecionado para a página de recuperação de senha. | RF-001 |
+|Página Gestor | O gestor tem acesso ao menu com as funcionalidades "Configurações", "Controle de Ponto", "Relatório" e "Solicitações"|  |
+|Página Gerenciamento Pessoais Funcionários|  Nas páginas de gerenciamento do funcionário, o gestor consegue incluir um novo colaborador, excluir ou editar informações do funcionário. Para isso, ele tem as telas de cadastro de usuário, cadastro de turno e cadastro de departamento, por exemplo. | RF-007 |
+|Página Gerenciamento Ponto do Funcionário| Nas páginas referente ao gerenciamento do ponto do funcionário, o gestor consegue aprovar ou desaprovar todas as modificações solicitadas pelos colaboradores, além de visualizar o ponto de cada funcionário.  | RF-006 |
+|Página Gerar Relatorios | Na página de gerar relatório, o Gestor consiguirá emitir um relatório consolidado com o ponto de cada colaborador para poder enviar a contabilidade no período estabelecido.  | RF-008|
+|Página Funcionário | Na página do funcionário, ele consiguirá ver o saldo do banco de horas e registrar a jornada de trabalho do dia. Também visualizará um menu com as opções: "Meu ponto", "Justificar" e "Solicitações". | RF-002 |
 |Página Gerenciar Ponto|  | RF-00 || RF-00 || RF-00|
 |Página Gerenciar Justificativas |  | RF-00 || RF-00 || RF-00|
 |Página Página Solicitar Ajustes e Abonos |  | RF-00 || RF-00 || RF-00|
