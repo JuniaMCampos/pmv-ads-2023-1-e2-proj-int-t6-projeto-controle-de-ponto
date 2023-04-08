@@ -77,7 +77,7 @@ Figura Cadastro Cargo
 ## Tela – Cadastro Departamento 
 A tela a seguir permite que o Gestor cadastre um novo departamento para associar ao colaborador.
 
-![Cadastro Departamento](img/Departamento.png)
+![Cadastro Departamento](img/Departamento.PNG)
 
 Figura Cadastro Departamento
 
@@ -98,30 +98,36 @@ Figura Configurações Gerais
 ## Tela – Controle de Ponto  
 A tela a seguir permite que o gestor gerencie o Ponto de cada funcionário relacionado a ele:
 
-![Controle de Ponto](img/ControlePonto.PNG)
+![Controle de Ponto](img/PontoColaborador1.PNG)
 
 Figura Controle Ponto
 
-## Tela – Cadastro Departamento 
-A tela a seguir permite que o Gestor cadastre um novo departamento para associar ao colaborador.
+## Tela – Relatórios
+A tela a seguir permite que o Gestor emita um relatório de fechamento de ponto para envio a contabilidade.
 
-![Cadastro Departamento](img/Departamento.png)
+![Relatório](img/Relatorios.PNG)
 
-Figura Cadastro Departamento
+Figura Relatórios
+
+## Tela – Solicitações Gestor
+A tela a seguir permite que o Gestor aceite ou recuse uma solicitação feita pelo colaborador vinculado a ele.
+
+![Solicitação Gestor](img/SolicitacoesGestor.PNG)
+
+Figura Solicitação Gestor
  
+## Tela – Ponto Colaborador
+As telas a seguir permite que o Colaborador registre sua jornada de trabalho, visualiza seu banco de horas e visualize todos os registros ja feito por ele em um determinado periodo:
+
+![Ponto Colaborador](img/PontoFuncionario.PNG)
+
+Figura Ponto Colaborador
+
+## Tela – Solicitações Colaborador
+A tela a seguir permite que o Colaborador faça solicitações de ajuste ao ponto e justificativas quando há falta ou não registro do ponto:
+
+![Solicitações Colaborador](img/SolicitacoesFuncionário.PNG)
+
+Figura Solicitações Colaborador
 
 
-## Wireframes
-
-![Exemplo de Wireframe](img/wireframe-example.png)
-
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
