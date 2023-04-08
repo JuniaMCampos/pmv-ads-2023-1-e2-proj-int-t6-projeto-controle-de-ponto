@@ -11,7 +11,7 @@ Ambiente|Plataforma|Link de Acesso
 |:--------|:----------:|:--------------:|
 |Repositório|GitHub|[GitHub](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto) |
 |Documentos do projeto|GitHubDocs|[GitHubDocs](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto) |
-|Projeto de Interface e  Wireframes|  |https://app.diagrams.net/?src=about#G1fsSh11wASWPg0C__q8LiAlB52mtvDiq5  https://lucid.app/lucidchart/23eb4c0b-672f-4840-a014-e3b789e1fad8/edit?invitationId=inv_bd8fc691-8b08-432f-b7ad-b6407f849773&page=0_0#   |
+|Projeto de Interface e  Wireframes| Figma  |   |
 |Gerenciamento do Projeto|Trello| [Trello](https://trello.com/b/cQ0pnoDd/controle-de-ponto-puc) |
 
 
@@ -36,15 +36,6 @@ etiquetas:
 - `enhancement`: uma funcionalidade precisa ser melhorada
 - `feature`: uma nova funcionalidade precisa ser introduzida
 
-Discuta como a configuração do projeto foi feita na ferramenta de versionamento escolhida. Exponha como a gerência de tags, merges, commits e branchs é realizada. Discuta como a gerência de issues foi realizada.
-
-> **Links Úteis**:
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
->  - [Comparando fluxos de trabalho](https://www.atlassian.com/br/git/tutorials/comparing-workflows)
-> - [Understanding the GitHub flow](https://guides.github.com/introduction/flow/)
-> - [The gitflow workflow - in less than 5 mins](https://www.youtube.com/watch?v=1SXpE08hvGs)
-
 ## Gerenciamento de Projeto
 
 ### Divisão de Papéis
@@ -65,15 +56,21 @@ Gustavo Silva Diniz
 Para organização e distribuição das tarefas do projeto, a equipe está utilizando o Trello estruturado com as seguintes listas:
 - Recursos: esta lista mantém template de tarefas recorrentes com as configurações padronizadas que todos devem seguir. O objetivo é permitir a cópia destes
 templates para agilizar a criação de novos cartões.
--  Backlog: recebe a lista de tarefas a serem feitas e entregues.
+-  Etapas Projeto: recebe a lista de tarefas a serem feitas e entregues.
 -  To Do: esta lista representa o que precisa ser feito naquela etapa do projeto, representa a Sprint Backlog.
--  Doing: esta lista representa o que está sendo feito naquele momento, representa "in progress"
--  Done: está lista representa as etapas do projeto que já estão prontas para serem entregues
-![](https://user-images.githubusercontent.com/115122757/230666426-aace289d-1c92-4aa0-8fb1-de03cf727187.png))
+-  In Progress: esta lista representa o que está sendo feito naquele momento.
+-  Done: esta lista representa as etapas do projeto que já estão prontas para serem entregues
+
+![Trello](https://user-images.githubusercontent.com/115122757/230666426-aace289d-1c92-4aa0-8fb1-de03cf727187.png)
+
+As tarefas seguem um esquema de etiquetagem, que pode ser visto na figura a seguir (com possibilidades de acrescentr mais etiquetas ao longo do projeto):
+
+![Etiquetas](img/EtiquetasDeControle.PNG)
 ### Ferramentas
 
 As ferramentas empregadas no projeto são:
 
 - Editor de código: GitHub
 - Ferramentas de comunicação: Teams e WhatsApp
+- Ferramenta para criação de diagramas: LucidApp, Astah e Diagrams
 - Ferramentas de desenho de tela (_wireframing_): Figma
