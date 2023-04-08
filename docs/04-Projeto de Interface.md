@@ -22,8 +22,8 @@ Conforme pode ser visto, a *Figura 5* mostra o diagrama de fluxo de interação 
 |Página Página Solicitar Ajustes e Abonos |  | RF-00 || RF-00 || RF-00|
 |Página Informar Faltas |  | RF-00 || RF-00 || RF-00|
 
-  ![](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2021-2-e2-proj-int-t2-descarte-sustentavel/blob/72c0c4883311a456302a18945e88a4e9455fe187/docs/img/Diagramas,%20Esquemas%20e%20Fluxogramas%20-%20Fluxo%20de%20Usu%C3%A1rio.png)
-  Figura 5 – Diagrama de Fluxo de Usuário
+  ![Diagrama Fluxo](img/DiagramaFluxo.PNG)
+
 
 ## Wireframes
 
