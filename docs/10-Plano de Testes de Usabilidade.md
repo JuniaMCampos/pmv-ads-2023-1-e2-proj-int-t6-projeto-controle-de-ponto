@@ -2,14 +2,10 @@
 
 Os testes de usabilidade permitem avaliar a qualidade da interface com o usuário da aplicação interativa.
 
-Um plano de teste de usabilidade deverá conter: o detalhamento dos objetivos (em função dos requisitos levantados/implementados), dos critérios que serão utilizados para a seleção dos participantes, dos procedimentos a serem adotados pelos condutores de teste (por exemplo: os testes serão presenciais ou remotos? o método será observação direta, medição ou avaliação?), das tarefas a serem executadas, dos dados a serem coletados (quantidade de cliques, número de erros, tempo etc.), a ordem de execução das tarefas e das etapas da sessão de teste, recursos demandados, métricas coletadas etc.
-
-Para cada voluntário do teste, é fundamental coletar e apresentar todos os dados/métricas previamente definidos, mas não se esqueça: atendendo à LGPD (Lei Geral de Proteção de Dados), nenhum dado sensível, que permita identificar o voluntário, deverá ser apresentado).
-
-As referências abaixo irão auxiliá-lo na geração do artefato "Plano de Testes de Usabilidade".
-
-> **Links Úteis**:
-> - [Teste De Usabilidade: O Que É e Como Fazer Passo a Passo (neilpatel.com)](https://neilpatel.com/br/blog/teste-de-usabilidade/)
-> - [Teste de usabilidade: tudo o que você precisa saber! | by Jon Vieira | Aela.io | Medium](https://medium.com/aela/teste-de-usabilidade-o-que-voc%C3%AA-precisa-saber-39a36343d9a6/)
-> - [Planejando testes de usabilidade: o que (e o que não) fazer | iMasters](https://imasters.com.br/design-ux/planejando-testes-de-usabilidade-o-que-e-o-que-nao-fazer/)
-> - [Ferramentas de Testes de Usabilidade](https://www.usability.gov/how-to-and-tools/resources/templates.html)
+| Identificação de objetivos do teste de usabilidade : Faremos este teste para verificar se todas as funções do site estão funcionando perfeitamente.|
+|Detalhes do público envolvido: O público que escolhemos para testar o site são os gerentes/ líderes da empresa que irá adotar a ferramenta.|
+|Roteiro detalhado das tarefas que foram desempenhadas pelos usuários: -1 Fazer login com usuário e senha <br> -2  Ao clicar na aba de solicitações, o gestor tem acesso a tela com todas as solicitações feitas pelos funcionários de ajustes de pontos! <br> -3  Ao clicar nas solicitações, o gestor verifica com mais detalhes o motivo do ajuste e assim aprovar ou não a mudança! <br> -4 Ao clicar na aba configurações, o gestor é direcionado para fazer o cadastro de um novo usuário! Preenchendo os campos nome, turno, cargo, departamento e empresa.<br> -5 Ao clicar na aba controle de ponto, gestor tem acesso a uma lista com o nome de todos os funcionários e ao clicar em visualizar (símbolo de olho) ele terá acesso ao registro de ponto do funcionário de um determinado período. Ao clicar em editar (símbolo de lápis), ele pode realizar alterações no ponto do funcionário. <br> 6- Ao clicar na aba de relatórios, o gestor tem acesso a uma página onde poderá gerar relatórios de acordo com os filtros selecionados ( banco de horas, ponto do colaborador ou ponto por departamento).|
+|||
+| Identificação de objetivos do teste de usabilidade : Faremos este teste para verificar se todas as funções do site estão funcionando perfeitamente.|
+|Detalhes do público envolvido: O público que escolhemos para testar o site são funcionários de empresas que irão adotar a ferramenta. |
+|Roteiro detalhado das tarefas que foram desempenhadas pelos usuários: -1  fazer o login com usuário e senha <br> -2 Ao fazer o login, o usuário é direcionado a tela de registro de ponto. <br> 3-usuário terá acesso a aba ver ponto, lugar que aparecerá todos os pontos registrados durante um determinado período. <br> 4-Nessa mesma aba, o usuário terá acesso a contagem de horas extras/ faltantes.<br> 5-Ao clicar na aba justificar, o usuário conseguirá alterar ponto, incluindo alguma batida que não foi cadastrada ou tirando alguma que foi inserida indevidamente. <br> 6- Na mesma aba, o usuário conseguirá anexar imagens para justificar alguma falta/ atraso( por exemplo um atestado médico). <br> 7-Na aba solicitações o usuário conseguirá ver todas as solicitações de alteração de ponto feito por ele, verificando se foi aprovado ou reprovado.|
