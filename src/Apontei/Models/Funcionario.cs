@@ -47,7 +47,7 @@ namespace Apontei.Models
             public string Telefone { get; set; }
 
             [Required(ErrorMessage = "O Email é obrigatório.")]
-            [Display(Name = "Endereço de e-mail")]
+            [Display(Name = "E-mail")]
             [StringLength(50)]
             public string Email { get; set; }
 
