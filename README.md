@@ -15,7 +15,6 @@ O projeto que está sendo desenvolvido é um sistema web de controle de ponto.
 * Gustavo Silva Diniz
 * Jeosafa Boy Eller
 * Júnia Marina Campos
-* Kennedy de Oliveira Machado Pires
 
 ## Orientador
 
