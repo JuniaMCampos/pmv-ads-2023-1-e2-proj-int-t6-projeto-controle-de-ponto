@@ -14,5 +14,7 @@ namespace Apontei.Models
         [Required(ErrorMessage = "Obrigatório informar Nome")]
         public string Nome { get; set; }
 
+        public ICollection<Funcionario> Funcionarios { get; set; }
+
     }
 }

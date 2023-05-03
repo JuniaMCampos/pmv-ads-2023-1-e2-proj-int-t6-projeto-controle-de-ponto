@@ -61,8 +61,12 @@ namespace Apontei.Models
             [Display(Name = "Foto")]
             public string ImagemPerfil { get; set; }
 
+            public int EmpresaId { get; set; }
+            [ForeignKey("EmpresaId")]
+            public Empresa Empresa { get; set; }
 
-        }
+
+    }
 
         public enum Perfil
         {
