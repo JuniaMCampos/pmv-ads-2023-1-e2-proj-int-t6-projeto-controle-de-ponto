@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Apontei.Models
 {
@@ -39,5 +40,9 @@ namespace Apontei.Models
 
         [Required(ErrorMessage = "Obrigatório Informar o Turno")]
         public string Turno { get; set; }
+
+        public int FuncionarioId { get; set; }
+        [ForeignKey("FuncionarioId")]
+        public Funcionario Funcionario { get; set; }
     }
 }
