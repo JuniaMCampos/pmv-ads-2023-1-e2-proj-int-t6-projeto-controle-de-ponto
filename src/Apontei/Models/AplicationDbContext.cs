@@ -13,5 +13,7 @@ namespace Apontei.Models
         public DbSet<Empresa> Empresas { get; set; }
 
         public DbSet<Gestor> Gestores { get; set; }
+
+        public DbSet<Ponto> Pontos { get; set; }
     }
 }

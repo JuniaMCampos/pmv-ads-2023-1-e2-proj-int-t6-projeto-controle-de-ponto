@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace Apontei.Models
 {
@@ -69,6 +70,7 @@ namespace Apontei.Models
             [ForeignKey("GestorId")]
             public Gestor Gestor { get; set; }
 
+            public ICollection<Ponto> Pontos { get; set; }
 
     }
 
