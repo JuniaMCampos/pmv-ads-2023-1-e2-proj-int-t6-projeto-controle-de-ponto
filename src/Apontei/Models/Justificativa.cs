@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Apontei.Models
 {
@@ -21,6 +22,14 @@ namespace Apontei.Models
         [Required(ErrorMessage = "o status é obrigatória")]
         [Display(Name = "Status do Pedido")]
         public Status Status { get; set; }
+
+        public int EmpresaId { get; set; }
+        [ForeignKey("EmpresaId")]
+        public Empresa Empresa { get; set; }
+
+        public int GestorId { get; set; }
+        [ForeignKey("GestorId")]
+        public Gestor Gestor { get; set; }
     }
     public enum Status
     {
