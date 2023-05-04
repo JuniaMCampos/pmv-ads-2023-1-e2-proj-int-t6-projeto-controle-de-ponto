@@ -4,7 +4,7 @@ A definição exata do problema e os pontos mais relevantes a serem tratados nes
 
 ## Personas
 
-| Laura Alves    |                                                        
+| Laura Alves    |                                        |                
 |--------------------|------------------------------------| 
 |![](https://user-images.githubusercontent.com/115122757/224854369-c0fb2df8-e118-49f7-9cb5-0d8c8e763c33.png)
 |**Idade:** 28 anos 
