@@ -7,14 +7,14 @@ A definição exata do problema e os pontos mais relevantes a serem tratados nes
 | Laura Alves    |                                    |                       |
 |--------------------|------------------------------------| ------------------------------------|
 |![](https://user-images.githubusercontent.com/115122757/224854369-c0fb2df8-e118-49f7-9cb5-0d8c8e763c33.png)
-|**Idade:** 28 anos -
+|**Idade:** 28 anos 
 Ocupação: Assistente Administrativo |Aplicativos: Instagram, Twitter.|
 
 
 | Mateus Gomes    |                                    |                       |
 |--------------------|------------------------------------| ------------------------------------|
 |![](https://user-images.githubusercontent.com/115122757/224855130-92b72898-c32f-4610-a463-b9431ac246f2.png)
-|**Idade:** 41 anos -
+|**Idade:** 41 anos 
 Ocupação: Gerente de RH |Aplicativos: Instagram, Linkedin.|
 
 
