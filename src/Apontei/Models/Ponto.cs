@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace Apontei.Models
 {
@@ -44,5 +45,7 @@ namespace Apontei.Models
         public int FuncionarioId { get; set; }
         [ForeignKey("FuncionarioId")]
         public Funcionario Funcionario { get; set; }
+
+        public ICollection<Justificativa> Justificativas { get; set; }
     }
 }

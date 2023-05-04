@@ -15,5 +15,7 @@ namespace Apontei.Models
         public DbSet<Gestor> Gestores { get; set; }
 
         public DbSet<Ponto> Pontos { get; set; }
+
+        public DbSet<Justificativa> Justificativas { get; set; }
     }
 }

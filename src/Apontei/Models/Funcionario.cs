@@ -71,6 +71,7 @@ namespace Apontei.Models
             public Gestor Gestor { get; set; }
 
             public ICollection<Ponto> Pontos { get; set; }
+            public ICollection<Justificativa> Justificativas { get; set; }
 
     }
 
