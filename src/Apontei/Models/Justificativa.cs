@@ -28,9 +28,7 @@ namespace Apontei.Models
         [ForeignKey("EmpresaId")]
         public Empresa Empresa { get; set; }
 
-        public int GestorId { get; set; }
-        [ForeignKey("GestorId")]
-        public Gestor Gestor { get; set; }
+       
 
         public ICollection<Ponto> Pontos { get; set; }
         public ICollection<Justificativa> Justificativas { get; set; }

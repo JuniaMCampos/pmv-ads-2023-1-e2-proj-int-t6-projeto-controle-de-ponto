@@ -21,6 +21,7 @@ namespace Apontei.Controllers
         // GET: Funcionarios
         public async Task<IActionResult> Index()
         {
+            var aplicationDbContext = _context.Funcionarios.Include(f => f.Empresa);
             return View(await _context.Funcionarios.ToListAsync());
         }
 
@@ -33,6 +34,7 @@ namespace Apontei.Controllers
             }
 
             var funcionario = await _context.Funcionarios
+                .Include(f => f.Empresa)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (funcionario == null)
             {
@@ -45,6 +47,7 @@ namespace Apontei.Controllers
         // GET: Funcionarios/Create
         public IActionResult Create()
         {
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome");
             return View();
         }
 
@@ -53,7 +56,7 @@ namespace Apontei.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,ImagemPerfil")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,ImagemPerfil,EmpresaId")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +64,7 @@ namespace Apontei.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome");
             return View(funcionario);
         }
 
@@ -77,6 +81,7 @@ namespace Apontei.Controllers
             {
                 return NotFound();
             }
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome");
             return View(funcionario);
         }
 
@@ -85,7 +90,7 @@ namespace Apontei.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,ImagemPerfil")] Funcionario funcionario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,ImagemPerfil,EmpresaId")] Funcionario funcionario)
         {
             if (id != funcionario.Id)
             {
@@ -112,6 +117,7 @@ namespace Apontei.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome");
             return View(funcionario);
         }
 
@@ -124,6 +130,7 @@ namespace Apontei.Controllers
             }
 
             var funcionario = await _context.Funcionarios
+                .Include(f => f.Empresa)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (funcionario == null)
             {

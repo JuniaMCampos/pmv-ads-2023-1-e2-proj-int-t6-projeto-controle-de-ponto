@@ -21,7 +21,7 @@ namespace Apontei.Controllers
         // GET: Justificativas
         public async Task<IActionResult> Index()
         {
-            var aplicationDbContext = _context.Justificativas.Include(j => j.Empresa).Include(j => j.Gestor);
+            var aplicationDbContext = _context.Justificativas.Include(j => j.Empresa);
             return View(await aplicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,7 @@ namespace Apontei.Controllers
 
             var justificativa = await _context.Justificativas
                 .Include(j => j.Empresa)
-                .Include(j => j.Gestor)
+                
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (justificativa == null)
             {
@@ -49,7 +49,7 @@ namespace Apontei.Controllers
         public IActionResult Create()
         {
             ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "CNPJ");
-            ViewData["GestorId"] = new SelectList(_context.Gestores, "Id", "Cargo");
+           
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace Apontei.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Data,Motivo,AnexarDocumento,Status,EmpresaId,GestorId")] Justificativa justificativa)
+        public async Task<IActionResult> Create([Bind("Id,Data,Motivo,AnexarDocumento,Status,EmpresaId")] Justificativa justificativa)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace Apontei.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "CNPJ", justificativa.EmpresaId);
-            ViewData["GestorId"] = new SelectList(_context.Gestores, "Id", "Cargo", justificativa.GestorId);
+            
             return View(justificativa);
         }
 
@@ -85,7 +85,7 @@ namespace Apontei.Controllers
                 return NotFound();
             }
             ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "CNPJ", justificativa.EmpresaId);
-            ViewData["GestorId"] = new SelectList(_context.Gestores, "Id", "Cargo", justificativa.GestorId);
+            
             return View(justificativa);
         }
 
@@ -94,7 +94,7 @@ namespace Apontei.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Motivo,AnexarDocumento,Status,EmpresaId,GestorId")] Justificativa justificativa)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Motivo,AnexarDocumento,Status,EmpresaId")] Justificativa justificativa)
         {
             if (id != justificativa.Id)
             {
@@ -122,7 +122,7 @@ namespace Apontei.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "CNPJ", justificativa.EmpresaId);
-            ViewData["GestorId"] = new SelectList(_context.Gestores, "Id", "Cargo", justificativa.GestorId);
+            
             return View(justificativa);
         }
 
@@ -136,7 +136,7 @@ namespace Apontei.Controllers
 
             var justificativa = await _context.Justificativas
                 .Include(j => j.Empresa)
-                .Include(j => j.Gestor)
+                
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (justificativa == null)
             {
