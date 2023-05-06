@@ -24,14 +24,16 @@ namespace Apontei.Models
         [Display(Name = "Status do Pedido")]
         public Status Status { get; set; }
 
-        public int EmpresaId { get; set; }
-        [ForeignKey("EmpresaId")]
-        public Empresa Empresa { get; set; }
+        public int FuncionarioId { get; set; }
+        [ForeignKey("FuncionarioId")]
+        public Funcionario Funcionario { get; set; }
 
-       
+        public int PontoId { get; set; }
+        [ForeignKey("PontoId")]
+        public Ponto Ponto{ get; set; }
 
-        public ICollection<Ponto> Pontos { get; set; }
-        public ICollection<Justificativa> Justificativas { get; set; }
+
+      
     }
     public enum Status
     {
