@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Apontei.Models;
+using sistema_de_ponto.Models;
 
-namespace Apontei.Controllers
+namespace sistema_de_ponto.Controllers
 {
     public class EmpresasController : Controller
     {
-        private readonly AplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public EmpresasController(AplicationDbContext context)
+        public EmpresasController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -53,7 +53,7 @@ namespace Apontei.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CNPJ,Nome")] Empresa empresa)
+        public async Task<IActionResult> Create([Bind("Id,Cnpj,Nome")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Apontei.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CNPJ,Nome")] Empresa empresa)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Cnpj,Nome")] Empresa empresa)
         {
             if (id != empresa.Id)
             {

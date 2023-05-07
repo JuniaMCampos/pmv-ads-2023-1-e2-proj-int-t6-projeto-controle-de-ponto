@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Apontei
+namespace sistema_de_ponto
 {
     public class Program
     {

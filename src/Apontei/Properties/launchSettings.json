@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:8362",
-      "sslPort": 44338
+      "applicationUrl": "http://localhost:56914",
+      "sslPort": 44309
     }
   },
   "profiles": {
@@ -16,7 +16,7 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
-    "Apontei": {
+    "sistema_de_ponto": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

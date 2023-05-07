@@ -1,12 +1,11 @@
-﻿@model Apontei.Models.Ponto
+﻿@model sistema_de_ponto.Models.Ponto
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar Registros de Ponto</h1>
 
-<h4>Ponto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -39,9 +38,9 @@
                 <span asp-validation-for="HoraSaida" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HorasExtras" class="control-label"></label>
-                <input asp-for="HorasExtras" class="form-control" />
-                <span asp-validation-for="HorasExtras" class="text-danger"></span>
+                <label asp-for="HoraExtra" class="control-label"></label>
+                <input asp-for="HoraExtra" class="form-control" />
+                <span asp-validation-for="HoraExtra" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Turno" class="control-label"></label>
@@ -54,14 +53,11 @@
                 <span asp-validation-for="FuncionarioId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Voltar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Apontei.Models
+namespace sistema_de_ponto.Models
 {
     public class ErrorViewModel
     {

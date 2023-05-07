@@ -1,13 +1,13 @@
-﻿using Apontei.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using sistema_de_ponto.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Apontei.Controllers
+namespace sistema_de_ponto.Controllers
 {
     public class HomeController : Controller
     {
