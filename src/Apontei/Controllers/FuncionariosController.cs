@@ -1,91 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc;
-using sistema_de_ponto.Models;
+using Apontei.Models;
 
-namespace sistema_de_ponto.Controllers
+namespace Apontei.Controllers
 {
     public class FuncionariosController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AplicationDbContext _context;
 
-        public FuncionariosController(ApplicationDbContext context)
+        public FuncionariosController(AplicationDbContext context)
         {
             _context = context;
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Login([Bind("Email, Senha")] Funcionario funcionario)
-        {
-            var func = await _context.Funcionarios
-                .FirstOrDefaultAsync(m => m.Email == funcionario.Email);
-
-            if (func == null)
-            {
-                ViewBag.Message = "Usuário e/ou senha inválidos!";
-                return View();
-            }
-
-            bool isSenhaOk = BCrypt.Net.BCrypt.Verify(funcionario.Senha, func.Senha);
-
-            if (isSenhaOk)
-            {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, func.Nome),
-                    new Claim(ClaimTypes.NameIdentifier, func.Nome),
-                    new Claim(ClaimTypes.Role, func.Perfil.ToString())
-                };
-
-                var userIdentity = new ClaimsIdentity(claims, "login");
-
-                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-
-                var props = new AuthenticationProperties
-                {
-                    AllowRefresh = true,
-                    ExpiresUtc = DateTime.Now.ToLocalTime().AddDays(7),
-                    IsPersistent = true
-                };
-
-                await HttpContext.SignInAsync(principal, props);
-
-                return Redirect("/");
-            }
-
-            ViewBag.Message = "Usuário e/ou senha inválidos!";
-            
-            return View();
-        }
-
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync();
-            return RedirectToAction("Login", "Funcionarios");
-        }
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
         // GET: Funcionarios
-
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Funcionarios.Include(f => f.Empresa);
-            return View(await applicationDbContext.ToListAsync());
+            var aplicationDbContext = _context.Funcionarios.Include(f => f.Empresa);
+            return View(await _context.Funcionarios.ToListAsync());
         }
 
         // GET: Funcionarios/Details/5
@@ -119,16 +56,15 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto,EmpresaId")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,ImagemPerfil,EmpresaId")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
-                funcionario.Senha = BCrypt.Net.BCrypt.HashPassword(funcionario.Senha);
                 _context.Add(funcionario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome", funcionario.EmpresaId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome");
             return View(funcionario);
         }
 
@@ -145,7 +81,7 @@ namespace sistema_de_ponto.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome", funcionario.EmpresaId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome");
             return View(funcionario);
         }
 
@@ -154,7 +90,7 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto,EmpresaId")] Funcionario funcionario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,ImagemPerfil,EmpresaId")] Funcionario funcionario)
         {
             if (id != funcionario.Id)
             {
@@ -165,7 +101,6 @@ namespace sistema_de_ponto.Controllers
             {
                 try
                 {
-                    funcionario.Senha = BCrypt.Net.BCrypt.HashPassword(funcionario.Senha);
                     _context.Update(funcionario);
                     await _context.SaveChangesAsync();
                 }
@@ -182,7 +117,7 @@ namespace sistema_de_ponto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome", funcionario.EmpresaId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Nome", "Nome");
             return View(funcionario);
         }
 

@@ -1,19 +1,19 @@
-﻿@model IEnumerable<sistema_de_ponto.Models.Empresa>
+﻿@model IEnumerable<Apontei.Models.Empresa>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Empresas</h1>
+<h1>Index</h1>
 
 <p>
-    <a class="btn btn-outline-dark rounded-pill" asp-action="Create">Cadastrar Empresa</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Cnpj)
+                @Html.DisplayNameFor(model => model.CNPJ)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -25,22 +25,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Cnpj)
+                @Html.DisplayFor(modelItem => item.CNPJ)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
-                <td class="p-1">
-                    <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/img/Icones/edit_square_FILL0_wght400_GRAD0_opsz48.png" height="30" width="30" />
-                    </button>
-                    <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">Visualizar</a>
-                        <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
-                    </div>
-
-                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
         </tr>
 }
     </tbody>

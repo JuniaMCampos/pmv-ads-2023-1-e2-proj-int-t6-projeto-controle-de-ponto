@@ -1,64 +1,83 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
+using System.Collections.Generic;
 
-namespace sistema_de_ponto.Models
+namespace Apontei.Models
 {
-    [Table("Funcionario")]
+    [Table("Funcionarios")]
     public class Funcionario
     {
-        [Key]
-        public int Id { get; set; }
+                 
+            [Key]
+            public int Id { get; set; }
 
-        [Required(ErrorMessage ="Obrigatório informar o Nome")]
-        public string Nome { get; set; }
+            [Required(ErrorMessage = "O nome é obrigatório.")]
+            [Display(Name = "Nome")]
+            [StringLength(20)]
+            public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Sobrenome")]
-        public string Sobrenome { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Cpf")]
-        [Display(Name = "CPF")]
-        public string Cpf { get; set; }
+            [Required(ErrorMessage = "O Sobrenome é obrigatório.")]
+            [Display(Name = "Sobrenome")]
+            [StringLength(20)]
+            public string Sobrenome { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Pis")]
-        [Display(Name = "PIS")]
-        public string Pis { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Departamento")]
-        public string Departamento { get; set; }
+            [Required(ErrorMessage = "O CPF é obrigatório.")]
+            [Display(Name = "CPF")]
+            [StringLength(20)]
+            public string Cpf { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Cargo")]
-        public string Cargo { get; set; }
+            [Required(ErrorMessage = "O Pis é obrigatório.")]
+            [Display(Name = "Pis")]
+            [StringLength(20)]
+            public string Pis { get; set; }
+            [Required(ErrorMessage = "O Departamento é obrigatório.")]
+            [Display(Name = "Departamento")]
+            [StringLength(20)]
+            public string Departamento { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Telefone")]
-        public string Telefone { get; set; }
+            [Required(ErrorMessage = "o Cargo é obrigatório.")]
+            [Display(Name = "Cargo")]
+            public string Cargo { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Email")]
-        [Display(Name = "E-mail")]
-        public string Email { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar a Senha")]
-        [DataType(DataType.Password)]
-        public string Senha { get; set; }
+            [Display(Name = "Telefone")]
+            [StringLength(11)]
+            public string Telefone { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório informar o Perfil")]
-        public Perfil Perfil { get; set; }
+            [Required(ErrorMessage = "O Email é obrigatório.")]
+            [Display(Name = "E-mail")]
+            [StringLength(50)]
+            public string Email { get; set; }
 
-        public string Foto { get; set; }
+            [Required(ErrorMessage = "A Senha é obrigatório.")]
+            [Display(Name = "Senha")]
+            public string Senha { get; set; }
 
-        public int EmpresaId { get; set; }
+            [Required(ErrorMessage = "O perfil é obrigatorio")]
+            public Perfil Perfil { get; set; }
 
-        [ForeignKey("EmpresaId")]
-        public Empresa Empresa { get; set; }
+            [Display(Name = "Foto")]
+            public string ImagemPerfil { get; set; }
 
-        public ICollection<Ponto> Pontos { get; set; }
+            public int EmpresaId { get; set; }
+            [ForeignKey("EmpresaId")]
+            public Empresa Empresa { get; set; }
 
-        public ICollection<Justificativa> Justificativas { get; set; }
+            public ICollection<Ponto> Pontos { get; set; }
+            public ICollection<Justificativa> Justificativas { get; set; }
+
     }
 
-    public enum Perfil
-    {
-        Gestor,
-        Funcionario
+        public enum Perfil
+        {
+            Gestor,
+            Funcionario
+        }
+
+
+
     }
-}
+

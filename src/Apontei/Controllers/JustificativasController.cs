@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using sistema_de_ponto.Models;
+using Apontei.Models;
 
-namespace sistema_de_ponto.Controllers
+namespace Apontei.Controllers
 {
     public class JustificativasController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AplicationDbContext _context;
 
-        public JustificativasController(ApplicationDbContext context)
+        public JustificativasController(AplicationDbContext context)
         {
             _context = context;
         }
@@ -21,8 +21,8 @@ namespace sistema_de_ponto.Controllers
         // GET: Justificativas
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Justificativas.Include(j => j.Funcionario).Include(j => j.Ponto);
-            return View(await applicationDbContext.ToListAsync());
+            var aplicationDbContext = _context.Justificativas.Include(j => j.Empresa);
+            return View(await aplicationDbContext.ToListAsync());
         }
 
         // GET: Justificativas/Details/5
@@ -34,8 +34,8 @@ namespace sistema_de_ponto.Controllers
             }
 
             var justificativa = await _context.Justificativas
-                .Include(j => j.Funcionario)
-                .Include(j => j.Ponto)
+                .Include(j => j.Empresa)
+                
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (justificativa == null)
             {
@@ -48,8 +48,8 @@ namespace sistema_de_ponto.Controllers
         // GET: Justificativas/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo");
-            ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno");
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "CNPJ");
+           
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Data,Motivo,AnexarDocumento,Status,FuncionarioId,PontoId")] Justificativa justificativa)
+        public async Task<IActionResult> Create([Bind("Id,Data,Motivo,AnexarDocumento,Status,EmpresaId")] Justificativa justificativa)
         {
             if (ModelState.IsValid)
             {
@@ -66,8 +66,8 @@ namespace sistema_de_ponto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", justificativa.FuncionarioId);
-            ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno", justificativa.PontoId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "CNPJ", justificativa.EmpresaId);
+            
             return View(justificativa);
         }
 
@@ -84,8 +84,8 @@ namespace sistema_de_ponto.Controllers
             {
                 return NotFound();
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", justificativa.FuncionarioId);
-            ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno", justificativa.PontoId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "CNPJ", justificativa.EmpresaId);
+            
             return View(justificativa);
         }
 
@@ -94,7 +94,7 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Motivo,AnexarDocumento,Status,FuncionarioId,PontoId")] Justificativa justificativa)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Motivo,AnexarDocumento,Status,EmpresaId")] Justificativa justificativa)
         {
             if (id != justificativa.Id)
             {
@@ -121,8 +121,8 @@ namespace sistema_de_ponto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", justificativa.FuncionarioId);
-            ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno", justificativa.PontoId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "CNPJ", justificativa.EmpresaId);
+            
             return View(justificativa);
         }
 
@@ -135,8 +135,8 @@ namespace sistema_de_ponto.Controllers
             }
 
             var justificativa = await _context.Justificativas
-                .Include(j => j.Funcionario)
-                .Include(j => j.Ponto)
+                .Include(j => j.Empresa)
+                
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (justificativa == null)
             {
