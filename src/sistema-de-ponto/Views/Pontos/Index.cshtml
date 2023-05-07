@@ -1,0 +1,84 @@
+﻿@model IEnumerable<sistema_de_ponto.Models.Ponto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Registros de ponto</h1>
+
+<p>
+    <a class="btn btn-outline-dark rounded-pill" asp-action="Create">Registrar Ponto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraIntervaloInicial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraIntervaloFinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraSaida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraExtra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcionario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraIntervaloInicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraIntervaloFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraSaida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraExtra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Cargo)
+            </td>
+                <td class="p-1">
+                    <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/img/Icones/edit_square_FILL0_wght400_GRAD0_opsz48.png" height="30" width="30" />
+                    </button>
+                    <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">Visualizar</a>
+                        <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                        <a class="dropdown-item" asp-action="Relatorio" asp-route-id="@item.Id">Relatório</a>
+                    </div>
+
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
