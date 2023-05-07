@@ -1,60 +1,12 @@
 # Plano de Testes de Usabilidade
 
-Os testes de usabilidade permitem avaliar a qualidade da interface com o usuário da aplicação interativa. O Plano de Testes de Software é gerado a partir da especificação do sistema e consiste em casos de testes que deverão ser executados quando a implementação estiver parcial ou totalmente pronta.
+Os testes de usabilidade permitem avaliar a qualidade da interface com o usuário da aplicação interativa.
 
-**Metodo Utilizado:** Medição e Avaliação
-
-Para cada tarefa do participante é possível medir:
-
--	Concretização da tarefa;
--	O total de erros cometidos;
--	Quantos erros de cada tipo ocorreram;
--	Quanto tempo foi necessário para conclui-la.
-
-### __Roteiro__ 
-
-| **Tarefa 1** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Cadastrar novo funcionário| O gestor terá acesso a criação da nova conta, feito isso, irá aparecer no banco de funcionários| Concretização da tarefa. Quantidade de erros cometidos. |
-
-| **Tarefa 2** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Fazer Login com usuário e senha | Concluir o login e ser encaminhado para a primeira página| Concretização da tarefa. Quantidade de erros cometidos. |
-
-| **Tarefa 3** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Bater ponto| O funcionário conseguirá marcar os horários de entrada, pausas e saída| Concretização da tarefa. Quantidade de erros cometidos. |
-
-| **Tarefa 4** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Alterar o ponto| O funcionário conseguirá alterar alguma marcação já feita anteriormente no ponto, ficando pendente para o gestor aceitar ou não | Concretização da tarefa. Quantidade de erros cometidos. |
-
-| **Tarefa 5** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Justificar ausência no ponto| Funcionário conseguirá colocar o motivo para a falta em algum dia de trabalho, conseguindo anexar imagens/documentos| Concretização da tarefa. Quantidade de erros cometidos. |
-
-| **Tarefa 6** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Acompanhar batidas de ponto| Funcionário conseguirá acompanhar as batidas de ponto feitas anteriormente, com isso, conseguirá ver o seu banco de horas| Concretização da tarefa. Quantidade de erros cometidos. |
-
-| **Tarefa 7** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Aprovar mudanças de ponto| O gestor ao clicar na aba de solicitações, terá acesso a todas as solicitações de mudanças de ponto feitas pelos funcionários, e assim ele poderá aceitar ou negar as mudanças.| Concretização da tarefa. Quantidade de erros cometidos. |
-
-| **Tarefa 8** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Gerar relatório de ponto| O gestor ao clicar na aba de relatório poderá gerar um relatório dos pontos batidos em um determinado período, que ele mesmo irá selecionar nos filtros| Concretização da tarefa. Quantidade de erros cometidos. |
-
-| **Tarefa 8** | **Critério de Êxito** | **O que será avaliado** |
-|--------------|-----------------------|-------------------------|
-|Acompanhar banco de horas| Ao clicar na aba controle de ponto, gestor terá acesso a uma lista com o nome de todos os funcionários e ao clicar em visualizar (símbolo de olho) ele terá acesso ao registro de ponto do funcionário de um determinado período. Ao clicar em editar (símbolo de lápis), ele pode realizar alterações no ponto do funcionário.| Concretização da tarefa. Quantidade de erros cometidos. |
-
-### __Objetivo__
-Fazer melhorias na plataforma proporcionando uma melhor experiência ao usuário.
-O que será mensurado no teste:
-* A qualidade na navegação
-* Satisfação do usuário
-
-### __Perfil do Usuário__
-Os usuários que escolhemos para fazer esses testes foram os funcionário e gestores de empresas que irão ultiliazar o nosso sistema.
-
+|Identificação de objetivos do teste de usabilidade |  Faremos este teste para verificar se todas as funções do site estão funcionando perfeitamente.	|
+|:---:	|:---:	|
+|Detalhes do público envolvido	| O público que escolhemos para testar o site são os gerentes/ líderes da empresa que irá adotar a ferramenta. |
+| Roteiro detalhado das tarefas que foram desempenhadas pelos usuários: 	| -1.	Fazer login com usuário e senha <br> - 2.	Ao clicar na aba de solicitações, o gestor tem acesso a tela com todas as solicitações feitas pelos funcionários de ajustes de pontos!  <br> - 3.	Ao clicar nas solicitações, o gestor verifica com mais detalhes o motivo do ajuste e assim aprovar ou não a mudança! <br> - 4. Ao clicar na aba configurações, o gestor é direcionado para fazer o cadastro de um novo usuário! Preenchendo os campos nome, turno, cargo, departamento e empresa. <br> - 5.	Ao clicar na aba controle de ponto, gestor tem acesso a uma lista com o nome de todos os funcionários e ao clicar em visualizar (símbolo de olho) ele terá acesso ao registro de ponto do funcionário de um determinado período. Ao clicar em editar (símbolo de lápis), ele pode realizar alterações no ponto do funcionário. <br> - 	6.	Ao clicar na aba de relatórios, o gestor tem acesso a uma página onde poderá gerar relatórios de acordo com os filtros selecionados ( banco de horas, ponto do colaborador ou ponto por departamento).|
+|  	|  	|
+|Identificação de objetivos do teste de usabilidade :|Faremos este teste para verificar se todas as funções do site estão funcionando perfeitamente.|
+|Detalhes do público envolvido:| O público que escolhemos para testar o site são funcionários de empresas que irão adotar a ferramenta.  |
+|Roteiro detalhado das tarefas que foram desempenhadas pelos usuários:| - 1.	fazer o login com usuário e senha <br> - 2.	 Ao fazer o login, o usuário é direcionado a tela de registro de ponto.  <br> - 3.	usuário terá acesso a aba ver ponto, lugar que aparecerá todos os pontos registrados durante um determinado período. <br> - 4.  Nessa mesma aba, o usuário terá acesso a contagem de horas extras/ faltantes. <br> - 5.	Ao clicar na aba justificar, o usuário conseguirá alterar ponto, incluindo alguma batida que não foi cadastrada ou tirando alguma que foi inserida indevidamente. <br> - 6. Na mesma aba, o usuário conseguirá anexar imagens para justificar alguma falta/ atraso( por exemplo um atestado médico) <br>- 7.	Na aba solicitações o usuário conseguirá ver todas as solicitações de alteração de ponto feito por ele, verificando se foi aprovado ou reprovado. |
