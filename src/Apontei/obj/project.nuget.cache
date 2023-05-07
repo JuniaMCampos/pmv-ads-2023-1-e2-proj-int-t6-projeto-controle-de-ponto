@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "glAH6SOq8EjvKxkaTIrZqbL+LSJ2d5/YJimz2KxTR3tN4GdpMF+GdZHzDZXZFuVMbvcMnoVS5CslhnRvA0WtSA==",
+  "dgSpecHash": "0CM4vV000WcB27cfXak4otyPDjRvzGib3Kn9L+l5ilnZSIxiNshaCSWBjLiVkmCuEiSFn8hAzCsc3e/zOHCS6A==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\Projeto Puc\\src\\Apontei\\Apontei.csproj",
+  "projectFilePath": "C:\\Projetos\\Apontei\\src\\Apontei\\Apontei.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrador\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
