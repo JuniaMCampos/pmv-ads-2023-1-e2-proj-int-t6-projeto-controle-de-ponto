@@ -14,7 +14,7 @@ Por exemplo:
 | Passos 	| -1.	Acessar o navegador <br> - 2.	Acessar o endereço do site <br> - 3.	Clicar no botão Acesse <br> - 4.	Inserir o Usuário ID <br> - 5.	Inserir a Senha <br> - 	6.	Clicar no botão Acessar |
 |Critério de Êxito | - O usuário deve ser autenticado corretamente e deve ter acesso ao sistema de acordo com as permissões a ele concedidas. |
 |  	|  	
-|**Caso de Teste** 	|**CT 02 - Registrar o ponto**	|
+| **Caso de Teste** 	|**CT 02 - Registrar o ponto**	|
 |Requisito Associado | RF002 - O sistema deve permitir que o usuário bata o ponto na entrada, horário de pausas e saída |
 | Objetivo do Teste 	| Registrar a jornada de trabalho. |
 | Passos 	| - 1.	Acessar o navegador <br> - 2.	Acessar o endereço do site <br> - 3.	Clicar no botão Acesse <br> - 4.	Inserir o Usuário ID <br> - 5.	Inserir a Senha <br> - 6.	Clicar no botão Acessar <br>- 7.	Clicar no botão Bater ponto para registrar a entrada, pausas e saída |
@@ -27,7 +27,7 @@ Por exemplo:
 | Passos 	| - 1.	Acessar o navegador <br> - 2.	Acessar o endereço do site <br> - 3.	Clicar no botão Acesse <br> - 4.	Inserir o Usuário ID <br> - 5.	Inserir a Senha <br> - 6.	Clicar no botão Acessar <br> - 7.	Clicar no botão Justificar <br> -8.	Clicar no botão Anexar <br> -9.	Clicar no botão Enviar|
 |Critério de Êxito | -O sistema deve exibir o feedback ‘Alterações realizadas com sucesso!’ e deve registrar a justificativa do usuário.|
 |  	|  	|
-|**Caso de Teste** | **CT 04 – Visualizar registros de ponto**	|
+| **Caso de Teste** | **CT 04 – Visualizar registros de ponto**	|
 |Requisito Associado |RF005 - O sistema deve permitir que o usuário veja todas as suas marcações dos dias trabalhados, pendentes e aprovados.|
 | Objetivo do Teste 	| O usuário pode visualizar seus registros de ponto realizados e não realizados. |
 | Passos 	| - 1.	Acessar o navegador <br> - 2.	Acessar o endereço do site <br> - 3.	Clicar no botão Acesse <br> - 4.	Inserir o Usuário ID <br> - 5.	Inserir a Senha <br> - 6.	Clicar no botão Acessar <br> - 7.		Clicar em Ver ponto|
