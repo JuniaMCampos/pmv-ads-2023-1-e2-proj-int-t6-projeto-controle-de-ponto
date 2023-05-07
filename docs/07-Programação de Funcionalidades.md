@@ -12,7 +12,7 @@ versão 1 - Documentação de Programação de Funcionalidades (07/05/2023)
 
 - RF003 - A aplicação ja consta com o front-end da pagina "Solicitações" para que o usuário Funcionário consiga justificar alguma mudança na marcação do ponto.
 
-- RF004 - A funcionalidade anexar documentos ainda está com o back-end em desenvolvimento, para que o usuário consiga anexar documentos na hora de justuficar a modificação de um ponto.
+- RF004 - A funcionalidade anexar documentos ainda está com o back-end em desenvolvimento, para que o usuário consiga anexar documentos na hora de justificar a modificação de um ponto.
 
 - RF005 - Funcionalidade ainda não desenvolvida por completo. A tela de registro de ponto permite a visualização dos pontos ja marcados, mas não permite fazer filtros e ver status do registro.
 
