@@ -28,7 +28,7 @@ Os principais componentes personalizados que utilizamos,foram os botões para ca
 
 Exemplo de um botão de cadastro
 
-![Imagem Botão Cadastro](img/DropDow.PNG)
+![Imagem Botão Cadastro](img/DropDaw.PNG)
 
 Exemplo de um botão DropDow
 
