@@ -25,12 +25,12 @@ A fonte utilizada na aplicação é a Lato, com tamanho 400 no cabeçalho e 700 
 Os principais componentes personalizados que utilizamos,foram os botões para cadastrar novos funcionários/empresa/ponto/justificativa e o dropdaw para mostrar as ações que cada usuário pode fazer na página Index que ele estiver.
 
 ![Imagem Botão Cadastro](img/BotaoCadastro.PNG)
-
-Exemplo de um botão de cadastro
+ : Exemplo de um botão de cadastro
+ 
+ 
 
 ![Imagem Botão Cadastro](img/DropDaw.PNG)
-
-Exemplo de um botão DropDow
+ : Exemplo de um botão DropDow
 
 ### Ícones
 
