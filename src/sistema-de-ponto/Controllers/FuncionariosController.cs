@@ -110,7 +110,7 @@ namespace sistema_de_ponto.Controllers
         // GET: Funcionarios/Create
         public IActionResult Create()
         {
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "EmpresaId");
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "Nome");
             return View();
         }
 
