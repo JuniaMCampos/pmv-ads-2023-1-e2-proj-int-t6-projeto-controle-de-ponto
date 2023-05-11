@@ -19,7 +19,7 @@
                     
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="nav-item>
+                        <li class="nav-item">
                             Olá, @User.Identity.Name 
                                 
                         </li>
@@ -28,14 +28,14 @@
                     }
                     else
                     {
-                        <li class="nav-item>
+                        <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Funcionarios" asp-action="Login">Login</a>
                         </li>
                     }
                                     
                 </ul>
-                </div>
             </div>
+            
         </nav>
     </header>
     <section class="container d-flex m-0 p-0">
@@ -50,7 +50,7 @@
 
 
 
-                <ul class="nav nav-pills flex-column mb-auto">
+              <ul class="nav nav-pills flex-column mb-auto">
 
 
 
@@ -83,6 +83,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M410 656h276.667q14.166 0 23.75-9.617Q720 636.766 720 622.55q0-14.216-9.583-23.716-9.584-9.5-23.75-9.5H476.666L410 656Zm-153.333 0H312q6.545 0 12.272-2.833Q330 650.333 335.333 646L572 412q6-6 6-15t-6-15l-60-56.667Q506.667 320 498.667 320t-13.333 5.333L250 564.001q-4.333 5.333-7.167 11.166Q240 581 240 587.667v51.666Q240 646 245 651t11.667 5ZM80 895.667V242.666q0-26.333 19.833-46.499Q119.666 176 146.666 176h666.668q26.333 0 46.499 20.167Q880 216.333 880 242.666v506.668q0 26.333-20.167 46.499Q839.667 816 813.334 816H240L136.666 919.334Q121 935 100.5 926.396 80 917.792 80 895.667Zm66.666-80.666 65.667-65.667h601.001V242.666H146.666v572.335Zm0-572.335v572.335-572.335Z" /><use xlink:href="#home"></use></svg>
                             Solicitações
                         </a>
+              </ul>
 
 
 
