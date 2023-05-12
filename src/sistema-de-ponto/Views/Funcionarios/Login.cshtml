@@ -4,36 +4,74 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>Login</h1>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
- 
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+<section class="container-fluid d-flex justify-content-end p-0" style="">
+<div class="container-lg p-5">
+        <h1>Apontei</h1>
+        <h2>Gestão de ponto</h2>
+        <p class="lead">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electroni
+        </p>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-warning rounded-pill" data-toggle="modal" data-target="#exampleModalCenter">
+            Acessar
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Acessar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <form asp-action="Login">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="control-label"></label>
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Senha" class="control-label"></label>
+                                        <input asp-for="Senha" class="form-control" />
+                                        <span asp-validation-for="Senha" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Entrar" class="btn btn-primary" />
+                                        <a class="btn btn-info" asp-controller="Home" asp-action="Index">Voltar</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
-                <span asp-validation-for="Senha" class="text-danger"></span>
-            </div>
-           
-            <div class="form-group">
-                <input type="submit" value="Entrar" class="btn btn-primary" />
-                <a class="btn btn-info" asp-controller="Home" asp-action="Index">Voltar</a>
-            </div>
-        </form>
-    </div>
+        </div>
 </div>
 
-<div>
-    
-</div>
+    <img id="img-main" class="img-fluid d-none d-sm-block d-sm-none d-md-block rounded float-end w-50" src="~/Images/pexels-jopwell-2422287.jpg" alt="" >
+
+
+</section>
+
+
+
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

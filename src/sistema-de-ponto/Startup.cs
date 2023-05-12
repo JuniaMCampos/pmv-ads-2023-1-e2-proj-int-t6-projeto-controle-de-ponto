@@ -75,7 +75,7 @@ namespace sistema_de_ponto
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Funcionarios}/{action=Login}/{id?}");
             });
         }
     }
