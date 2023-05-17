@@ -1,0 +1,66 @@
+﻿@model sistema_de_ponto.Models.RegistraPonto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h1>Bater Ponto</h1>
+
+@if (Model != null)
+{
+    <p>Data: @Model.Data.ToShortDateString()</p>
+
+    @if (Model.HoraEntrada1 == default(DateTime))
+    {
+        <p>Horário de Entrada 1: Ainda não batido</p>
+    }
+    else
+    {
+
+        @Html.LabelFor(model=> model.HoraEntrada1)
+        @Html.TextBoxFor(model=> model.HoraEntrada1, "{0:HH\\:mm}", new { @class = "form-control" , @readonly ="readonly"} )
+
+    }
+
+    @if (Model.HoraSaida1 == default(DateTime))
+    {
+        <p>Horário de Saída 1: Ainda não batido</p>
+    }
+    else
+    {
+        @Html.LabelFor(model => model.HoraSaida1)
+        @Html.TextBoxFor(model=> model.HoraSaida1, "{0:HH\\:mm}", new { @class = "form-control"})
+    }
+
+    @if (Model.HoraEntrada2 == default(DateTime))
+    {
+        <p>Horário de Entrada 2: Ainda não batido</p>
+    }
+    else
+    {
+        @Html.LabelFor(model => model.HoraEntrada2)
+        @Html.TextBoxFor(model=> model.HoraEntrada2, "{0:HH\\:mm}", new { @class = "form-control"})
+    }
+
+    @if (Model.HoraSaida2 == default(DateTime))
+    {
+        <p>Horário de Saída 2: Ainda não batido</p>
+    }
+    else
+    {
+        @Html.LabelFor(model => model.HoraSaida2)
+        @Html.TextBoxFor(model=> model.HoraSaida2, "{0:HH\\:mm}", new { @class = "form-control"})
+    }
+}
+
+<form asp-action="Create">
+    <button type="submit" class="btn btn-primary">Bater Ponto</button>
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

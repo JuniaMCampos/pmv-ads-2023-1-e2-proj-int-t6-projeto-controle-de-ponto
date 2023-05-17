@@ -1,0 +1,65 @@
+﻿@model IEnumerable<sistema_de_ponto.Models.RegistraPonto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="RegistraPontos" asp-action="Create" >Bater Ponto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraEntrada1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraSaida1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraEntrada2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraSaida2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraEntrada1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraSaida1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraEntrada2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraSaida2)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
