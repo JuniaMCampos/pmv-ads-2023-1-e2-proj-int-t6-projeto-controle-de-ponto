@@ -62,7 +62,7 @@ namespace sistema_de_ponto.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EmpresaId")
+                    b.Property<int?>("EmpresaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Foto")
@@ -79,6 +79,9 @@ namespace sistema_de_ponto.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("RegistraPontoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -94,6 +97,8 @@ namespace sistema_de_ponto.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmpresaId");
+
+                    b.HasIndex("RegistraPontoId");
 
                     b.ToTable("Funcionario");
                 });
@@ -172,13 +177,47 @@ namespace sistema_de_ponto.Migrations
                     b.ToTable("Ponto");
                 });
 
+            modelBuilder.Entity("sistema_de_ponto.Models.RegistraPonto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("HoraEntrada1")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("HoraEntrada2")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("HoraSaida1")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("HoraSaida2")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("RegistraPontos");
+                });
+
             modelBuilder.Entity("sistema_de_ponto.Models.Funcionario", b =>
                 {
                     b.HasOne("sistema_de_ponto.Models.Empresa", "Empresa")
                         .WithMany("Funcionarios")
-                        .HasForeignKey("EmpresaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmpresaId");
+
+                    b.HasOne("sistema_de_ponto.Models.RegistraPonto", null)
+                        .WithMany("Funcionarios")
+                        .HasForeignKey("RegistraPontoId");
 
                     b.Navigation("Empresa");
                 });
@@ -213,6 +252,17 @@ namespace sistema_de_ponto.Migrations
                     b.Navigation("Funcionario");
                 });
 
+            modelBuilder.Entity("sistema_de_ponto.Models.RegistraPonto", b =>
+                {
+                    b.HasOne("sistema_de_ponto.Models.Funcionario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Funcionario");
+                });
+
             modelBuilder.Entity("sistema_de_ponto.Models.Empresa", b =>
                 {
                     b.Navigation("Funcionarios");
@@ -228,6 +278,11 @@ namespace sistema_de_ponto.Migrations
             modelBuilder.Entity("sistema_de_ponto.Models.Ponto", b =>
                 {
                     b.Navigation("Justificativas");
+                });
+
+            modelBuilder.Entity("sistema_de_ponto.Models.RegistraPonto", b =>
+                {
+                    b.Navigation("Funcionarios");
                 });
 #pragma warning restore 612, 618
         }

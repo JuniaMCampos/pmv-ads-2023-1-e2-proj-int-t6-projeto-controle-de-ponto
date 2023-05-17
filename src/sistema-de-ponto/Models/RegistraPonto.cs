@@ -40,10 +40,26 @@ namespace sistema_de_ponto.Models
 
         [NotMapped]
         [Display(Name = "Intervalo")]
-        public TimeSpan Intervalo { get { return HoraSaida1.HasValue ? HoraSaida1.Value.Subtract((DateTime)HoraEntrada2) : TimeSpan.Zero; } }
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        public TimeSpan? Intervalo
+        {
+            get
+            { 
+                if(HoraSaida1.HasValue)
+                {
+                    return (TimeSpan)(HoraSaida1 - HoraEntrada1);
+                }
+                else
+                {
+                    return TimeSpan.Zero;
+                }
+            
+            }
+        }
 
         [NotMapped]
-        public TimeSpan TotalDeHoras
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        public TimeSpan? TotalDeHoras
         {
             get
             {

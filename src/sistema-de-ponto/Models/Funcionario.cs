@@ -54,6 +54,8 @@ namespace sistema_de_ponto.Models
         public ICollection<Ponto> Pontos { get; set; }
 
         public ICollection<Justificativa> Justificativas { get; set; }
+
+        public ICollection<RegistraPonto> RegistraPontos { get; set; }
     }
 
     public enum Perfil

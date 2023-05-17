@@ -62,7 +62,7 @@ namespace sistema_de_ponto.Controllers
 
                 await HttpContext.SignInAsync(principal, props);
 
-                return Redirect("/");
+                return Redirect("Home/Index");
             }
 
             ViewBag.Message = "Usuário e/ou senha inválidos!";
@@ -128,7 +128,7 @@ namespace sistema_de_ponto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "EmpresaId", funcionario.EmpresaId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "EmpresaId");
             return View(funcionario);
         }
 
@@ -137,6 +137,7 @@ namespace sistema_de_ponto.Controllers
         {
             if (id == null)
             {
+                
                 return NotFound();
             }
 
@@ -145,7 +146,7 @@ namespace sistema_de_ponto.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "EmpresaId", "EmpresaId", funcionario.EmpresaId);
+            ViewData["EmpresaId"] = new SelectList(_context.Empresas, "Id", "Nome", funcionario.EmpresaId);
             return View(funcionario);
         }
 

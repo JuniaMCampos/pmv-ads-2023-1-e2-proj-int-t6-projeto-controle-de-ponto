@@ -13,5 +13,6 @@ namespace sistema_de_ponto.Models
         public DbSet<Ponto> Pontos { get; set; }
 
         public DbSet<Justificativa> Justificativas { get; set; }
+        public DbSet<RegistraPonto> RegistraPontos { get; set; }
     }
 }
