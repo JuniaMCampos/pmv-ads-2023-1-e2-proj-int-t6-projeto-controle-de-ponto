@@ -7,68 +7,67 @@
 <h1>Registros de ponto</h1>
 
 <p>
-    <a class="btn btn-outline-dark rounded-pill" asp-action="Create">Registrar Ponto</a>
+    <a class="btn btn-outline-dark rounded-pill" asp-action="Create">Cadastrar turno</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            
             <th>
-                @Html.DisplayNameFor(model => model.Data)
+                    @Html.DisplayNameFor(model => model.Turno)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HoraEntrada)
+                    @Html.DisplayNameFor(model => model.Funcionario)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.HoraEntrada1)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HoraIntervaloInicial)
+                @Html.DisplayNameFor(model => model.HoraSaida1)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HoraIntervaloFinal)
+                @Html.DisplayNameFor(model => model.Intervalo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HoraSaida)
+                @Html.DisplayNameFor(model => model.HoraEntrada2)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HoraExtra)
+                @Html.DisplayNameFor(model => model.HoraSaida2)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Turno)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Funcionario)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+                <th>
+                    @Html.DisplayFor(model => item.Turno)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => item.Funcionario.Nome, item.Funcionario.Sobrenome)
+                </th>
+           
             <td>
-                @Html.DisplayFor(modelItem => item.Data)
+                @Html.DisplayFor(modelItem => item.HoraEntrada1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HoraEntrada)
+                @Html.DisplayFor(modelItem => item.HoraSaida1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HoraIntervaloInicial)
+                @Html.DisplayFor(modelItem => item.Intervalo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HoraIntervaloFinal)
+                @Html.DisplayFor(modelItem => item.HoraEntrada2)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HoraSaida)
+                @Html.DisplayFor(modelItem => item.HoraSaida2)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoraExtra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Turno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Funcionario.Cargo)
-            </td>
+            
                 <td class="p-1">
                     <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/img/Icones/edit_square_FILL0_wght400_GRAD0_opsz48.png" height="30" width="30" />
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" /></svg>
                     </button>
                     <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Editar</a>

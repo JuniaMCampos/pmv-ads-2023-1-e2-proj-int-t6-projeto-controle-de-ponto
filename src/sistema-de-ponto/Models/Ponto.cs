@@ -11,29 +11,69 @@ namespace sistema_de_ponto.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Obritatório informar a Data")]
-        public DateTime Data { get; set; }
+        [Required(ErrorMessage ="Horário de 1 Entrada obrigatório!")]
+        [Display(Name = "1 Entrada")]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm}")]
+        public DateTime? HoraEntrada1 { get; set; }
 
-        [Required(ErrorMessage = "Obritatório informar a Hora de Entrada")]
-        [Display(Name = "Hora de Entrada")]
-        public TimeSpan HoraEntrada { get; set; }
+        [Required(ErrorMessage = "Horário de 1 Saída obrigatório!")]
+        [Display(Name = "1 Saída")]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm}")]
+        public DateTime? HoraSaida1 { get; set; }
 
-        [Required(ErrorMessage = "Obritatório informar a Hora Intervalo Inicial")]
-        [Display(Name = "Hora Intervalo Inicial")]
-        public TimeSpan HoraIntervaloInicial { get; set; }
+        [Required(ErrorMessage = "Horário de 2 Entrada obrigatório!")]
+        [Display(Name = "2 Entrada")]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm}")]
+        public DateTime? HoraEntrada2 { get; set; }
 
-        [Required(ErrorMessage = "Obritatório informar a Hora Intervalo Final")]
-        [Display(Name = "Hora Intervalo Final")]
-        public TimeSpan HoraIntervaloFinal { get; set; }
+        [Required(ErrorMessage = "Horário de 2 Saída obrigatório!")]
+        [Display(Name = "2 Saída")]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm}")]
+        public DateTime? HoraSaida2 { get; set; }
 
-        [Required(ErrorMessage = "Obritatório informar a Hora de Saída")]
-        [Display(Name = "Hora de Saída")]
-        public TimeSpan HoraSaida { get; set; }
+        [NotMapped]
+        [Display(Name = "Intervalo")]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        public TimeSpan? Intervalo
+        {
+            get
+            {
+                if (HoraSaida1.HasValue)
+                {
+                    return (TimeSpan)(HoraSaida1 - HoraEntrada1);
+                }
+                else
+                {
+                    return TimeSpan.Zero;
+                }
 
-        [Display(Name = "Horas Extras")]
-        public TimeSpan HoraExtra { get; set; }
+            }
+        }
 
-        [Required(ErrorMessage = "Obritatório informar o Turno")]
+        [NotMapped]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        public TimeSpan? TotalDeHoras
+        {
+            get
+            {
+                if (HoraSaida2.HasValue)
+                {
+                    return (TimeSpan)(HoraSaida2.Value - HoraEntrada1 - Intervalo);
+                }
+                else if (HoraSaida1.HasValue)
+                {
+                    return (TimeSpan)(HoraSaida1.Value - HoraEntrada1);
+                }
+                else
+                {
+                    return TimeSpan.Zero;
+                }
+            }
+        }
+
+
+
+        [Required(ErrorMessage = "Obritatório informar o Nome do Turno")]
         public string Turno { get; set; }
 
         public int FuncionarioId { get; set; }

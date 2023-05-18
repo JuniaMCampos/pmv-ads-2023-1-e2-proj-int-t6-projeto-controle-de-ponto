@@ -65,7 +65,7 @@ namespace sistema_de_ponto.Controllers
         // GET: Pontos/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo");
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome");
             return View();
         }
 
@@ -74,7 +74,7 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Data,HoraEntrada,HoraIntervaloInicial,HoraIntervaloFinal,HoraSaida,HoraExtra,Turno,FuncionarioId")] Ponto ponto)
+        public async Task<IActionResult> Create([Bind("Id,Turno,HoraEntrada1,HoraEntrada2,HoraSaida1,HoraSaida2, FuncionarioId")] Ponto ponto)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace sistema_de_ponto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", ponto.FuncionarioId);
             return View(ponto);
         }
 
@@ -99,7 +99,7 @@ namespace sistema_de_ponto.Controllers
             {
                 return NotFound();
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", ponto.FuncionarioId);
             return View(ponto);
         }
 
@@ -108,7 +108,7 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,HoraEntrada,HoraIntervaloInicial,HoraIntervaloFinal,HoraSaida,HoraExtra,Turno,FuncionarioId")] Ponto ponto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Turno,HoraEntrada1,HoraEntrada2,HoraSaida1,HoraSaida2, FuncionarioId")] Ponto ponto)
         {
             if (id != ponto.Id)
             {
@@ -135,7 +135,7 @@ namespace sistema_de_ponto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", ponto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", ponto.FuncionarioId);
             return View(ponto);
         }
 

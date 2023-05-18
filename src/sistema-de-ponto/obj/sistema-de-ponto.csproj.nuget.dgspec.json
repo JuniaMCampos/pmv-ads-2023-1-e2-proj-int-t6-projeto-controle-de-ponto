@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\Apontei2\\src\\sistema-de-ponto\\sistema-de-ponto.csproj": {}
+    "C:\\Users\\Jeosafa\\Documents\\GitHub\\pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto\\src\\sistema-de-ponto\\sistema-de-ponto.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\Apontei2\\src\\sistema-de-ponto\\sistema-de-ponto.csproj": {
+    "C:\\Users\\Jeosafa\\Documents\\GitHub\\pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto\\src\\sistema-de-ponto\\sistema-de-ponto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\Apontei2\\src\\sistema-de-ponto\\sistema-de-ponto.csproj",
+        "projectUniqueName": "C:\\Users\\Jeosafa\\Documents\\GitHub\\pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto\\src\\sistema-de-ponto\\sistema-de-ponto.csproj",
         "projectName": "sistema-de-ponto",
-        "projectPath": "C:\\Projetos\\Apontei2\\src\\sistema-de-ponto\\sistema-de-ponto.csproj",
-        "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\Apontei2\\src\\sistema-de-ponto\\obj\\",
+        "projectPath": "C:\\Users\\Jeosafa\\Documents\\GitHub\\pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto\\src\\sistema-de-ponto\\sistema-de-ponto.csproj",
+        "packagesPath": "C:\\Users\\Jeosafa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jeosafa\\Documents\\GitHub\\pmv-ads-2023-1-e2-proj-int-t6-projeto-controle-de-ponto\\src\\sistema-de-ponto\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Jeosafa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,12 +78,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.17, 5.0.17]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
