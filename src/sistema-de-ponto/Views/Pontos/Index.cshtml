@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Registros de ponto</h1>
+<h1>Turnos</h1>
 
 <p>
     <a class="btn btn-outline-dark rounded-pill" asp-action="Create">Cadastrar turno</a>
@@ -35,6 +35,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.HoraSaida2)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalDeHoras)
+            </th>
             
             <th></th>
         </tr>
@@ -64,6 +67,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.HoraSaida2)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalDeHoras)
+                </td>
             
                 <td class="p-1">
                     <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -40,7 +40,7 @@ namespace sistema_de_ponto.Models
             {
                 if (HoraSaida1.HasValue)
                 {
-                    return (TimeSpan)(HoraSaida1 - HoraEntrada1);
+                    return (TimeSpan)(HoraSaida1 - HoraEntrada2);
                 }
                 else
                 {
@@ -58,7 +58,13 @@ namespace sistema_de_ponto.Models
             {
                 if (HoraSaida2.HasValue)
                 {
-                    return (TimeSpan)(HoraSaida2.Value - HoraEntrada1 - Intervalo);
+
+                  var jornada1 = (TimeSpan)(HoraSaida1 - HoraEntrada1);
+                  var jornada2 = (TimeSpan)(HoraSaida2 - HoraEntrada2);
+
+                    return jornada1 + jornada2;
+
+
                 }
                 else if (HoraSaida1.HasValue)
                 {
