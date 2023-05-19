@@ -90,9 +90,7 @@ namespace sistema_de_ponto.Controllers
                 };
                
 
-
-
-                if (ultimoRegistroPonto == null)
+                if (ultimoRegistroPonto == null  || ultimoRegistroPonto.HoraSaida2 != null)
                 {
                 _context.Add(novoRegistroPonto);
                 // Se não houver registros anteriores, define a hora de entrada 1
@@ -131,10 +129,7 @@ namespace sistema_de_ponto.Controllers
             return View(registraPonto);
         }
 
-        private void registroPonto()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         // GET: RegistraPontos/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -223,5 +218,40 @@ namespace sistema_de_ponto.Controllers
         {
             return _context.RegistraPontos.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> ControlePonto(DateTime? data, int? funcionarioId)
+        {
+            var applicationDbContext = _context.RegistraPontos.Include(r => r.Funcionario);
+
+
+
+            var query = _context.RegistraPontos.AsQueryable();
+
+            // Aplica o filtro por data, se informado
+            if (data.HasValue)
+            {
+                query = query.Where(rp => rp.Data.Date == data.Value.Date);
+            }
+
+            // Aplica o filtro por funcionário, se informado
+            if (funcionarioId.HasValue)
+            {
+                query = query.Where(rp => rp.FuncionarioId == funcionarioId.Value);
+            }
+
+            var registrosPonto = await query.ToListAsync();
+
+            // Obter a lista de funcionários registrados nos pontos
+            var funcionarios = await _context.Funcionarios.ToListAsync();
+
+            // Passar a lista de funcionários para a view
+            ViewData["Funcionarios"] = new SelectList(funcionarios, "Id", "Nome");
+
+            return View(registrosPonto);
+
+
+
+        }
     }
+
 }

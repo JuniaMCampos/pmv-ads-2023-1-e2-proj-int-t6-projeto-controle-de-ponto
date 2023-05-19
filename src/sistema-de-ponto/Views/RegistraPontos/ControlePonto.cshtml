@@ -1,0 +1,88 @@
+﻿@model IEnumerable<sistema_de_ponto.Models.RegistraPonto>
+
+@{
+    ViewData["Title"] = "ControlePonto";
+}
+
+<h1>Controle de Ponto</h1>
+<hr />
+<section>
+    <form method="get" action="/RegistraPontos/ControlePonto" >
+       <div class="row">
+
+            <div class="form-group col-md-4">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="funcionarioId" class="control-label">Funcionario:</label>
+                <select id="funcionarioId" name="funcionarioId" class="form-control" asp-items="@ViewBag.Funcionarios">
+                    <option value="">Todos</option>
+
+                </select>
+            </div>
+            <div class="d-flex flex-sm-wrap align-items-center mt-2 ">
+                <button type="submit" class="btn btn-outline-warning rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" /></svg></button>
+
+                <a class="btn btn-warning rounded-pill" asp-area="" asp-controller="RegistraPontos" asp-action="ControlePonto"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M451 934q-123-10-207-101t-84-216q0-77 35.5-145T295 361l43 43q-56 33-87 90.5T220 617q0 100 66 173t165 84v60Zm60 0v-60q100-12 165-84.5T741 617q0-109-75.5-184.5T481 357h-20l60 60-43 43-133-133 133-133 43 43-60 60h20q134 0 227 93.5T801 617q0 125-83.5 216T511 934Z" /></svg></a>
+            </div>
+        </div>
+       
+    </form>
+    
+</section>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraEntrada1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraSaida1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraEntrada2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraSaida2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Nome, item.Funcionario.Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraEntrada1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraSaida1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraEntrada2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraSaida2)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Ajuste</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
