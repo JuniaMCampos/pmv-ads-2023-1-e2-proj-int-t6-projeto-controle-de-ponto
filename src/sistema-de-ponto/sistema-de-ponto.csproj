@@ -7,7 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NovaPasta1\**" />
+    <Compile Remove="NovaPasta2\**" />
+    <Content Remove="NovaPasta1\**" />
+    <Content Remove="NovaPasta2\**" />
+    <EmbeddedResource Remove="NovaPasta1\**" />
+    <EmbeddedResource Remove="NovaPasta2\**" />
+    <None Remove="NovaPasta1\**" />
+    <None Remove="NovaPasta2\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Home\Home.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Arquivos\nada.txt" />
+    <None Remove="Arquivos\vazio.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Arquivos\nada.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +51,10 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Arquivos\vazio.txt" />
   </ItemGroup>
 
 </Project>
