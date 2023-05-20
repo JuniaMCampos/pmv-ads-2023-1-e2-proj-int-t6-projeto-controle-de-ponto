@@ -44,9 +44,17 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "BouncyCastle.NetCore": {
+              "target": "Package",
+              "version": "[1.9.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Microsoft.DotNet.PlatformAbstractions": {
+              "target": "Package",
+              "version": "[3.1.6, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -65,6 +73,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "itext7": {
+              "target": "Package",
+              "version": "[7.1.15, )"
             }
           },
           "imports": [

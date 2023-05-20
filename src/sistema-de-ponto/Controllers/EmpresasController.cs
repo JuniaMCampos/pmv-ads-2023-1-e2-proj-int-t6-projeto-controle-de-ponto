@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sistema_de_ponto.Models;
+
 
 namespace sistema_de_ponto.Controllers
 {
@@ -41,6 +48,7 @@ namespace sistema_de_ponto.Controllers
 
             return View(empresa);
         }
+
 
         // GET: Empresas/Create
         public IActionResult Create()
@@ -147,6 +155,72 @@ namespace sistema_de_ponto.Controllers
         private bool EmpresaExists(int id)
         {
             return _context.Empresas.Any(e => e.Id == id);
+        }
+
+        // GET: Empresas/Relatorio
+        public async Task<IActionResult> Relatorio()
+        {
+            var empresas = await _context.Empresas.Include(e => e.Funcionarios).ToListAsync();
+            return View(empresas);
+        }
+
+        // GET: Relatorio/ExportarPDF
+        public IActionResult ExportarPDF()
+        {
+            var empresas = _context.Empresas.Include(e => e.Funcionarios).ToList();
+
+            var memoryStream = new MemoryStream();
+
+            var writer = new PdfWriter(memoryStream);
+            var pdfDocument = new PdfDocument(writer);
+            var document = new Document(pdfDocument);
+
+            var titulo = new Paragraph("Relatório de Empresas e Funcionários");
+            document.Add(titulo);
+
+            // Cabeçalho
+            var table = new Table(5).UseAllAvailableWidth();
+            table.AddCell(new Cell().Add(new Paragraph(" ID ")));
+            table.AddCell(new Cell().Add(new Paragraph(" CNPJ ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Razão Social ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Colaborador ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Sobrenome ")));
+
+            // Dados
+            foreach (var empresa in empresas)
+            {
+                foreach (var funcionario in empresa.Funcionarios)
+                {
+                    table.AddCell(new Cell().Add(new Paragraph(empresa.Id.ToString())));
+                    table.AddCell(new Cell().Add(new Paragraph(empresa.Cnpj)));
+                    table.AddCell(new Cell().Add(new Paragraph(empresa.Nome)));
+                    table.AddCell(new Cell().Add(new Paragraph(funcionario.Nome)));
+                    table.AddCell(new Cell().Add(new Paragraph(funcionario.Sobrenome)));
+
+                    
+                }
+            }
+
+            document.Add(table);
+
+            // Rodapé do documento
+            var dataHoraAtual = DateTime.Now;
+            var rodape = new Paragraph($"Data: {dataHoraAtual.ToString("dd/MM/yyyy")}   Hora: {dataHoraAtual.ToString("HH:mm:ss")}");
+
+            
+            var numeroPaginas = pdfDocument.GetNumberOfPages();
+            document.ShowTextAligned(rodape, 30, 30, numeroPaginas, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
+
+            document.Close();
+
+            var content = memoryStream.ToArray();
+            return File(content, "application/pdf", "Relatorio_de_Empresas.pdf");
+
+
+
+
+
+
         }
     }
 }

@@ -76,6 +76,12 @@ namespace sistema_de_ponto
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Funcionarios}/{action=Login}/{id?}");
+               
+                endpoints.MapControllerRoute(
+                    name: "relatorios",
+                    pattern: "Relatorios",
+                    defaults: new { controller = "Relatorios", action = "Index" });
+
             });
         }
     }
