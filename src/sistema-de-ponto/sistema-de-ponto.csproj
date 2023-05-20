@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <None Remove="Arquivos\nada.txt" />
-    <None Remove="Arquivos\vazio.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,10 +50,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Images\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Include="Arquivos\vazio.txt" />
   </ItemGroup>
 
 </Project>
