@@ -63,6 +63,7 @@ namespace sistema_de_ponto
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
