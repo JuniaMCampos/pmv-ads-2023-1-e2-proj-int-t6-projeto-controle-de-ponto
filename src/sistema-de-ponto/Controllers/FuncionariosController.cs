@@ -179,15 +179,34 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto,EmpresaId")] Funcionario funcionario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto,Arquivo,EmpresaId")] Funcionario funcionario)
         {
             if (id != funcionario.Id)
             {
                 return NotFound();
             }
 
+            //Pegando a extensão do arquivo
+            string extensao = Path.GetExtension(funcionario.Arquivo.FileName);
+
+            //Garantindo um nome "único" para o arquivo.
+            string nomeUnico = Guid.NewGuid().ToString();
+
+            //Pegando a pasta de arquivos estáticos
+            string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
+
+            funcionario.Foto = nomeUnico + extensao;
+
             if (ModelState.IsValid)
             {
+                if (funcionario.Arquivo.Length > 0)
+                {
+                    using (Stream fileStream = new FileStream(caminho, FileMode.Create))
+                    {
+                        await funcionario.Arquivo.CopyToAsync(fileStream);
+                    }
+                }
+
                 try
                 {
                     funcionario.Senha = BCrypt.Net.BCrypt.HashPassword(funcionario.Senha);
