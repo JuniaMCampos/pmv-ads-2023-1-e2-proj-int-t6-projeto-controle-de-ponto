@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +14,12 @@ namespace sistema_de_ponto.Controllers
     public class JustificativasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public JustificativasController(ApplicationDbContext context)
+        public JustificativasController(ApplicationDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         // GET: Justificativas
@@ -58,10 +62,29 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Data,Motivo,AnexarDocumento,Status,FuncionarioId,PontoId")] Justificativa justificativa)
+        public async Task<IActionResult> Create([Bind("Id,Data,Motivo,AnexarDocumento,Status,FuncionarioId,Arquivo,PontoId")] Justificativa justificativa)
         {
+            //Pegando a extensão do arquivo
+            string extensao = Path.GetExtension(justificativa.Arquivo.FileName);
+
+            //Garantindo um nome "único" para o arquivo.
+            string nomeUnico = Guid.NewGuid().ToString();
+
+            //Pegando a pasta de arquivos estáticos
+            string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
+
+            justificativa.AnexarDocumento = nomeUnico + extensao;
+
             if (ModelState.IsValid)
             {
+                if (justificativa.Arquivo.Length > 0)
+                {
+                    using (Stream fileStream = new FileStream(caminho, FileMode.Create))
+                    {
+                        await justificativa.Arquivo.CopyToAsync(fileStream);
+                    }
+                }
+             
                 _context.Add(justificativa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

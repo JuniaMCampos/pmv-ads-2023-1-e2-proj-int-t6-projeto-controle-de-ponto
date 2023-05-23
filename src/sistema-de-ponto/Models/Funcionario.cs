@@ -51,6 +51,7 @@ namespace sistema_de_ponto.Models
         //Isso vou usar para facilitar o upload,
         //coloquei o NotMapped para não ir para o banco, só pra view, viu?
         [NotMapped]
+        //[FileExtensions(Extensions = "jpg,jpeg,png")]
         public IFormFile Arquivo { get; set; }
 
         public int? EmpresaId { get; set; }
