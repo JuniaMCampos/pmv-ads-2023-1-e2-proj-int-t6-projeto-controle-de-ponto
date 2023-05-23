@@ -22,9 +22,9 @@
                 </select>
             </div>
             <div class="d-flex flex-sm-wrap align-items-center mt-2 ">
-                <button type="submit" class="btn btn-outline-warning rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" /></svg></button>
+                <button type="submit" class="btn btn-outline-warning rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" /></svg></button>
 
-                <a class="btn btn-warning rounded-pill" asp-area="" asp-controller="RegistraPontos" asp-action="ControlePonto"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M451 934q-123-10-207-101t-84-216q0-77 35.5-145T295 361l43 43q-56 33-87 90.5T220 617q0 100 66 173t165 84v60Zm60 0v-60q100-12 165-84.5T741 617q0-109-75.5-184.5T481 357h-20l60 60-43 43-133-133 133-133 43 43-60 60h20q134 0 227 93.5T801 617q0 125-83.5 216T511 934Z" /></svg></a>
+                <a class="btn btn-warning rounded-pill ml-1" asp-area="" asp-controller="RegistraPontos" asp-action="ControlePonto"><svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="M451 934q-123-10-207-101t-84-216q0-77 35.5-145T295 361l43 43q-56 33-87 90.5T220 617q0 100 66 173t165 84v60Zm60 0v-60q100-12 165-84.5T741 617q0-109-75.5-184.5T481 357h-20l60 60-43 43-133-133 133-133 43 43-60 60h20q134 0 227 93.5T801 617q0 125-83.5 216T511 934Z" /></svg></a>
             </div>
         </div>
        
@@ -77,10 +77,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.HoraSaida2)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Ajuste</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <td class="p-0">
+                    <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" /></svg>
+                    </button>
+                    <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Ajustes</a>
+                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">Visualizar</a>
+                        <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                    </div>
             </td>
         </tr>
 }

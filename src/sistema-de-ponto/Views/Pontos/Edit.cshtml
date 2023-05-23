@@ -4,58 +4,63 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editar Registros de Ponto</h1>
+<h1>Editar Turno</h1>
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Edit">
-            @*
+           
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Data" class="control-label"></label>
-                <input asp-for="Data" class="form-control" />
-                <span asp-validation-for="Data" class="text-danger"></span>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Turno" class="control-label"></label>
+                    <input asp-for="Turno" class="form-control" />
+                    <span asp-validation-for="Turno" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="FuncionarioId" class="control-label" ></label>
+                    <select asp-for="FuncionarioId" class="form-control" asp-items="ViewBag.FuncionarioId"></select>
+                </div>
+              </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="HoraEntrada1" class="control-label"></label>
+                    <input type="time" asp-for="HoraEntrada1" class="form-control" />
+                    <span asp-validation-for="HoraEntrada1" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="HoraSaida1" class="control-label"></label>
+                    <input type="time" asp-for="HoraSaida1" class="form-control" />
+                    <span asp-validation-for="HoraSaida1" class="text-danger"></span>
+                </div>
+
             </div>
-            <div class="form-group">
-                <label asp-for="HoraEntrada" class="control-label"></label>
-                <input asp-for="HoraEntrada" class="form-control" />
-                <span asp-validation-for="HoraEntrada" class="text-danger"></span>
+
+            <div class="form-row">
+
+
+                <div class="form-group col-md-4">
+                    <label asp-for="HoraEntrada2" class="control-label"></label>
+                    <input type="time" asp-for="HoraEntrada2" class="form-control" />
+                    <span asp-validation-for="HoraEntrada1" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group col-md-4">
+                    <label asp-for="HoraSaida2" class="control-label"></label>
+                    <input type="time" asp-for="HoraSaida2" class="form-control" />
+                    <span asp-validation-for="HoraSaida2" class="text-danger"></span>
+                </div>
             </div>
+           
+            
+            
             <div class="form-group">
-                <label asp-for="HoraIntervaloInicial" class="control-label"></label>
-                <input asp-for="HoraIntervaloInicial" class="form-control" />
-                <span asp-validation-for="HoraIntervaloInicial" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoraIntervaloFinal" class="control-label"></label>
-                <input asp-for="HoraIntervaloFinal" class="form-control" />
-                <span asp-validation-for="HoraIntervaloFinal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoraSaida" class="control-label"></label>
-                <input asp-for="HoraSaida" class="form-control" />
-                <span asp-validation-for="HoraSaida" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoraExtra" class="control-label"></label>
-                <input asp-for="HoraExtra" class="form-control" />
-                <span asp-validation-for="HoraExtra" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="Turno" class="control-label"></label>
-                <input asp-for="Turno" class="form-control" />
-                <span asp-validation-for="Turno" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FuncionarioId" class="control-label"></label>
-                <select asp-for="FuncionarioId" class="form-control" asp-items="ViewBag.FuncionarioId"></select>
-                <span asp-validation-for="FuncionarioId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-warning rounded-pill" />
+                <a asp-action="Index" class="btn btn-secondary rounded-pill">Cancelar</a>
             </div>
         </form>
     </div>

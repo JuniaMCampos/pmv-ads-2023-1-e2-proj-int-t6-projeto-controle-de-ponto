@@ -48,7 +48,7 @@ namespace sistema_de_ponto.Controllers
         // GET: Justificativas/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo");
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome");
             ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno");
             return View();
         }
@@ -66,7 +66,7 @@ namespace sistema_de_ponto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", justificativa.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", justificativa.FuncionarioId);
             ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno", justificativa.PontoId);
             return View(justificativa);
         }
@@ -84,7 +84,7 @@ namespace sistema_de_ponto.Controllers
             {
                 return NotFound();
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", justificativa.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", justificativa.FuncionarioId);
             ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno", justificativa.PontoId);
             return View(justificativa);
         }
@@ -121,7 +121,7 @@ namespace sistema_de_ponto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", justificativa.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", justificativa.FuncionarioId);
             ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno", justificativa.PontoId);
             return View(justificativa);
         }

@@ -50,32 +50,10 @@ namespace sistema_de_ponto.Models
             }
         }
 
-        [NotMapped]
+        [Display(Name ="Total de Horas")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
-        public TimeSpan? TotalDeHoras
-        {
-            get
-            {
-                if (HoraSaida2.HasValue)
-                {
-
-                  var jornada1 = (TimeSpan)(HoraSaida1 - HoraEntrada1);
-                  var jornada2 = (TimeSpan)(HoraSaida2 - HoraEntrada2);
-
-                    return jornada1 + jornada2;
-
-
-                }
-                else if (HoraSaida1.HasValue)
-                {
-                    return (TimeSpan)(HoraSaida1.Value - HoraEntrada1);
-                }
-                else
-                {
-                    return TimeSpan.Zero;
-                }
-            }
-        }
+        public TimeSpan? TotalDeHoras { get; set; }
+        
 
 
 
@@ -83,8 +61,10 @@ namespace sistema_de_ponto.Models
         public string Turno { get; set; }
 
         public int FuncionarioId { get; set; }
-
+        
+       
         [ForeignKey("FuncionarioId")]
+        [Display(Name = "Nome do Colaborador")]
         public Funcionario Funcionario { get; set; }
 
         public ICollection<Justificativa> Justificativas { get; set; }

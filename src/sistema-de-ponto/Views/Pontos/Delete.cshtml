@@ -4,64 +4,69 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Excluir Ponto</h1>
+<h1>Excluir Turno</h1>
+
+<h2> @Html.DisplayFor(model => model.Turno)</h2>
+
+<p>
+    Você tem certeza que deseja excluir este ponto?
+</p>
 
 <div>
+    
     <hr />
     <dl class="row">
-        @*<dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoraEntrada)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoraEntrada)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoraIntervaloInicial)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoraIntervaloInicial)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoraIntervaloFinal)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoraIntervaloFinal)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoraSaida)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoraSaida)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoraExtra)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoraExtra)
-        </dd>*@
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Turno)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Turno)
-        </dd>
-        <dt class = "col-sm-2">
+
+        <dt class="col-md-4">
             @Html.DisplayNameFor(model => model.Funcionario)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Funcionario.Cargo)
-        </dd class>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Funcionario.Nome)  @Html.DisplayFor(model => model.Funcionario.Sobrenome)
+        </dd>
+
+
+        <dt class="col-md-4">
+            @Html.DisplayNameFor(model => model.HoraEntrada1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HoraEntrada1)
+        </dd>
+
+        <dt class="col-md-4">
+            @Html.DisplayNameFor(model => model.HoraSaida1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HoraSaida1)
+        </dd>
+
+        <dt class="col-md-4">
+            @Html.DisplayNameFor(model => model.Intervalo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Intervalo)
+        </dd>
+        <dt class="col-md-4">
+            @Html.DisplayNameFor(model => model.HoraEntrada2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HoraEntrada2)
+        </dd>
+        <dt class="col-md-4">
+            @Html.DisplayNameFor(model => model.HoraSaida2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HoraSaida2)
+        </dd>
+
+
+
+
     </dl>
+    
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Excluir" class="btn btn-danger" /> 
-        <a asp-action="Index" class="btn btn-primary" >Voltar</a>
+        <input type="submit" value="Excluir" class="btn btn-warning rounded-pill" /> 
+        <a asp-action="Index" class="btn btn-secondary rounded-pill" >Cancelar</a>
     </form>
 </div>

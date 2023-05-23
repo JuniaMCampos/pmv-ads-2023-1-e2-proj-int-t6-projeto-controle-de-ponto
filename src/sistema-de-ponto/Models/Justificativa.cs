@@ -11,6 +11,7 @@ namespace sistema_de_ponto.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar a Data")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Data { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o Motivo")]
@@ -26,11 +27,13 @@ namespace sistema_de_ponto.Models
         public int FuncionarioId { get; set; }
 
         [ForeignKey("FuncionarioId")]
+        [Display(Name ="Colaborador")]
         public Funcionario Funcionario { get; set; }
 
         public int PontoId { get; set; }
 
         [ForeignKey("PontoId")]
+        [Display(Name ="Turno")]
         public Ponto Ponto { get; set; }
 
     }

@@ -78,12 +78,32 @@ namespace sistema_de_ponto.Controllers
         {
             if (ModelState.IsValid)
             {
+                ponto.TotalDeHoras = CalculateTotalHours(ponto);
+
                 _context.Add(ponto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", ponto.FuncionarioId);
             return View(ponto);
+        }
+
+        private TimeSpan? CalculateTotalHours(Ponto ponto)
+        {
+            if (ponto.HoraSaida2.HasValue)
+            {
+                var jornada1 = ponto.HoraSaida1 - ponto.HoraEntrada1;
+                var jornada2 = ponto.HoraSaida2 - ponto.HoraEntrada2;
+                return jornada1 + jornada2;
+            }
+            else if (ponto.HoraSaida1.HasValue)
+            {
+                return ponto.HoraSaida1 - ponto.HoraEntrada1;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // GET: Pontos/Edit/5
@@ -119,6 +139,7 @@ namespace sistema_de_ponto.Controllers
             {
                 try
                 {
+                    ponto.TotalDeHoras = CalculateTotalHours(ponto);
                     _context.Update(ponto);
                     await _context.SaveChangesAsync();
                 }

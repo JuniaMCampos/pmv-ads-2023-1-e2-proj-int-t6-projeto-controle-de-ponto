@@ -180,7 +180,7 @@ namespace sistema_de_ponto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", registraPonto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", registraPonto.FuncionarioId);
             return View(registraPonto);
         }
 
