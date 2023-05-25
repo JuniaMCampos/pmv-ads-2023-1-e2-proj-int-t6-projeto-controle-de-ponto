@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +18,12 @@ namespace sistema_de_ponto.Controllers
     public class FuncionariosController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public FuncionariosController(ApplicationDbContext context)
+        public FuncionariosController(ApplicationDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult Login()
@@ -119,10 +124,29 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto,EmpresaId")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto, Arquivo,EmpresaId")] Funcionario funcionario)
         {
+            //Pegando a extensão do arquivo
+            string extensao = Path.GetExtension(funcionario.Arquivo.FileName);
+
+            //Garantindo um nome "único" para o arquivo.
+            string nomeUnico = Guid.NewGuid().ToString();
+
+            //Pegando a pasta de arquivos estáticos
+            string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
+
+            funcionario.Foto = nomeUnico + extensao;
+
             if (ModelState.IsValid)
             {
+                if (funcionario.Arquivo.Length > 0)
+                {
+                    using (Stream fileStream = new FileStream(caminho, FileMode.Create))
+                    {
+                        await funcionario.Arquivo.CopyToAsync(fileStream);
+                    }
+                }
+                
                 funcionario.Senha = BCrypt.Net.BCrypt.HashPassword(funcionario.Senha);
                 _context.Add(funcionario);
                 await _context.SaveChangesAsync();
@@ -155,15 +179,34 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto,EmpresaId")] Funcionario funcionario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto,Arquivo,EmpresaId")] Funcionario funcionario)
         {
             if (id != funcionario.Id)
             {
                 return NotFound();
             }
 
+            //Pegando a extensão do arquivo
+            string extensao = Path.GetExtension(funcionario.Arquivo.FileName);
+
+            //Garantindo um nome "único" para o arquivo.
+            string nomeUnico = Guid.NewGuid().ToString();
+
+            //Pegando a pasta de arquivos estáticos
+            string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
+
+            funcionario.Foto = nomeUnico + extensao;
+
             if (ModelState.IsValid)
             {
+                if (funcionario.Arquivo.Length > 0)
+                {
+                    using (Stream fileStream = new FileStream(caminho, FileMode.Create))
+                    {
+                        await funcionario.Arquivo.CopyToAsync(fileStream);
+                    }
+                }
+
                 try
                 {
                     funcionario.Senha = BCrypt.Net.BCrypt.HashPassword(funcionario.Senha);

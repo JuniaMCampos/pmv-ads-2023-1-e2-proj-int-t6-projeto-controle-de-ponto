@@ -21,7 +21,7 @@
                 @Html.DisplayNameFor(model => model.Motivo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AnexarDocumento)
+                Arquivo
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
@@ -45,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Motivo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AnexarDocumento)
+                <a href=@("../Arquivos/" + item.AnexarDocumento)>Baixar</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

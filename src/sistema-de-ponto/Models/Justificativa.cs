@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,6 +20,10 @@ namespace sistema_de_ponto.Models
 
         [Display(Name = "Anexar Documento")]
         public string AnexarDocumento { get; set; }
+
+        [NotMapped]
+        //[FileExtensions(Extensions = "jpg,jpeg,pdf")]
+        public IFormFile Arquivo { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o Status")]
         [Display(Name = "Status da solicitação")]
