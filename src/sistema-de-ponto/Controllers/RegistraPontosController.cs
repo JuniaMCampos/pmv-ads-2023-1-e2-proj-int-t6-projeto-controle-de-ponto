@@ -144,7 +144,13 @@ namespace sistema_de_ponto.Controllers
             {
                 return NotFound();
             }
+            await _context.Entry(registraPonto)
+                           .Reference(r => r.Funcionario)                         
+                           .LoadAsync();
+
             ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", registraPonto.FuncionarioId);
+
+            ViewBag.DataRegistro = registraPonto.Data.ToShortDateString();
             return View(registraPonto);
         }
 
@@ -178,7 +184,7 @@ namespace sistema_de_ponto.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ControlePonto));
             }
             ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", registraPonto.FuncionarioId);
             return View(registraPonto);
