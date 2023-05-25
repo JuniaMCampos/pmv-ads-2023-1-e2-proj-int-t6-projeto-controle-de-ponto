@@ -27,7 +27,7 @@
                 @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Funcionario)
+                @Html.DisplayNameFor(model => model.Funcionario.Nome)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ponto)
@@ -51,14 +51,14 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Funcionario.Cargo)
+                    @Html.DisplayFor(modelItem => item.Funcionario.Nome) @Html.DisplayFor(modelItem => item.Funcionario.Sobrenome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ponto.Turno)
             </td>
                 <td class="p-1">
                     <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/img/Icones/edit_square_FILL0_wght400_GRAD0_opsz48.png" height="30" width="30" />
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" /></svg>
                     </button>
                     <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Editar</a>

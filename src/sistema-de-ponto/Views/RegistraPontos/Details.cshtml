@@ -4,18 +4,15 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Ponto do Dia</h1>
+<h2>@Html.DisplayFor(model => model.Funcionario.Nome) @Html.DisplayFor(model => model.Funcionario.Sobrenome)</h2>
 
 <div>
-    <h4>RegistraPonto</h4>
+    
+
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Funcionario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Funcionario.Cargo)
-        </dd>
+        
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Data)
         </dt>
@@ -49,6 +46,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-warning rounded-pill mr-1" asp-action="Edit" asp-route-id="@Model.Id">Ajustar</a> 
+    <a class="btn btn-secondary rounded-pill" asp-action="Index">Voltar</a>
 </div>

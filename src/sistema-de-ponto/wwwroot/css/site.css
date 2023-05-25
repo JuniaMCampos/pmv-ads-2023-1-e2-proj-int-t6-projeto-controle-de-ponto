@@ -17,10 +17,10 @@ h1 {
    background-color: transparent;
 }
 
-.dropdown-item:focus, .dropdown-item:hover {
-   color: #16181b;
-   text-decoration: underline;
-   background-color: transparent;
+.dropdown-item:focus, .dropdown-item:hover, a.nav-link:hover {
+    color: #16181b;
+    text-decoration: underline;
+    background-color: transparent;
 }
 
 h1.especial,h2.especial, p.especial {

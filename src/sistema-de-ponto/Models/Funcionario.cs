@@ -57,6 +57,7 @@ namespace sistema_de_ponto.Models
         public int? EmpresaId { get; set; }
 
         [ForeignKey("EmpresaId")]
+        [Display(Name = "Empresa ")]
         public Empresa Empresa { get; set; }
 
         public ICollection<Ponto> Pontos { get; set; }

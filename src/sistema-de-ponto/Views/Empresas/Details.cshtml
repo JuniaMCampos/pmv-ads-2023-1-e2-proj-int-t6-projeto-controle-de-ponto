@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Detalhes Empresa</h1>
+<h1>@Html.DisplayFor(model => model.Nome)</h1>
 
 <div>
     <hr />
@@ -24,6 +24,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary rounded-pill">Editar</a> 
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning rounded-pill">Editar</a> 
     <a asp-action="Index" class="btn btn-secondary rounded-pill">Voltar</a>
 </div>
