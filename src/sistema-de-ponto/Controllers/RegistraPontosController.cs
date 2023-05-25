@@ -148,7 +148,7 @@ namespace sistema_de_ponto.Controllers
                            .Reference(r => r.Funcionario)                         
                            .LoadAsync();
 
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Cargo", registraPonto.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(new List<Funcionario> {registraPonto.Funcionario }, "Id", "Nome", registraPonto.FuncionarioId);
 
             ViewBag.DataRegistro = registraPonto.Data.ToShortDateString();
             return View(registraPonto);
@@ -186,7 +186,10 @@ namespace sistema_de_ponto.Controllers
                 }
                 return RedirectToAction(nameof(ControlePonto));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", registraPonto.FuncionarioId);
+            await _context.Entry(registraPonto)
+                           .Reference(r => r.Funcionario)
+                           .LoadAsync();
+            new SelectList(new List<Funcionario> { registraPonto.Funcionario }, "Id", "Nome", registraPonto.FuncionarioId);
             return View(registraPonto);
         }
 
@@ -217,7 +220,7 @@ namespace sistema_de_ponto.Controllers
             var registraPonto = await _context.RegistraPontos.FindAsync(id);
             _context.RegistraPontos.Remove(registraPonto);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(ControlePonto));
         }
 
         private bool RegistraPontoExists(int id)
