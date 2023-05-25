@@ -25,7 +25,7 @@ namespace sistema_de_ponto.Controllers
             _context = context;
         }
 
-        // GET: Empresas
+        // GET: Empres
         public async Task<IActionResult> Index()
         {
             return View(await _context.Empresas.ToListAsync());
