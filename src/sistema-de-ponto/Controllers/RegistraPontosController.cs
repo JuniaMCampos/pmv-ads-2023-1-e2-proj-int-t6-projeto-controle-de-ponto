@@ -9,6 +9,7 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,6 +18,7 @@ using sistema_de_ponto.Models;
 
 namespace sistema_de_ponto.Controllers
 {
+    [Authorize]
     public class RegistraPontosController : Controller
     {
         private readonly ApplicationDbContext _context;

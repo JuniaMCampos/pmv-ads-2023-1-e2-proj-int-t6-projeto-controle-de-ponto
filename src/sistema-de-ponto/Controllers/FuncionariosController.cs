@@ -10,6 +10,7 @@ using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,7 @@ using Path = System.IO.Path;
 
 namespace sistema_de_ponto.Controllers
 {
+    [Authorize]
     public class FuncionariosController : Controller
     {
         private readonly ApplicationDbContext _context;

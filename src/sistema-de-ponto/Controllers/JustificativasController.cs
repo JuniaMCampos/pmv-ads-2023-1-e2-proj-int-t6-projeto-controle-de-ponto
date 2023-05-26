@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using sistema_de_ponto.Models;
 
 namespace sistema_de_ponto.Controllers
 {
+    [Authorize]
     public class JustificativasController : Controller
     {
         private readonly ApplicationDbContext _context;
