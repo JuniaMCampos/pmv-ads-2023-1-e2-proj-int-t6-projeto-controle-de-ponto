@@ -34,12 +34,14 @@ namespace sistema_de_ponto.Controllers
             _env = env;
         }
 
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([Bind("Email, Senha")] Funcionario funcionario)
         {
             var func = await _context.Funcionarios
