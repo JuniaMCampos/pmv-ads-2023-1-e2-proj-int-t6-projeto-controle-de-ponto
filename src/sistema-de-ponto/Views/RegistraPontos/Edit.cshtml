@@ -19,6 +19,12 @@
                 <select asp-for="FuncionarioId" class="form-control" asp-items="ViewBag.FuncionarioId"></select>
             </div>
 
+            <div class="form-group col-md-6" hidden>
+                <label asp-for="Data" class="control-label"></label>
+                <input type="date" asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label asp-for="HoraEntrada1" class="control-label"></label>
