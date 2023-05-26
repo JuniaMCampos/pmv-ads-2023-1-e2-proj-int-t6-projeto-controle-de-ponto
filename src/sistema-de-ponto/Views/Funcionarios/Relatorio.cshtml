@@ -1,0 +1,80 @@
+﻿@model IEnumerable<sistema_de_ponto.Models.Funcionario>
+
+@{
+    ViewData["Title"] = "Relatorio";
+}
+<h1>Relatório:</h1>
+<h2>Colaboradores Cadastrados</h2>
+
+<a class="btn btn-warning rounded-pill" href="@Url.Action("ExportarPDF", "Funcionarios")"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M220 896q-24 0-42-18t-18-42V693h60v143h520V693h60v143q0 24-18 42t-42 18H220Zm260-153L287 550l43-43 120 120V256h60v371l120-120 43 43-193 193Z" /></svg>Exportar para PDF</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sobrenome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Perfil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+
+                <td>
+                    <img src=@("../Arquivos/" + item.Foto) alt="" width="32" height="32" class="rounded-circle me-2">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sobrenome)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departamento)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Perfil)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cargo)
+                    
+                </td>
+
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>

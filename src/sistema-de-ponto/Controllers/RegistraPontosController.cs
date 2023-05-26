@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -257,6 +263,89 @@ namespace sistema_de_ponto.Controllers
             ViewData["Funcionarios"] = new SelectList(funcionarios, "Id", "Nome");
 
             return View(registrosPonto);
+
+
+
+        }
+
+        public async Task<IActionResult> Relatorio()
+        {
+
+            var registros = await _context.RegistraPontos
+                .Include(f=> f.Funcionario)
+                .ToListAsync();
+
+            return View(registros);
+        }
+
+        // GET: Relatorio/ExportarPDF
+        public IActionResult ExportarPDF()
+        {
+            var pontos = _context.RegistraPontos
+                .Include(e => e.Funcionario)
+                .ToList();
+
+            var memoryStream = new MemoryStream();
+
+            var writer = new PdfWriter(memoryStream);
+            var pdfDocument = new PdfDocument(writer);
+            var document = new Document(pdfDocument);
+
+            PageSize pageSize = new PageSize(PageSize.A4.Rotate());
+            pdfDocument.SetDefaultPageSize(pageSize);
+
+            var titulo = new Paragraph(" Espelho Ponto" );
+            document.Add(titulo);
+
+
+
+            // Cabeçalho
+            var table = new Table(8).UseAllAvailableWidth();
+            table.AddCell(new Cell().Add(new Paragraph(" Colaborador ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Sobrenome ")));
+            table.AddCell(new Cell().Add(new Paragraph(" 1 Entrada ")));
+            table.AddCell(new Cell().Add(new Paragraph(" 1 Saída ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Intervalo ")));
+            table.AddCell(new Cell().Add(new Paragraph(" 2 Entrada ")));
+            table.AddCell(new Cell().Add(new Paragraph(" 2 Saída ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Total da Jornada")));
+
+            // Dados
+            foreach (var item in pontos)
+            {
+
+
+                table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Nome)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Sobrenome)));
+                table.AddCell(new Cell().Add(new Paragraph(item.HoraEntrada1.Value.ToShortTimeString())));
+                table.AddCell(new Cell().Add(new Paragraph(item.HoraSaida1.Value.ToShortTimeString())));
+                table.AddCell(new Cell().Add(new Paragraph(item.Intervalo.Value.ToString("hh\\:mm\\:ss"))));
+                table.AddCell(new Cell().Add(new Paragraph(item.HoraEntrada2.Value.ToShortTimeString())));
+                table.AddCell(new Cell().Add(new Paragraph(item.HoraSaida2.Value.ToShortTimeString())));
+                table.AddCell(new Cell().Add(new Paragraph(item.TotalDeHoras.Value.ToString("hh\\:mm\\:ss"))));
+
+
+
+            }
+
+            document.Add(table);
+
+            // Rodapé do documento
+            var dataHoraAtual = DateTime.Now;
+            
+            var rodape = new Paragraph($"Data: {dataHoraAtual.ToString("dd/MM/yyyy")}   Hora: {dataHoraAtual.ToString("HH:mm:ss")} Ass:_____________________________________________ ");
+           
+
+            var numeroPaginas = pdfDocument.GetNumberOfPages();
+            document.ShowTextAligned(rodape, 30, 30, numeroPaginas, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
+            
+            document.Close();
+
+            var content = memoryStream.ToArray();
+            return File(content, "application/pdf", "Espelho_de_Ponto.pdf");
+
+
+
 
 
 

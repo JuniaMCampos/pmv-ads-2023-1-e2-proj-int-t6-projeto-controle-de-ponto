@@ -21,33 +21,33 @@ namespace sistema_de_ponto.Models
         public DateTime Data { get; set; }
 
         [Display(Name = "1 Entrada")]
-        [DisplayFormat(DataFormatString = "{0:HH\\:mm}")]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm\\:ss}")]
         public DateTime? HoraEntrada1 { get; set; }
 
 
         [Display(Name = "1 Saída")]
-        [DisplayFormat(DataFormatString = "{0:HH\\:mm}")]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm\\:ss}")]
         public DateTime? HoraSaida1 { get; set; }
 
 
         [Display(Name = "2 Entrada")]
-        [DisplayFormat(DataFormatString = "{0:HH\\:mm}")]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm\\:ss}")]
         public DateTime? HoraEntrada2 { get; set; }
 
         [Display(Name = "2 Saída")]
-        [DisplayFormat(DataFormatString = "{0:HH\\:mm}")]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm\\:ss}")]
         public DateTime? HoraSaida2 { get; set; }
 
         [NotMapped]
         [Display(Name = "Intervalo")]
-        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm\\:ss}")]
         public TimeSpan? Intervalo
         {
             get
             { 
                 if(HoraSaida1.HasValue)
                 {
-                    return (TimeSpan)(HoraSaida1 - HoraEntrada1);
+                    return (TimeSpan)(HoraSaida1 - HoraEntrada2);
                 }
                 else
                 {
@@ -58,7 +58,7 @@ namespace sistema_de_ponto.Models
         }
 
         [NotMapped]
-        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm\\:ss}")]
         public TimeSpan? TotalDeHoras
         {
             get
