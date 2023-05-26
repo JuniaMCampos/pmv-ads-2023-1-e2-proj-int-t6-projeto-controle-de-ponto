@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 
 using System.Threading.Tasks;
+using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
@@ -52,14 +53,19 @@ namespace sistema_de_ponto.Controllers
 
         public async Task<IActionResult> Relatorio()
         {
-            var applicationDbContext = _context.Pontos.Include(p => p.Funcionario);
+           
+            
+            var applicationDbContext = _context.Pontos.Include(p => p.Funcionario).Include(e => e.Funcionario.Empresa);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Relatorio/ExportarPDF
         public IActionResult ExportarPDF()
         {
-            var pontos = _context.Pontos.Include(e => e.Funcionario).ToList();
+            var pontos = _context.Pontos
+                .Include(e => e.Funcionario)
+                .Include(e => e.Funcionario.Empresa)
+                .ToList();
 
             var memoryStream = new MemoryStream();
 
@@ -67,17 +73,21 @@ namespace sistema_de_ponto.Controllers
             var pdfDocument = new PdfDocument(writer);
             var document = new Document(pdfDocument);
 
+            PageSize pageSize = new PageSize(PageSize.A4.Rotate());
+            pdfDocument.SetDefaultPageSize(pageSize);
+
             var titulo = new Paragraph("Relatório de Turnos por Funcionários");
             document.Add(titulo);
 
             
 
             // Cabeçalho
-            var table = new Table(10).UseAllAvailableWidth();
+            var table = new Table(11).UseAllAvailableWidth();
             table.AddCell(new Cell().Add(new Paragraph(" ID ")));
             table.AddCell(new Cell().Add(new Paragraph(" Turno ")));
             table.AddCell(new Cell().Add(new Paragraph(" Colaborador ")));
             table.AddCell(new Cell().Add(new Paragraph(" Sobrenome ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Empresa ")));
             table.AddCell(new Cell().Add(new Paragraph(" 1 Entrada ")));
             table.AddCell(new Cell().Add(new Paragraph(" 1 Saída ")));
             table.AddCell(new Cell().Add(new Paragraph(" Intervalo ")));
@@ -88,13 +98,14 @@ namespace sistema_de_ponto.Controllers
             // Dados
             foreach (var item in pontos)
             {
-                string horaEntrada1 = item.HoraEntrada1.Value.ToShortTimeString();
+                
               
                     table.AddCell(new Cell().Add(new Paragraph(item.Id.ToString())));
                     table.AddCell(new Cell().Add(new Paragraph(item.Turno)));
                     table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Nome)));
                     table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Sobrenome)));
-                    table.AddCell(new Cell().Add(new Paragraph(horaEntrada1)));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Empresa.Nome)));
+                    table.AddCell(new Cell().Add(new Paragraph(item.HoraEntrada1.Value.ToShortTimeString())));
                     table.AddCell(new Cell().Add(new Paragraph(item.HoraSaida1.Value.ToShortTimeString())));
                     table.AddCell(new Cell().Add(new Paragraph(item.Intervalo.Value.ToString())));
                     table.AddCell(new Cell().Add(new Paragraph(item.HoraEntrada2.Value.ToShortTimeString())));
