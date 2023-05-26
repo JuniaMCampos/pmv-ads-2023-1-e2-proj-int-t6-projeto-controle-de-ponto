@@ -4,6 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc;
 using sistema_de_ponto.Models;
+using Path = System.IO.Path;
 
 namespace sistema_de_ponto.Controllers
 {
@@ -263,6 +269,95 @@ namespace sistema_de_ponto.Controllers
         private bool FuncionarioExists(int id)
         {
             return _context.Funcionarios.Any(e => e.Id == id);
+        }
+
+        public async Task<IActionResult> Relatorio()
+        {
+           
+            var funcionarios = await _context.Funcionarios
+                .Include(f => f.Empresa)
+                .ToListAsync();
+           
+            return View(funcionarios);
+        }
+
+        // GET: Relatorio/ExportarPDF
+        public IActionResult ExportarPDF()
+        {
+            var funcionarios = _context.Funcionarios
+                .Include(f => f.Empresa)
+                .ToList();
+
+            
+            var memoryStream = new MemoryStream();
+
+            var writer = new PdfWriter(memoryStream);
+            var pdfDocument = new PdfDocument(writer);
+            var document = new Document(pdfDocument);
+
+            PageSize pageSize = new PageSize(PageSize.A4.Rotate());
+            pdfDocument.SetDefaultPageSize(pageSize);
+
+            var titulo = new Paragraph("Relatório de Colaboradores");
+            document.Add(titulo);
+
+
+
+            // Cabeçalho
+            var table = new Table(11).UseAllAvailableWidth();
+            table.AddCell(new Cell().Add(new Paragraph(" ID ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Colaborador ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Sobrenome ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Departamento")));
+            table.AddCell(new Cell().Add(new Paragraph(" Empresa")));
+            table.AddCell(new Cell().Add(new Paragraph(" Cargo ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Cpf")));
+            table.AddCell(new Cell().Add(new Paragraph(" Pis ")));
+            table.AddCell(new Cell().Add(new Paragraph("Telefone ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Email")));
+            table.AddCell(new Cell().Add(new Paragraph(" Perfil ")));
+
+            // Dados
+            foreach (var item in funcionarios)
+            {
+
+
+                table.AddCell(new Cell().Add(new Paragraph(item.Id.ToString())));
+                table.AddCell(new Cell().Add(new Paragraph(item.Nome)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Sobrenome)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Departamento)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Empresa.Nome)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Cargo)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Cpf)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Pis)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Telefone)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Email)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Perfil.ToString())));
+
+
+
+            }
+
+            document.Add(table);
+
+            // Rodapé do documento
+            var dataHoraAtual = DateTime.Now;
+            var rodape = new Paragraph($"Apontei Sistemas Data: {dataHoraAtual.ToString("dd/MM/yyyy")}   Hora: {dataHoraAtual.ToString("HH:mm:ss")}");
+
+
+            var numeroPaginas = pdfDocument.GetNumberOfPages();
+            document.ShowTextAligned(rodape, 30, 30, numeroPaginas, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
+
+            document.Close();
+
+            var content = memoryStream.ToArray();
+            return File(content, "application/pdf", "Relatorio_de_Colaboradores.pdf");
+
+
+
+
+
+
         }
     }
 }

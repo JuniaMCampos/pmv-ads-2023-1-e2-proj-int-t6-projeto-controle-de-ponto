@@ -4,55 +4,65 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editar</h1>
+<h1>Ajuste de Ponto</h1>
 
-<h4>RegistraPonto</h4>
+<h3>@Model.Funcionario.Nome</h3>
+<h4>@ViewBag.DataRegistro</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="FuncionarioId" class="control-label"></label>
+           <div class="form-group col-md-4" hidden>
+                <label  asp-for="FuncionarioId" class="control-label"></label>
                 <select asp-for="FuncionarioId" class="form-control" asp-items="ViewBag.FuncionarioId"></select>
-                <span asp-validation-for="FuncionarioId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group col-md-6" hidden>
                 <label asp-for="Data" class="control-label"></label>
-                <input asp-for="Data" class="form-control" />
+                <input type="date" asp-for="Data" class="form-control" />
                 <span asp-validation-for="Data" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="HoraEntrada1" class="control-label"></label>
-                <input asp-for="HoraEntrada1" class="form-control" />
-                <span asp-validation-for="HoraEntrada1" class="text-danger"></span>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    
+                    @Html.LabelFor(model=> model.HoraEntrada1)
+                    @Html.TextBoxFor(model=> model.HoraEntrada1, "{0:HH\\:mm}", new { @class = "form-control", @type = "time" } )
+                    <span asp-validation-for="HoraEntrada1" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model=> model.HoraSaida1)
+                    @Html.TextBoxFor(model=> model.HoraSaida1, "{0:HH\\:mm}", new { @class = "form-control", @type = "time" } )
+                    <span asp-validation-for="HoraSaida1" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model=> model.HoraEntrada2)
+                    @Html.TextBoxFor(model=> model.HoraEntrada2, "{0:HH\\:mm}", new { @class = "form-control", @type = "time" } )
+                    <span asp-validation-for="HoraEntrada2" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model=> model.HoraSaida2)
+                    @Html.TextBoxFor(model=> model.HoraSaida2, "{0:HH\\:mm}", new { @class = "form-control", @type = "time" } )
+                    <span asp-validation-for="HoraSaida2" class="text-danger"></span>
+                </div>
+
             </div>
             <div class="form-group">
-                <label asp-for="HoraSaida1" class="control-label"></label>
-                <input asp-for="HoraSaida1" class="form-control" />
-                <span asp-validation-for="HoraSaida1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoraEntrada2" class="control-label"></label>
-                <input asp-for="HoraEntrada2" class="form-control" />
-                <span asp-validation-for="HoraEntrada2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoraSaida2" class="control-label"></label>
-                <input asp-for="HoraSaida2" class="form-control" />
-                <span asp-validation-for="HoraSaida2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-warning rounded-pill" />
+                <a class="btn btn-secondary rounded-pill" asp-action="ControlePonto">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Voltar</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

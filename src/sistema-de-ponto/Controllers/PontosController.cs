@@ -1,7 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+
 using System.Threading.Tasks;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using Microsoft.AspNetCore.Mvc;     
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -44,23 +51,95 @@ namespace sistema_de_ponto.Controllers
             return View(ponto);
         }
 
-        public async Task<IActionResult> Relatorio(int? id)
+        public async Task<IActionResult> Relatorio()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var ponto = await _context.Pontos
-                .Include(p => p.Funcionario)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (ponto == null)
-            {
-                return NotFound();
-            }
-
-            return View(ponto);
+           
+            
+            var applicationDbContext = _context.Pontos.Include(p => p.Funcionario).Include(e => e.Funcionario.Empresa);
+            return View(await applicationDbContext.ToListAsync());
         }
+
+        // GET: Relatorio/ExportarPDF
+        public IActionResult ExportarPDF()
+        {
+            var pontos = _context.Pontos
+                .Include(e => e.Funcionario)
+                .Include(e => e.Funcionario.Empresa)
+                .ToList();
+
+            var memoryStream = new MemoryStream();
+
+            var writer = new PdfWriter(memoryStream);
+            var pdfDocument = new PdfDocument(writer);
+            var document = new Document(pdfDocument);
+
+            PageSize pageSize = new PageSize(PageSize.A4.Rotate());
+            pdfDocument.SetDefaultPageSize(pageSize);
+
+            var titulo = new Paragraph("Relatório de Turnos por Funcionários");
+            document.Add(titulo);
+
+            
+
+            // Cabeçalho
+            var table = new Table(11).UseAllAvailableWidth();
+            table.AddCell(new Cell().Add(new Paragraph(" ID ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Turno ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Colaborador ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Sobrenome ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Empresa ")));
+            table.AddCell(new Cell().Add(new Paragraph(" 1 Entrada ")));
+            table.AddCell(new Cell().Add(new Paragraph(" 1 Saída ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Intervalo ")));
+            table.AddCell(new Cell().Add(new Paragraph(" 2 Entrada ")));
+            table.AddCell(new Cell().Add(new Paragraph(" 2 Saída ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Total de Horas ")));
+
+            // Dados
+            foreach (var item in pontos)
+            {
+                
+              
+                    table.AddCell(new Cell().Add(new Paragraph(item.Id.ToString())));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Turno)));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Nome)));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Sobrenome)));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Empresa.Nome)));
+                    table.AddCell(new Cell().Add(new Paragraph(item.HoraEntrada1.Value.ToShortTimeString())));
+                    table.AddCell(new Cell().Add(new Paragraph(item.HoraSaida1.Value.ToShortTimeString())));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Intervalo.Value.ToString())));
+                    table.AddCell(new Cell().Add(new Paragraph(item.HoraEntrada2.Value.ToShortTimeString())));
+                    table.AddCell(new Cell().Add(new Paragraph(item.HoraSaida2.Value.ToShortTimeString())));
+                    table.AddCell(new Cell().Add(new Paragraph(item.TotalDeHoras.Value.ToString())));
+
+
+
+            }
+
+            document.Add(table);
+
+            // Rodapé do documento
+            var dataHoraAtual = DateTime.Now;
+            var rodape = new Paragraph($"Apontei Sistemas Data: {dataHoraAtual.ToString("dd/MM/yyyy")}   Hora: {dataHoraAtual.ToString("HH:mm:ss")}");
+
+
+            var numeroPaginas = pdfDocument.GetNumberOfPages();
+            document.ShowTextAligned(rodape, 30, 30, numeroPaginas, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
+
+            document.Close();
+
+            var content = memoryStream.ToArray();
+            return File(content, "application/pdf", "Relatorio_de_Turnos.pdf");
+
+
+
+
+
+
+        }
+
+
+
 
         // GET: Pontos/Create
         public IActionResult Create()

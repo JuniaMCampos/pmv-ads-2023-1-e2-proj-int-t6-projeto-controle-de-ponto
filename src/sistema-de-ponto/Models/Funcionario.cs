@@ -60,6 +60,7 @@ namespace sistema_de_ponto.Models
         [Display(Name = "Empresa ")]
         public Empresa Empresa { get; set; }
 
+        [Display(Name = "Turno")]
         public ICollection<Ponto> Pontos { get; set; }
 
         public ICollection<Justificativa> Justificativas { get; set; }

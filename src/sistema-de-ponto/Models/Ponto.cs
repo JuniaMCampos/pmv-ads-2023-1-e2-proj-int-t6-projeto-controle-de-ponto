@@ -57,7 +57,7 @@ namespace sistema_de_ponto.Models
 
 
 
-        [Required(ErrorMessage = "Obritatório informar o Nome do Turno")]
+        [Required(ErrorMessage = "Obrigatório informar o Nome do Turno")]
         public string Turno { get; set; }
 
         public int FuncionarioId { get; set; }
