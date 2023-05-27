@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
+using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
 using Microsoft.AspNetCore.Authorization;
@@ -14,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sistema_de_ponto.Models;
+
+
 
 namespace sistema_de_ponto.Controllers
 {

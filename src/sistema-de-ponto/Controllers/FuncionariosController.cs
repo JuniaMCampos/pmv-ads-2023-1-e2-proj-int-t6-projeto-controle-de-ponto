@@ -20,6 +20,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc;
 using sistema_de_ponto.Models;
 using Path = System.IO.Path;
 
+
 namespace sistema_de_ponto.Controllers
 {
     [Authorize]
@@ -90,6 +91,8 @@ namespace sistema_de_ponto.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login", "Funcionarios");
         }
+
+        [AllowAnonymous]
         public IActionResult AccessDenied()
         {
             return View();
@@ -134,6 +137,7 @@ namespace sistema_de_ponto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="Gestor")]
         public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto, Arquivo,EmpresaId")] Funcionario funcionario)
         {
             //Pegando a extensão do arquivo
@@ -262,6 +266,7 @@ namespace sistema_de_ponto.Controllers
         // POST: Funcionarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Gestor")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var funcionario = await _context.Funcionarios.FindAsync(id);
@@ -297,7 +302,7 @@ namespace sistema_de_ponto.Controllers
 
             var writer = new PdfWriter(memoryStream);
             var pdfDocument = new PdfDocument(writer);
-            var document = new Document(pdfDocument);
+            Document document = new(pdfDocument);
 
             PageSize pageSize = new PageSize(PageSize.A4.Rotate());
             pdfDocument.SetDefaultPageSize(pageSize);

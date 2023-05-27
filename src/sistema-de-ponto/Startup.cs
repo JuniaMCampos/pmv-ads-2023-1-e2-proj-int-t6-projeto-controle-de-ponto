@@ -76,9 +76,10 @@ namespace sistema_de_ponto
 
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
-            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
