@@ -66,28 +66,35 @@ namespace sistema_de_ponto.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Data,Motivo,AnexarDocumento,Status,FuncionarioId,Arquivo,PontoId")] Justificativa justificativa)
         {
-            //Pegando a extensão do arquivo
-            string extensao = Path.GetExtension(justificativa.Arquivo.FileName);
-
-            //Garantindo um nome "único" para o arquivo.
-            string nomeUnico = Guid.NewGuid().ToString();
-
-            //Pegando a pasta de arquivos estáticos
-            string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
-
-            justificativa.AnexarDocumento = nomeUnico + extensao;
+           
 
             if (ModelState.IsValid)
             {
-                if (justificativa.Arquivo.Length > 0)
-                {
-                    using (Stream fileStream = new FileStream(caminho, FileMode.Create))
+            
+                    if (justificativa.Arquivo != null && justificativa.Arquivo.Length > 0)
                     {
-                        await justificativa.Arquivo.CopyToAsync(fileStream);
+                    //Pegando a extensão do arquivo
+                    string extensao = Path.GetExtension(justificativa.Arquivo.FileName);
+
+                    //Garantindo um nome "único" para o arquivo.
+                    string nomeUnico = Guid.NewGuid().ToString();
+
+                    //Pegando a pasta de arquivos estáticos
+                    string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
+
+                    justificativa.AnexarDocumento = nomeUnico + extensao;
+
+                    using (Stream fileStream = new FileStream(caminho, FileMode.Create))
+                        {
+                            await justificativa.Arquivo.CopyToAsync(fileStream);
+                        }
                     }
-                }
-             
-                _context.Add(justificativa);
+                    else
+                    {
+                        justificativa.AnexarDocumento = null;
+                    }
+
+                    _context.Add(justificativa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -121,27 +128,33 @@ namespace sistema_de_ponto.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Motivo,AnexarDocumento,Status,FuncionarioId,Arquivo,PontoId")] Justificativa justificativa)
         {
-            //Pegando a extensão do arquivo
-            string extensao = Path.GetExtension(justificativa.Arquivo.FileName);
-
-            //Garantindo um nome "único" para o arquivo.
-            string nomeUnico = Guid.NewGuid().ToString();
-
-            //Pegando a pasta de arquivos estáticos
-            string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
-
-            justificativa.AnexarDocumento = nomeUnico + extensao;
-
+           
             if (ModelState.IsValid)
             {
-                if (justificativa.Arquivo.Length > 0)
+                if (justificativa.Arquivo != null && justificativa.Arquivo.Length > 0)
                 {
+                    //Pegando a extensão do arquivo
+                    string extensao = Path.GetExtension(justificativa.Arquivo.FileName);
+
+                    //Garantindo um nome "único" para o arquivo.
+                    string nomeUnico = Guid.NewGuid().ToString();
+
+                    //Pegando a pasta de arquivos estáticos
+                    string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
+
+                    justificativa.AnexarDocumento = nomeUnico + extensao;
+
                     using (Stream fileStream = new FileStream(caminho, FileMode.Create))
                     {
                         await justificativa.Arquivo.CopyToAsync(fileStream);
                     }
                 }
+                else
+                {
+                    justificativa.AnexarDocumento = null;
+                }
 
+               
                 if (id != justificativa.Id)
             {
                 return NotFound();
