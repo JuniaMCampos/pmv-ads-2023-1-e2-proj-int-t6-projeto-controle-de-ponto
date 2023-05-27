@@ -100,7 +100,7 @@ namespace sistema_de_ponto.Controllers
                 };
                
 
-                if (ultimoRegistroPonto == null  || ultimoRegistroPonto.HoraSaida2 != null)
+                if (ultimoRegistroPonto == null  || ultimoRegistroPonto.HoraSaida2 != null && ultimoRegistroPonto.Data != novoRegistroPonto.Data)
                 {
                 _context.Add(novoRegistroPonto);
                 // Se não houver registros anteriores, define a hora de entrada 1
@@ -124,6 +124,7 @@ namespace sistema_de_ponto.Controllers
                 else
                 {
                     // Todas as etapas já foram registradas, pode-se adicionar uma lógica adicional ou retornar uma mensagem de erro se necessário
+
                     return RedirectToAction("Index", "RegistraPontos");
                 }
  
