@@ -6,7 +6,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
-using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
 using Microsoft.AspNetCore.Authorization;
