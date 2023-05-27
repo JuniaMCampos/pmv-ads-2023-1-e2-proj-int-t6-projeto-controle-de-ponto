@@ -140,25 +140,31 @@ namespace sistema_de_ponto.Controllers
         [Authorize(Roles ="Gestor")]
         public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,Cpf,Pis,Departamento,Cargo,Telefone,Email,Senha,Perfil,Foto, Arquivo,EmpresaId")] Funcionario funcionario)
         {
-            //Pegando a extensão do arquivo
-            string extensao = Path.GetExtension(funcionario.Arquivo.FileName);
-
-            //Garantindo um nome "único" para o arquivo.
-            string nomeUnico = Guid.NewGuid().ToString();
-
-            //Pegando a pasta de arquivos estáticos
-            string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
-
-            funcionario.Foto = nomeUnico + extensao;
+            
 
             if (ModelState.IsValid)
             {
-                if (funcionario.Arquivo.Length > 0)
+                if (funcionario.Arquivo !=null && funcionario.Arquivo.Length > 0)
                 {
+                    //Pegando a extensão do arquivo
+                    string extensao = Path.GetExtension(funcionario.Arquivo.FileName);
+
+                    //Garantindo um nome "único" para o arquivo.
+                    string nomeUnico = Guid.NewGuid().ToString();
+
+                    //Pegando a pasta de arquivos estáticos
+                    string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
+
+                    funcionario.Foto = nomeUnico + extensao;
+
                     using (Stream fileStream = new FileStream(caminho, FileMode.Create))
                     {
                         await funcionario.Arquivo.CopyToAsync(fileStream);
                     }
+                }
+                else
+                {
+                    funcionario.Foto = null;
                 }
                 
                 funcionario.Senha = BCrypt.Net.BCrypt.HashPassword(funcionario.Senha);
@@ -200,25 +206,29 @@ namespace sistema_de_ponto.Controllers
                 return NotFound();
             }
 
-            //Pegando a extensão do arquivo
-            string extensao = Path.GetExtension(funcionario.Arquivo.FileName);
-
-            //Garantindo um nome "único" para o arquivo.
-            string nomeUnico = Guid.NewGuid().ToString();
-
-            //Pegando a pasta de arquivos estáticos
-            string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
-
-            funcionario.Foto = nomeUnico + extensao;
-
             if (ModelState.IsValid)
             {
-                if (funcionario.Arquivo.Length > 0)
+                if (funcionario.Arquivo != null && funcionario.Arquivo.Length > 0)
                 {
+                    //Pegando a extensão do arquivo
+                    string extensao = Path.GetExtension(funcionario.Arquivo.FileName);
+
+                    //Garantindo um nome "único" para o arquivo.
+                    string nomeUnico = Guid.NewGuid().ToString();
+
+                    //Pegando a pasta de arquivos estáticos
+                    string caminho = Path.Combine(_env.ContentRootPath, "Arquivos", nomeUnico + extensao);
+
+                    funcionario.Foto = nomeUnico + extensao;
+
                     using (Stream fileStream = new FileStream(caminho, FileMode.Create))
                     {
                         await funcionario.Arquivo.CopyToAsync(fileStream);
                     }
+                }
+                else
+                {
+                    funcionario.Foto = null;
                 }
 
                 try
