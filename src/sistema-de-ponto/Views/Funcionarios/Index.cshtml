@@ -9,7 +9,10 @@
 <h1>Colaboradores</h1>
 
 <p>
-    <a class="btn btn-outline-dark rounded-pill" asp-action="Create">Cadastrar Colaborador</a>
+    @if (User.IsInRole("Gestor"))
+    {
+        <a class="btn btn-outline-dark rounded-pill" asp-action="Create">Cadastrar Colaborador</a>
+    }
 </p>
 <table class="table">
     <thead>
@@ -59,8 +62,11 @@
                     </button>
                     <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">Visualizar</a>
-                        <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                        @if (User.IsInRole("Gestor"))
+                        {
+                            <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">Visualizar</a>
+                            <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                        }
                     </div>
 
                 </td>
