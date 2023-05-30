@@ -3,23 +3,28 @@
 @{
     ViewData["Title"] = "ControlePonto";
 }
-
+<p>
+    <a class="nav-link p-0" asp-controller="Home" asp-action="Index"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M447 875 169 597q-5-5-7-10t-2-11q0-6 2-11t7-10l279-279q8-8 20-8t21 9q9 9 9 21t-9 21L262 546h496q13 0 21.5 8.5T788 576q0 13-8.5 21.5T758 606H262l228 228q8 8 8 20t-9 21q-9 9-21 9t-21-9Z" /></svg></a>
+</p>
 <h1>Controle de Ponto</h1>
 <hr />
 <section>
     <form method="get" action="/RegistraPontos/ControlePonto" >
        <div class="row">
-
-            <div class="form-group col-md-4">
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data" class="form-control">
-            </div>
             <div class="form-group col-md-4">
                 <label for="funcionarioId" class="control-label">Funcionário:</label>
                 <select id="funcionarioId" name="funcionarioId" class="form-control" asp-items="@ViewBag.Funcionarios">
                     <option value="">Todos</option>
 
                 </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="data">Data Início:</label>
+                <input type="date" id="data" name="data" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="data">Data Fim:</label>
+                <input type="date" id="data" name="data" class="form-control">
             </div>
             <div class="d-flex flex-sm-wrap align-items-center mt-2 ">
                 <button type="submit" class="btn btn-outline-warning rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" /></svg></button>
