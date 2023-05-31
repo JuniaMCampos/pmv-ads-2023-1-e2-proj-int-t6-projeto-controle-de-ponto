@@ -10,9 +10,42 @@
 
 <h1>Relatório:</h1>
 <h2>Espelho de Ponto</h2>
+<form method="get" action="/RegistraPontos/Relatorio" >
+<div class="row">
+        <div class="form-group col-md-3">
+            <label for="funcionarioId" class="control-label">Funcionário:</label>
+            <select id="funcionarioId" name="funcionarioId" class="form-control" asp-items="@ViewBag.Funcionarios">
+                <option value="">Todos</option>
+            </select>
+        </div>
+    <div class="form-group col-md-3">
+        <label for="dataInicial">Data Início:</label>
+            <input type="date" id="dataInicial" name="dataInicial" class="form-control" value="@TempData["DataInicial"]?")">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="dataFinal">Data Fim:</label>
+            <input type="date" id="dataFinal" name="dataFinal" class="form-control" value="@TempData["DataFinal"]?">
+    </div>
+    <div class="d-flex flex-sm-wrap align-items-center mt-2 ">
+        <button type="submit" class="btn btn-outline-warning rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" /></svg></button>
 
-<a class="btn btn-warning rounded-pill" href="@Url.Action("ExportarPDF", "RegistraPontos")"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M220 896q-24 0-42-18t-18-42V693h60v143h520V693h60v143q0 24-18 42t-42 18H220Zm260-153L287 550l43-43 120 120V256h60v371l120-120 43 43-193 193Z" /></svg>Exportar para PDF</a>
+        <a class="btn btn-warning rounded-pill ml-1" asp-area="" asp-controller="RegistraPontos" asp-action="Relatorio"><svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="M451 934q-123-10-207-101t-84-216q0-77 35.5-145T295 361l43 43q-56 33-87 90.5T220 617q0 100 66 173t165 84v60Zm60 0v-60q100-12 165-84.5T741 617q0-109-75.5-184.5T481 357h-20l60 60-43 43-133-133 133-133 43 43-60 60h20q134 0 227 93.5T801 617q0 125-83.5 216T511 934Z" /></svg></a>
+    </div>
+</div>
+    
+    
+</form>
 
+
+
+@if (Model != null && Model.Any())
+{
+
+
+    <a class="btn btn-warning rounded-pill" href="@Url.Action("ExportarPdf", "RegistraPontos", new { dataInicial = TempData["DataInicial"], dataFinal = TempData["DataFinal"], funcionarioId = TempData["FuncionarioId"] })"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M220 896q-24 0-42-18t-18-42V693h60v143h520V693h60v143q0 24-18 42t-42 18H220Zm260-153L287 550l43-43 120 120V256h60v371l120-120 43 43-193 193Z" /></svg>Exportar para PDF</a>
+    
+
+}
 
 
 <table class="table">

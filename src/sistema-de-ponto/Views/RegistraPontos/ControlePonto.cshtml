@@ -11,20 +11,20 @@
 <section>
     <form method="get" action="/RegistraPontos/ControlePonto" >
        <div class="row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="funcionarioId" class="control-label">Funcionário:</label>
                 <select id="funcionarioId" name="funcionarioId" class="form-control" asp-items="@ViewBag.Funcionarios">
                     <option value="">Todos</option>
 
                 </select>
             </div>
-            <div class="form-group col-md-4">
-                <label for="data">Data Início:</label>
-                <input type="date" id="data" name="data" class="form-control">
+            <div class="form-group col-md-3">
+                <label for="dataInicial">Data Início:</label>
+                <input type="date" id="dataInicial" name="dataInicial" class="form-control">
             </div>
-            <div class="form-group col-md-4">
-                <label for="data">Data Fim:</label>
-                <input type="date" id="data" name="data" class="form-control">
+            <div class="form-group col-md-3">
+                <label for="dataFinal">Data Fim:</label>
+                <input type="date" id="dataFinal" name="dataFinal" class="form-control">
             </div>
             <div class="d-flex flex-sm-wrap align-items-center mt-2 ">
                 <button type="submit" class="btn btn-outline-warning rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" /></svg></button>

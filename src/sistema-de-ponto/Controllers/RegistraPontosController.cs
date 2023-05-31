@@ -239,7 +239,7 @@ namespace sistema_de_ponto.Controllers
             return _context.RegistraPontos.Any(e => e.Id == id);
         }
 
-        public async Task<IActionResult> ControlePonto(DateTime? data, int? funcionarioId)
+        public async Task<IActionResult> ControlePonto(DateTime? dataInicial, DateTime? dataFinal, int? funcionarioId)
         {
             var applicationDbContext = _context.RegistraPontos.Include(r => r.Funcionario);
 
@@ -248,10 +248,12 @@ namespace sistema_de_ponto.Controllers
             var query = _context.RegistraPontos.AsQueryable();
 
             // Aplica o filtro por data, se informado
-            if (data.HasValue)
+            if (dataInicial.HasValue && dataFinal.HasValue)
             {
-                query = query.Where(rp => rp.Data.Date == data.Value.Date);
+                // Filtro de intervalo de datas
+                query = query.Where(rp => rp.Data.Date >= dataInicial.Value.Date && rp.Data.Date <= dataFinal.Value.Date);
             }
+           
 
             // Aplica o filtro por funcionário, se informado
             if (funcionarioId.HasValue)
@@ -273,31 +275,80 @@ namespace sistema_de_ponto.Controllers
 
         }
 
-        public async Task<IActionResult> Relatorio()
+        public async Task<IActionResult> Relatorio(DateTime? dataInicial, DateTime? dataFinal, int? funcionarioId)
         {
 
             var registros = await _context.RegistraPontos
                 .Include(f=> f.Funcionario)
                 .ToListAsync();
+            var query = _context.RegistraPontos.AsQueryable();
+            // Aplica o filtro por data, se informado
+            if (dataInicial.HasValue && dataFinal.HasValue)
+            {
+                // Filtro de intervalo de datas
+                query = query.Where(rp => rp.Data.Date >= dataInicial.Value.Date && rp.Data.Date <= dataFinal.Value.Date);
+            }
+            // Aplica o filtro por funcionário, se informado
+            if (funcionarioId.HasValue)
+            {
+                query = query.Where(rp => rp.FuncionarioId == funcionarioId.Value);
+            }
 
-            return View(registros);
+            var registrosPonto = await query.ToListAsync();
+
+            // Obter a lista de funcionários registrados nos pontos
+            var funcionarios = await _context.Funcionarios.ToListAsync();
+
+            // Passar a lista de funcionários para a view
+            ViewData["Funcionarios"] = new SelectList(funcionarios, "Id", "Nome");
+
+            TempData["DataInicial"] = dataInicial;
+            TempData["DataFinal"] = dataFinal;
+            TempData["FuncionarioId"] = funcionarioId;
+
+            return View(registrosPonto);
         }
 
         // GET: Relatorio/ExportarPDF
-        public IActionResult ExportarPDF()
+        public async Task<IActionResult> ExportarPDF(DateTime? dataInicial, DateTime? dataFinal, int? funcionarioId)
         {
-            var pontos = _context.RegistraPontos
-                .Include(e => e.Funcionario)
-                .ToList();
+            
+            var query = _context.RegistraPontos.AsQueryable();
+            // Aplica o filtro por data, se informado
+            if (dataInicial.HasValue && dataFinal.HasValue)
+            {
+                // Filtro de intervalo de datas
+                query = query.Where(rp => rp.Data.Date >= dataInicial.Value.Date && rp.Data.Date <= dataFinal.Value.Date);
+            }
+            // Aplica o filtro por funcionário, se informado
+            if (funcionarioId.HasValue)
+            {
+                query = query.Where(rp => rp.FuncionarioId == funcionarioId.Value);
+            }
 
-            var memoryStream = new MemoryStream();
+            var registrosPonto = await query.ToListAsync();
 
-            var writer = new PdfWriter(memoryStream);
-            var pdfDocument = new PdfDocument(writer);
-            var document = new Document(pdfDocument);
+            // Obter a lista de funcionários registrados nos pontos
+            var funcionarios = await _context.Funcionarios.ToListAsync();
+
+            // Passar a lista de funcionários para a view
+            
+            TempData["FuncionarioId"] = funcionarioId;
+            TempData["DataInicial"] = dataInicial;
+            TempData["DataFinal"] = dataFinal;
+            TempData["FuncionarioId"] = funcionarioId;
+
+
+
+            var stream = new MemoryStream();
+            var writer = new PdfWriter(stream);
+            var pdf = new PdfDocument(writer);
+            var document = new Document(pdf);
+
+          
 
             PageSize pageSize = new PageSize(PageSize.A4.Rotate());
-            pdfDocument.SetDefaultPageSize(pageSize);
+            pdf.SetDefaultPageSize(pageSize);
 
             var titulo = new Paragraph(" Espelho Ponto" );
             document.Add(titulo);
@@ -305,9 +356,10 @@ namespace sistema_de_ponto.Controllers
 
 
             // Cabeçalho
-            var table = new Table(8).UseAllAvailableWidth();
+            var table = new Table(9).UseAllAvailableWidth();
             table.AddCell(new Cell().Add(new Paragraph(" Colaborador ")));
             table.AddCell(new Cell().Add(new Paragraph(" Sobrenome ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Data ")));
             table.AddCell(new Cell().Add(new Paragraph(" 1 Entrada ")));
             table.AddCell(new Cell().Add(new Paragraph(" 1 Saída ")));
             table.AddCell(new Cell().Add(new Paragraph(" Intervalo ")));
@@ -316,18 +368,19 @@ namespace sistema_de_ponto.Controllers
             table.AddCell(new Cell().Add(new Paragraph(" Total da Jornada")));
 
             // Dados
-            foreach (var item in pontos)
+            foreach (var registro in registrosPonto)
             {
 
 
-                table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Nome)));
-                table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Sobrenome)));
-                table.AddCell(new Cell().Add(new Paragraph(item.HoraEntrada1.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(item.HoraSaida1.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(item.Intervalo.Value.ToString("hh\\:mm\\:ss"))));
-                table.AddCell(new Cell().Add(new Paragraph(item.HoraEntrada2.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(item.HoraSaida2.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(item.TotalDeHoras.Value.ToString("hh\\:mm\\:ss"))));
+                table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Nome)));
+                table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Sobrenome)));
+                table.AddCell(new Cell().Add(new Paragraph(registro.Data.ToString("dd/MM/yyyy"))));
+                table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada1.Value.ToShortTimeString())));
+                table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida1.Value.ToShortTimeString())));
+                table.AddCell(new Cell().Add(new Paragraph(registro.Intervalo.Value.ToString("hh\\:mm\\:ss"))));
+                table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada2.Value.ToShortTimeString())));
+                table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida2.Value.ToShortTimeString())));
+                table.AddCell(new Cell().Add(new Paragraph(registro.TotalDeHoras.Value.ToString("hh\\:mm\\:ss"))));
 
 
 
@@ -341,12 +394,12 @@ namespace sistema_de_ponto.Controllers
             var rodape = new Paragraph($"Data: {dataHoraAtual.ToString("dd/MM/yyyy")}   Hora: {dataHoraAtual.ToString("HH:mm:ss")} Ass:_____________________________________________ ");
            
 
-            var numeroPaginas = pdfDocument.GetNumberOfPages();
+            var numeroPaginas = pdf.GetNumberOfPages();
             document.ShowTextAligned(rodape, 30, 30, numeroPaginas, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
             
             document.Close();
 
-            var content = memoryStream.ToArray();
+            var content = stream.ToArray();
             return File(content, "application/pdf", "Espelho_de_Ponto.pdf");
 
 
