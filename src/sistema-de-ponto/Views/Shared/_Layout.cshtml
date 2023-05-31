@@ -20,12 +20,12 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <button class="btn btn-outline-light dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Olá, @User.Identity.Name
+                             @User.Identity.Name
                         </button>
-                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                             <a class="dropdown-item"asp-controller="Funcionarios" asp-action="Logout" >Sair</a>
+                    <div class="dropdown-menu rounded-pill small" aria-labelledby="dropdownMenuButton" id="btnlogout">
+                             <a class="dropdown-item "asp-controller="Funcionarios" asp-action="Logout" >Sair</a>
                             </div>
-
+                             
                     }
                     else
                     {

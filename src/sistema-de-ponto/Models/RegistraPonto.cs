@@ -45,7 +45,7 @@ namespace sistema_de_ponto.Models
         {
             get
             { 
-                if(HoraSaida1.HasValue)
+                if(HoraEntrada2.HasValue)
                 {
                     return (TimeSpan)(HoraSaida1 - HoraEntrada2);
                 }

@@ -12,15 +12,17 @@ h1 {
 }
 
 .dropdown-item.active, .dropdown-item:active {
-   color: #fff;
-   text-decoration: none;
-   background-color: transparent;
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 50rem !important;
 }
 
 .dropdown-item:focus, .dropdown-item:hover, a.nav-link:hover {
     color: #16181b;
     text-decoration: underline;
     background-color: transparent;
+    border-radius: 50rem !important;
 }
 
 h1.especial,h2.especial, p.especial {
@@ -28,4 +30,7 @@ h1.especial,h2.especial, p.especial {
 }
 p.especial{
     font-size:20px;
+}
+#btnlogout {
+    min-width: auto;
 }

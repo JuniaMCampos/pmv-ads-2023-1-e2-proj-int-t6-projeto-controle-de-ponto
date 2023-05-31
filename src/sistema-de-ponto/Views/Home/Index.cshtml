@@ -42,3 +42,25 @@
         }
     </ul>
 </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    
+    
+    @if (User.IsInRole("Funcionario"))
+    {
+        <h1 class="especial">Olá, @User.Identity.Name!</h1>
+
+        <h5><a class="nav-link text-dark" asp-area="" asp-controller="RegistraPontos" asp-action="Index">Acessar meus Registros</a></h5>
+        <hr />
+
+        <div class="container-lg p-3 text-center">
+            <img class="w-50" src="~/Images/logomarca.png" alt="" />
+        
+
+        </div>
+           
+        
+      
+    }
+}
