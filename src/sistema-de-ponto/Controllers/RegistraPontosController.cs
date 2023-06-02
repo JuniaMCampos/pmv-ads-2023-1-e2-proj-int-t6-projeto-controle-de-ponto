@@ -33,7 +33,13 @@ namespace sistema_de_ponto.Controllers
         // GET: RegistraPontos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.RegistraPontos.Include(r => r.Funcionario);
+            // Obtém o ID do funcionário associado ao usuário logado
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            
+
+            var applicationDbContext = _context.RegistraPontos
+                .Include(r => r.Funcionario)
+                .Where(rp => rp.Funcionario.Nome == userId);
             return View(await applicationDbContext.ToListAsync());
         }
 
