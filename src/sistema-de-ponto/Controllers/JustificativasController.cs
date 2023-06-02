@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -218,5 +222,74 @@ namespace sistema_de_ponto.Controllers
         {
             return _context.Justificativas.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> Relatorio()
+        {
+            var applicationDbContext = _context.Justificativas.Include(j => j.Funcionario).Include(j => j.Ponto);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        public IActionResult ExportarPDF()
+        {
+            var justificativas = _context.Justificativas
+                .Include(j => j.Funcionario)
+                .Include(j => j.Ponto);
+
+            var memoryStream = new MemoryStream();
+
+            var writer = new PdfWriter(memoryStream);
+            var pdfDocument = new PdfDocument(writer);
+            var document = new Document(pdfDocument);
+
+            var titulo = new Paragraph("Relatório de Solicitações de Colaboradores");
+            document.Add(titulo);
+
+            // Cabeçalho
+            var table = new Table(5).UseAllAvailableWidth();
+            table.AddCell(new Cell().Add(new Paragraph(" Data")));
+            table.AddCell(new Cell().Add(new Paragraph(" Motivo ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Status ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Colaborador ")));
+            table.AddCell(new Cell().Add(new Paragraph(" Turno ")));
+
+            // Dados
+            foreach (var item in justificativas)
+            {
+                
+                
+                    table.AddCell(new Cell().Add(new Paragraph(item.Data.ToString("dd/MM/yyyy"))));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Motivo)));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Status.ToString())));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Nome)));
+                    table.AddCell(new Cell().Add(new Paragraph(item.Ponto.Turno.ToString())));
+
+
+                
+            }
+
+            document.Add(table);
+
+            // Rodapé do documento
+            var dataHoraAtual = DateTime.Now;
+            var rodape = new Paragraph($"Data: {dataHoraAtual.ToString("dd/MM/yyyy")}   Hora: {dataHoraAtual.ToString("HH:mm:ss")}");
+
+
+            var numeroPaginas = pdfDocument.GetNumberOfPages();
+            document.ShowTextAligned(rodape, 30, 30, numeroPaginas, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
+
+            document.Close();
+
+            var content = memoryStream.ToArray();
+            return File(content, "application/pdf", "Relatorio_de_Solicitações.pdf");
+
+
+
+
+
+
+        }
+
+
+
     }
 }
