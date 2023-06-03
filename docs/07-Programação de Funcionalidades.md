@@ -4,7 +4,7 @@
 
 Implementação do sistema descrita por meio dos requisitos funcionais e/ou não funcionais. Deve relacionar os requisitos atendidos com os artefatos criados (código fonte), deverão apresentadas as instruções para acesso e verificação da implementação que deve estar funcional no ambiente de hospedagem.
 
-versão 1 - Documentação de Programação de Funcionalidades (07/05/2023)
+Versão 1 - Documentação de Programação de Funcionalidades (07/05/2023)
 
 - RF001 - Atualmente a aplicação já conta com o front-end para que o usuário consiga fazer login ao sistema.
 
@@ -24,5 +24,27 @@ versão 1 - Documentação de Programação de Funcionalidades (07/05/2023)
 
 - RNF003 - A aplicação está responsiva.
 
+Versão 2 - Documentação de Programação de Funcionalidades (03/06/2023)
 
+- RF001 - Atualmente a aplicação já conta com o front-end e back-end configurado para autorizar o usuário fazer login ao sistema de acordo com o Tipo "Getsor" ou "Funcionário"
+
+- RF002 - A aplicação já conta com a estrutura de front-end e back-end para que o funcionário consiga fazer o registro de ponto no sistema. 
+
+- RF003 - A aplicação já conta com o front-end e back-end da página "Solicitações" para que o usuário Funcionário consiga justificar alguma mudança na marcação do ponto.
+
+- RF004 - A funcionalidade anexar documentos já conta com o back-end desenvolvido, para que o usuário consiga anexar documentos na hora de justificar a modificação de um ponto.
+
+- RF005 - Funcionalidade desenvolvida. A tela de registro de ponto permite a visualização dos pontos já marcados, porém ainda é necessário ajuste, para que o usuário logado veja apenas a sua marcação.
+
+- RF006 - Funcionalidade não desenvolvida por completo, falta colocar a opção de mudança do status da solicitação para o gestor e a visualização do status para o funcionário.
+
+- RF007 - A aplicação já conta com o front-end e back-end da tela Cadastro de Colaboradores para que o Gestor consiga editar, cadastrar e excluir um funcionário.
+
+- RF008 - A aplicação já conta com o front-end da funcionalidade Relatório para que o gestor consiga visualizar dados de um determinado funcionário. 
+
+- RNF001 - O sistema está publicado no Azure com o seguinte link de acesso: https://apontei.azurewebsites.net/
+
+- RNF002 - O sistema ainda não está responsivo em celulares, mas nas demais telas, sim.
+
+- RNF003 - A aplicação tem um bom nível de constraste entre os elementos e a tela.
 
