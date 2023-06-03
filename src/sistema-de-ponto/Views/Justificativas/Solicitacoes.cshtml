@@ -1,16 +1,14 @@
 ﻿@model IEnumerable<sistema_de_ponto.Models.Justificativa>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Solicitacoes";
 }
 <p>
     <a class="nav-link p-0" asp-controller="Home" asp-action="Index"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M447 875 169 597q-5-5-7-10t-2-11q0-6 2-11t7-10l279-279q8-8 20-8t21 9q9 9 9 21t-9 21L262 546h496q13 0 21.5 8.5T788 576q0 13-8.5 21.5T758 606H262l228 228q8 8 8 20t-9 21q-9 9-21 9t-21-9Z" /></svg></a>
-    </p>
+</p>
 <h1>Solicitações</h1>
 
-<p>
-    <a class="btn btn-outline-dark rounded-pill" asp-action="Create">Cadastrar Solicitação</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -36,47 +34,51 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Motivo)
-            </td>
-            @if(item.AnexarDocumento != null){
-                    <td>
-                        <a class="nav-link text-dark" href=@("../Arquivos/" + item.AnexarDocumento)><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="M319-250h322v-60H319v60Zm0-170h322v-60H319v60ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554v-186H220v680h520v-494H551ZM220-820v186-186 680-680Z" /><title>Sem anexo</title></svg></a>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="m843-28-92-92H180q-24.75 0-42.375-17.625T120-180v-571l-82-82 43-43L886-71l-43 43ZM180-180h511L571-300H240l120-140 80 109 46-55-306-306v512Zm660-22-60-60v-518H262l-60-60h578q24.75 0 42.375 17.625T840-780v578ZM524-518Zm-88 83Z" /></svg>
-                     </td>
-                }
-
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motivo)
+                </td>
+                
+                        @if (item.AnexarDocumento != null)
+                        {
+                        <td>
+                            <a class="nav-link text-dark" href=@("../Arquivos/" + item.AnexarDocumento)><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="M319-250h322v-60H319v60Zm0-170h322v-60H319v60ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554v-186H220v680h520v-494H551ZM220-820v186-186 680-680Z" /><title>Sem anexo</title></svg></a>
+                        </td>
+                        }
+                        else
+                        {
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="m843-28-92-92H180q-24.75 0-42.375-17.625T120-180v-571l-82-82 43-43L886-71l-43 43ZM180-180h511L571-300H240l120-140 80 109 46-55-306-306v512Zm660-22-60-60v-518H262l-60-60h578q24.75 0 42.375 17.625T840-780v578ZM524-518Zm-88 83Z" /></svg>
+                        </td>
+                        }
                
-            <td>
-                    @if (item.Status == Status.Aprovado)
-                    {
+                
+                <td>
+                        @if (item.Status == Status.Aprovado)
+                        {
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="m346-60-76-130-151-31 17-147-96-112 96-111-17-147 151-31 76-131 134 62 134-62 77 131 150 31-17 147 96 111-96 112 17 147-150 31-77 130-134-62-134 62Zm27-79 107-45 110 45 67-100 117-30-12-119 81-92-81-94 12-119-117-28-69-100-108 45-110-45-67 100-117 28 12 119-81 94 81 92-12 121 117 28 70 100Zm107-341Zm-43 133 227-225-45-41-182 180-95-99-46 45 141 140Z" /><title>Aprovado</title></svg>
-                    }
-                    else if (item.Status == Status.Pendente)
-                    {
+                        }
+                        else if (item.Status == Status.Pendente)
+                        {
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="M266.118-430Q287-430 301.5-444.618q14.5-14.617 14.5-35.5Q316-501 301.382-515.5q-14.617-14.5-35.5-14.5Q245-530 230.5-515.382q-14.5 14.617-14.5 35.5Q216-459 230.618-444.5q14.617 14.5 35.5 14.5Zm214 0Q501-430 515.5-444.618q14.5-14.617 14.5-35.5Q530-501 515.382-515.5q-14.617-14.5-35.5-14.5Q459-530 444.5-515.382q-14.5 14.617-14.5 35.5Q430-459 444.618-444.5q14.617 14.5 35.5 14.5Zm213 0Q714-430 728.5-444.618q14.5-14.617 14.5-35.5Q743-501 728.382-515.5q-14.617-14.5-35.5-14.5Q672-530 657.5-515.382q-14.5 14.617-14.5 35.5Q643-459 657.618-444.5q14.617 14.5 35.5 14.5ZM480.266-80q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80-397.681 80-480.5q0-82.819 31.5-155.659Q143-709 197.5-763t127.341-85.5Q397.681-880 480.5-880q82.819 0 155.659 31.5Q709-817 763-763t85.5 127Q880-563 880-480.266q0 82.734-31.5 155.5T763-197.684q-54 54.316-127 86Q563-80 480.266-80Zm.234-60Q622-140 721-239.5t99-241Q820-622 721.188-721 622.375-820 480-820q-141 0-240.5 98.812Q140-622.375 140-480q0 141 99.5 240.5t241 99.5Zm-.5-340Z" /><title>Pendente</title></svg>
-                    }
-                    else if (item.Status == Status.Reprovado)
-                    {
+                        }
+                        else if (item.Status == Status.Reprovado)
+                        {
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="m330-288 150-150 150 150 42-42-150-150 150-150-42-42-150 150-150-150-42 42 150 150-150 150 42 42ZM480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Zm0-60q142 0 241-99.5T820-480q0-142-99-241t-241-99q-141 0-240.5 99T140-480q0 141 99.5 240.5T480-140Zm0-340Z" /><title>Reprovado</title></svg>
-                    }
-            </td>
-            <td>
+                        }
+                </td>
+                
+                <td>
                     @Html.DisplayFor(modelItem => item.Funcionario.Nome) @Html.DisplayFor(modelItem => item.Funcionario.Sobrenome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ponto.Turno)
-            </td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ponto.Turno)
+                </td>
                 <td class="p-1">
                     <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" /></svg>
@@ -91,7 +93,7 @@
                     </div>
 
                 </td>
-        </tr>
-}
+            </tr>
+        }
     </tbody>
 </table>

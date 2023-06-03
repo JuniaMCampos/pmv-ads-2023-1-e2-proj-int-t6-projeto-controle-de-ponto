@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using iText.Kernel.Pdf;
 using iText.Layout;
@@ -31,7 +32,12 @@ namespace sistema_de_ponto.Controllers
         // GET: Justificativas
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Justificativas.Include(j => j.Funcionario).Include(j => j.Ponto);
+            // Obtém o ID do funcionário associado ao usuário logado
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var applicationDbContext = _context.Justificativas
+                .Include(j => j.Funcionario).Where(rp => rp.Funcionario.Nome == userId)
+                .Include(j => j.Ponto);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -58,9 +64,17 @@ namespace sistema_de_ponto.Controllers
         // GET: Justificativas/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome");
+
+            var funcionarioId = ObterFuncionarioIdDoUsuarioLogado();
+            ViewData["FuncionarioId"] = funcionarioId;
             ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno");
             return View();
+        }
+
+        private int? ObterFuncionarioIdDoUsuarioLogado()
+        {
+            var usuarioLogado = _context.Funcionarios.FirstOrDefault(u => u.Nome == User.Identity.Name);
+            return usuarioLogado?.Id;
         }
 
         // POST: Justificativas/Create
@@ -71,12 +85,17 @@ namespace sistema_de_ponto.Controllers
         public async Task<IActionResult> Create([Bind("Id,Data,Motivo,AnexarDocumento,Status,FuncionarioId,Arquivo,PontoId")] Justificativa justificativa)
         {
            
-
+           
             if (ModelState.IsValid)
             {
-            
-                    if (justificativa.Arquivo != null && justificativa.Arquivo.Length > 0)
-                    {
+                var funcionarioId = ObterFuncionarioIdDoUsuarioLogado();
+                var pontoId = _context.Pontos.Where(p => p.FuncionarioId == funcionarioId).Select(p => p.Id).FirstOrDefault();
+                justificativa.FuncionarioId = (int)funcionarioId;
+                justificativa.Status = Status.Pendente;
+                justificativa.PontoId = pontoId;
+
+                if (justificativa.Arquivo != null && justificativa.Arquivo.Length > 0)
+                {
                     //Pegando a extensão do arquivo
                     string extensao = Path.GetExtension(justificativa.Arquivo.FileName);
 
@@ -89,21 +108,22 @@ namespace sistema_de_ponto.Controllers
                     justificativa.AnexarDocumento = nomeUnico + extensao;
 
                     using (Stream fileStream = new FileStream(caminho, FileMode.Create))
-                        {
-                            await justificativa.Arquivo.CopyToAsync(fileStream);
-                        }
-                    }
-                    else
                     {
-                        justificativa.AnexarDocumento = null;
+                        await justificativa.Arquivo.CopyToAsync(fileStream);
                     }
-
-                    _context.Add(justificativa);
+                }
+                else
+                {
+                    justificativa.AnexarDocumento = null;
+                }
+                //ViewData["FuncionarioId"] = funcionarioId;
+                
+                _context.Add(justificativa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", justificativa.FuncionarioId);
-            ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno", justificativa.PontoId);
+            
+            
             return View(justificativa);
         }
 
@@ -132,7 +152,7 @@ namespace sistema_de_ponto.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Motivo,AnexarDocumento,Status,FuncionarioId,Arquivo,PontoId")] Justificativa justificativa)
         {
-           
+
             if (ModelState.IsValid)
             {
                 if (justificativa.Arquivo != null && justificativa.Arquivo.Length > 0)
@@ -158,11 +178,11 @@ namespace sistema_de_ponto.Controllers
                     justificativa.AnexarDocumento = null;
                 }
 
-               
+
                 if (id != justificativa.Id)
-            {
-                return NotFound();
-            }
+                {
+                    return NotFound();
+                }
 
                 try
                 {
@@ -180,7 +200,7 @@ namespace sistema_de_ponto.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Solicitacoes));
             }
             ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", justificativa.FuncionarioId);
             ViewData["PontoId"] = new SelectList(_context.Pontos, "Id", "Turno", justificativa.PontoId);
@@ -215,7 +235,7 @@ namespace sistema_de_ponto.Controllers
             var justificativa = await _context.Justificativas.FindAsync(id);
             _context.Justificativas.Remove(justificativa);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Solicitacoes));
         }
 
         private bool JustificativaExists(int id)
@@ -255,16 +275,16 @@ namespace sistema_de_ponto.Controllers
             // Dados
             foreach (var item in justificativas)
             {
-                
-                
-                    table.AddCell(new Cell().Add(new Paragraph(item.Data.ToString("dd/MM/yyyy"))));
-                    table.AddCell(new Cell().Add(new Paragraph(item.Motivo)));
-                    table.AddCell(new Cell().Add(new Paragraph(item.Status.ToString())));
-                    table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Nome)));
-                    table.AddCell(new Cell().Add(new Paragraph(item.Ponto.Turno.ToString())));
 
 
-                
+                table.AddCell(new Cell().Add(new Paragraph(item.Data.ToString("dd/MM/yyyy"))));
+                table.AddCell(new Cell().Add(new Paragraph(item.Motivo)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Status.ToString())));
+                table.AddCell(new Cell().Add(new Paragraph(item.Funcionario.Nome)));
+                table.AddCell(new Cell().Add(new Paragraph(item.Ponto.Turno.ToString())));
+
+
+
             }
 
             document.Add(table);
@@ -288,6 +308,13 @@ namespace sistema_de_ponto.Controllers
 
 
         }
+
+        public async Task<IActionResult> Solicitacoes()
+        {
+            var applicationDbContext = _context.Justificativas.Include(j => j.Funcionario).Include(j => j.Ponto);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
 
 
 
