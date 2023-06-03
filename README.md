@@ -25,8 +25,10 @@ O projeto que está sendo desenvolvido é um sistema web de controle de ponto.
 Link da aplicação disponível em: https://apontei.azurewebsites.net/
 
 Usuários:
-Funcionário: Login: padrao@padrao.com Senha: 123456
-Gestor: Login: teste@teste.com Senha: 123456
+
+* Funcionário: Login: padrao@padrao.com Senha: 123456
+
+* Gestor: Login: teste@teste.com Senha: 123456
 
 
 # Documentação
