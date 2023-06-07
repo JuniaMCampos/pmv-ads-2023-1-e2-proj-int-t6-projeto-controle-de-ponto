@@ -10,7 +10,6 @@
 <h2>Solicitações de Colaboradores</h2>
 <p>
     <a class="btn btn-warning rounded-pill" href="@Url.Action("ExportarPDF", "Justificativas")"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M220 896q-24 0-42-18t-18-42V693h60v143h520V693h60v143q0 24-18 42t-42 18H220Zm260-153L287 550l43-43 120 120V256h60v371l120-120 43 43-193 193Z" /></svg>Exportar para PDF</a>
-
 </p>
 <table class="table">
     <thead>
@@ -21,9 +20,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Motivo)
             </th>
-            <th>
-                Arquivo
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
@@ -33,7 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Ponto)
             </th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
@@ -46,9 +43,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Motivo)
                 </td>
-                <td>
-                    <a href=@("../Arquivos/" + item.AnexarDocumento)>Baixar</a>
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
