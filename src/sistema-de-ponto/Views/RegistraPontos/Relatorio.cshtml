@@ -40,10 +40,11 @@
 
 @if (Model != null && Model.Any())
 {
-
+<div>
 
     <a class="btn btn-warning rounded-pill" href="@Url.Action("ExportarPdf", "RegistraPontos", new { dataInicial = TempData["DataInicial"], dataFinal = TempData["DataFinal"], funcionarioId = TempData["FuncionarioId"] })"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M220 896q-24 0-42-18t-18-42V693h60v143h520V693h60v143q0 24-18 42t-42 18H220Zm260-153L287 550l43-43 120 120V256h60v371l120-120 43 43-193 193Z" /></svg>Exportar para PDF</a>
-    
+        
+</div>
 
 }
 
@@ -79,9 +80,11 @@
             <th></th>
         </tr>
     </thead>
+   
     <tbody>
         @foreach (var item in Model)
         {
+            
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Funcionario.Nome)

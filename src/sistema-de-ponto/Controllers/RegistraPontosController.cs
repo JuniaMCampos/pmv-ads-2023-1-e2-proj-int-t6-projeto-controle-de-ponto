@@ -376,17 +376,51 @@ namespace sistema_de_ponto.Controllers
             // Dados
             foreach (var registro in registrosPonto)
             {
+                if(registro != null)
+                {
+                    table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Nome)));
+                    table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Sobrenome)));
+                    table.AddCell(new Cell().Add(new Paragraph(registro.Data.ToString("dd/MM/yyyy"))));
+                    if (registro.HoraEntrada1 != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada1.Value.ToShortTimeString())));
+
+                    }
+
+                    if (registro.HoraSaida1 != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida1.Value.ToShortTimeString())));
+
+                    }
+
+                    if (registro.Intervalo != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.Intervalo.Value.ToString("hh\\:mm\\:ss"))));
+
+                    }
+
+                    if (registro.HoraEntrada2!= null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada2.Value.ToShortTimeString())));
+
+                    }
+                    if (registro.HoraSaida2 != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida2.Value.ToShortTimeString())));
+
+                    }
+                    if (registro.TotalDeHoras != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.TotalDeHoras.Value.ToString("hh\\:mm\\:ss"))));
+                        
+                    }
 
 
-                table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Nome)));
-                table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Sobrenome)));
-                table.AddCell(new Cell().Add(new Paragraph(registro.Data.ToString("dd/MM/yyyy"))));
-                table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada1.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida1.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(registro.Intervalo.Value.ToString("hh\\:mm\\:ss"))));
-                table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada2.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida2.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(registro.TotalDeHoras.Value.ToString("hh\\:mm\\:ss"))));
+                        
+
+                }
+
+               
 
 
 
