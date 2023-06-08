@@ -121,7 +121,7 @@ namespace sistema_de_ponto.Controllers
             document.Add(table);
 
             // Rodapé do documento
-            var dataHoraAtual = DateTime.Now;
+            var dataHoraAtual = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time")); 
             var rodape = new Paragraph($"Apontei Sistemas Data: {dataHoraAtual.ToString("dd/MM/yyyy")}   Hora: {dataHoraAtual.ToString("HH:mm:ss")}");
 
 
@@ -146,7 +146,9 @@ namespace sistema_de_ponto.Controllers
         // GET: Pontos/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome");
+            ViewData["FuncionarioId"] = new SelectList(
+                  _context.Funcionarios.Where(f => !f.Pontos.Any()), "Id", "Nome");
+
             return View();
         }
 
@@ -165,7 +167,11 @@ namespace sistema_de_ponto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", ponto.FuncionarioId);
+
+
+            ViewData["FuncionarioId"] = new SelectList(
+                _context.Funcionarios.Where(f=> !f.Pontos.Any()), "Id", "Nome", ponto.FuncionarioId);
+
             return View(ponto);
         }
 
