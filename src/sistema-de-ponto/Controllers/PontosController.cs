@@ -271,10 +271,26 @@ namespace sistema_de_ponto.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
             var ponto = await _context.Pontos.FindAsync(id);
-            _context.Pontos.Remove(ponto);
-            await _context.SaveChangesAsync();
+            
+            
+                try
+                {
+                    _context.Pontos.Remove(ponto);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException)
+                {
+                    ModelState.AddModelError("", "Não é possível excluir este turno, pois está sendo usado em outra aplicação.");
+
+                }
+
+                
+            
+
             return RedirectToAction(nameof(Index));
+
         }
 
         private bool PontoExists(int id)

@@ -1,4 +1,5 @@
 ﻿@model sistema_de_ponto.Models.Ponto
+@using System.Web
 
 @{
     ViewData["Title"] = "Delete";
@@ -7,6 +8,13 @@
 <h1>Excluir Turno</h1>
 
 <h2> @Html.DisplayFor(model => model.Turno)</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary(true)
+    </div>
+}
 
 <p>
     Você tem certeza que deseja excluir este ponto?
