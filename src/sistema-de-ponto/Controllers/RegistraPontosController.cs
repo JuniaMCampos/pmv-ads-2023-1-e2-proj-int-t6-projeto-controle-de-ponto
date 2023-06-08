@@ -207,6 +207,7 @@ namespace sistema_de_ponto.Controllers
                            .Reference(r => r.Funcionario)
                            .LoadAsync();
             new SelectList(new List<Funcionario> { registraPonto.Funcionario }, "Id", "Nome", registraPonto.FuncionarioId);
+            
             return View(registraPonto);
         }
 
