@@ -96,11 +96,11 @@ namespace sistema_de_ponto.Controllers
                 .OrderByDescending(rp => rp.Data)
                 .FirstOrDefault();
             // Cria um novo registro de ponto com a data e hora atuais
-                  
-           
-                var novoRegistroPonto = new RegistraPonto
+            DateTime horaAtualBrasilia = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
+
+            var novoRegistroPonto = new RegistraPonto
                 {
-                    Data = DateTime.Today,
+                    Data = horaAtualBrasilia,
                     FuncionarioId = (int)funcionarioId,
 
                 };
@@ -110,22 +110,22 @@ namespace sistema_de_ponto.Controllers
                 {
                 _context.Add(novoRegistroPonto);
                 // Se não houver registros anteriores, define a hora de entrada 1
-                novoRegistroPonto.HoraEntrada1 = DateTime.Now;
+                novoRegistroPonto.HoraEntrada1 = horaAtualBrasilia;
                 }
                 else if (ultimoRegistroPonto.HoraSaida1 == null)
                 {
                     // Se a hora de saída 1 não estiver definida, define a hora de saída 1
-                    ultimoRegistroPonto.HoraSaida1 = DateTime.Now;
+                    ultimoRegistroPonto.HoraSaida1 = horaAtualBrasilia;
                 }
                 else if (ultimoRegistroPonto.HoraEntrada2 == null)
                 {
                     // Se a hora de entrada 2 não estiver definida, define a hora de entrada 2
-                    ultimoRegistroPonto.HoraEntrada2 = DateTime.Now;
+                    ultimoRegistroPonto.HoraEntrada2 = horaAtualBrasilia;
                 }
                 else if (ultimoRegistroPonto.HoraSaida2 == null)
                 {
                     // Se a hora de saída 2 não estiver definida, define a hora de saída 2
-                    ultimoRegistroPonto.HoraSaida2 = DateTime.Now;
+                    ultimoRegistroPonto.HoraSaida2 = horaAtualBrasilia;
                 }
                 else
                 {
