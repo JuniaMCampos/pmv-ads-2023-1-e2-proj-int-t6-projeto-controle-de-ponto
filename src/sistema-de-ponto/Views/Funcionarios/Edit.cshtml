@@ -74,22 +74,23 @@
                     <span asp-validation-for="Perfil" class="text-danger"></span>
                 </div>
             </div>
-             <div class="form-row">
-            <div class="form-group col-md-4">
-                <label asp-for="Arquivo" class="control-label"></label>
-                <input asp-for="Arquivo" class="form-control" />
-                <span asp-validation-for="Arquivo" class="text-danger"></span>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Arquivo" class="control-label"></label>
+                    <input asp-for="Arquivo" class="form-control" />
+                    <span asp-validation-for="Arquivo" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="EmpresaId" class="control-label"></label>
+                    <select asp-for="EmpresaId" class="form-control" asp-items="ViewBag.EmpresaId"></select>
+                    <span asp-validation-for="EmpresaId" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label asp-for="EmpresaId" class="control-label"></label>
-                <select asp-for="EmpresaId" class="form-control" asp-items="ViewBag.EmpresaId"></select>
-                <span asp-validation-for="EmpresaId" class="text-danger"></span>
-            </div>
+        <div class="form-group">
+            <input type="submit" value="Salvar" class="btn btn-warning rounded-pill" />
+            <a asp-action="Index" class="btn btn-secondary rounded-pill">Cancelar</a>
         </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-warning rounded-pill" />
-                <a asp-action="Index" class="btn btn-secondary rounded-pill">Cancelar</a>
-            </div>
         </form>
     </div>
 </div>
