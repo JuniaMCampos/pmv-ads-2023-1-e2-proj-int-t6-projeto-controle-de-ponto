@@ -79,7 +79,11 @@
                 <label asp-for="Arquivo" class="control-label"></label>
                 <input asp-for="Arquivo" class="form-control" />
                 <span asp-validation-for="Arquivo" class="text-danger"></span>
-            </div>
+                @if (!string.IsNullOrEmpty(Model.Foto) && string.IsNullOrEmpty(Model.Arquivo.FileName))
+                    {
+                        <img src="@Url.Content(Model.Foto)" alt="Foto do funcionario"/>
+                    }
+                </div>
             <div class="form-group col-md-4">
                 <label asp-for="EmpresaId" class="control-label"></label>
                 <select asp-for="EmpresaId" class="form-control" asp-items="ViewBag.EmpresaId"></select>
