@@ -16,10 +16,7 @@
 <body>
     <header style="position:sticky; width:100%; top:0; z-index:1000;">
         <nav class="navbar d-flex navbar-dark bg-dark">
-            @if (User.IsInRole("Gestor,Funcionario"))
-            {
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Apontei</a>
-            }
+            <a class="navbar-brand" asp-area="" asp-controller="Funcionario" asp-action="Index">Apontei</a>
             <div class="dropdown d-flex justify-content-end">
                
                     
