@@ -96,11 +96,11 @@ namespace sistema_de_ponto.Controllers
                 .OrderByDescending(rp => rp.Data)
                 .FirstOrDefault();
             // Cria um novo registro de ponto com a data e hora atuais
-                  
-           
-                var novoRegistroPonto = new RegistraPonto
+            DateTime horaAtualBrasilia = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
+
+            var novoRegistroPonto = new RegistraPonto
                 {
-                    Data = DateTime.Today,
+                    Data = horaAtualBrasilia,
                     FuncionarioId = (int)funcionarioId,
 
                 };
@@ -110,22 +110,22 @@ namespace sistema_de_ponto.Controllers
                 {
                 _context.Add(novoRegistroPonto);
                 // Se não houver registros anteriores, define a hora de entrada 1
-                novoRegistroPonto.HoraEntrada1 = DateTime.Now;
+                novoRegistroPonto.HoraEntrada1 = horaAtualBrasilia;
                 }
                 else if (ultimoRegistroPonto.HoraSaida1 == null)
                 {
                     // Se a hora de saída 1 não estiver definida, define a hora de saída 1
-                    ultimoRegistroPonto.HoraSaida1 = DateTime.Now;
+                    ultimoRegistroPonto.HoraSaida1 = horaAtualBrasilia;
                 }
                 else if (ultimoRegistroPonto.HoraEntrada2 == null)
                 {
                     // Se a hora de entrada 2 não estiver definida, define a hora de entrada 2
-                    ultimoRegistroPonto.HoraEntrada2 = DateTime.Now;
+                    ultimoRegistroPonto.HoraEntrada2 = horaAtualBrasilia;
                 }
                 else if (ultimoRegistroPonto.HoraSaida2 == null)
                 {
                     // Se a hora de saída 2 não estiver definida, define a hora de saída 2
-                    ultimoRegistroPonto.HoraSaida2 = DateTime.Now;
+                    ultimoRegistroPonto.HoraSaida2 = horaAtualBrasilia;
                 }
                 else
                 {
@@ -207,6 +207,7 @@ namespace sistema_de_ponto.Controllers
                            .Reference(r => r.Funcionario)
                            .LoadAsync();
             new SelectList(new List<Funcionario> { registraPonto.Funcionario }, "Id", "Nome", registraPonto.FuncionarioId);
+            
             return View(registraPonto);
         }
 
@@ -376,17 +377,51 @@ namespace sistema_de_ponto.Controllers
             // Dados
             foreach (var registro in registrosPonto)
             {
+                if(registro != null)
+                {
+                    table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Nome)));
+                    table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Sobrenome)));
+                    table.AddCell(new Cell().Add(new Paragraph(registro.Data.ToString("dd/MM/yyyy"))));
+                    if (registro.HoraEntrada1 != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada1.Value.ToShortTimeString())));
+
+                    }
+
+                    if (registro.HoraSaida1 != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida1.Value.ToShortTimeString())));
+
+                    }
+
+                    if (registro.Intervalo != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.Intervalo.Value.ToString("hh\\:mm\\:ss"))));
+
+                    }
+
+                    if (registro.HoraEntrada2!= null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada2.Value.ToShortTimeString())));
+
+                    }
+                    if (registro.HoraSaida2 != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida2.Value.ToShortTimeString())));
+
+                    }
+                    if (registro.TotalDeHoras != null)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph(registro.TotalDeHoras.Value.ToString("hh\\:mm\\:ss"))));
+                        
+                    }
 
 
-                table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Nome)));
-                table.AddCell(new Cell().Add(new Paragraph(registro.Funcionario.Sobrenome)));
-                table.AddCell(new Cell().Add(new Paragraph(registro.Data.ToString("dd/MM/yyyy"))));
-                table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada1.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida1.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(registro.Intervalo.Value.ToString("hh\\:mm\\:ss"))));
-                table.AddCell(new Cell().Add(new Paragraph(registro.HoraEntrada2.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(registro.HoraSaida2.Value.ToShortTimeString())));
-                table.AddCell(new Cell().Add(new Paragraph(registro.TotalDeHoras.Value.ToString("hh\\:mm\\:ss"))));
+                        
+
+                }
+
+               
 
 
 
