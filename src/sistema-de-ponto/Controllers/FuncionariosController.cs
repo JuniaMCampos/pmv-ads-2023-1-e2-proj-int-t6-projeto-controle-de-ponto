@@ -228,7 +228,10 @@ namespace sistema_de_ponto.Controllers
                 }
                 else
                 {
-                    funcionario.Foto = null;
+                    if (string.IsNullOrEmpty(funcionario.Foto))
+                    {
+                        funcionario.Foto = null;
+                    }
                 }
 
                 try
