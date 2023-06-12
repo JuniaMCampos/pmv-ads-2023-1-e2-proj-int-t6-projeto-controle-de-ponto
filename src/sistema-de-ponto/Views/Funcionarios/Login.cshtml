@@ -4,7 +4,12 @@
     ViewData["Title"] = "Login";
 }
 
-
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-danger">
+        @ViewBag.Message
+    </div>
+}
 <section class="container-fluid d-flex justify-content-end p-0" style="">
 <div class="container-lg p-3 text-center">
         @if (User.IsInRole("Gestor,Funcionario"))
