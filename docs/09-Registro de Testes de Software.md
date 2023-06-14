@@ -25,7 +25,7 @@
 
 ## CT 01 - Aprovar/Reprovar ajustes
 
-![Tela Ajustes](img/TelaAprovarAjustes.PNG)
+![Tela Ajustes](img/telaAprovarAjustes.PNG)
 
 ## CT 01 - Gerenciar Funcionários
 
